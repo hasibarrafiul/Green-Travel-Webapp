@@ -1,0 +1,683 @@
+
+{% extends 'base_layout.html' %}
+
+
+{% block content %}
+<br>
+<div class="middle--">
+    <form action="" method="POST" class="contact100-form validate-form">
+				{% csrf_token %}
+
+		<h1> Enter your information:  </h1> <br>
+					<input class="input100" type="text" name="message-name" placeholder="Full Name"> <br> <br>
+
+					<input class="input100" type="text" name="message-email" placeholder="E-mail"> <br> <br>
+
+					<input class="input100" type="text" name="message-phone" placeholder="Phone"> <br> <br>
+
+					<h4> Pickup place: </h4>
+					<div class="custom-select">
+					<select class="dropdown" name="message-start">  custom-select
+  						<option value="Khilgaon">Khilgaon</option>
+ 						 <option value="Gabtoli">Gabtoli</option>
+ 						 <option value="Technical">Technical</option>
+						 <option value="Ansar Camp">Ansar Camp</option>
+  						<option value="Mirpur-1">Mirpur-1</option>
+ 						 <option value="Sony Cinema Hall">Sony Cinema Hall</option>
+  						<option value="Mirpur-2">Mirpur-2</option>
+  						<option value="Mirpur-10">Mirpur-10</option>
+ 						 <option value="Mirpur-11">Mirpur-11</option>
+ 						 <option value="Purobi">Purobi</option>
+  						<option value="Kalshi">Kalshi</option>
+  						<option value="ECB Square">ECB Square</option>
+  						<option value="MES">MES</option>
+  						<option value="Sheura">Sheura</option>
+  						<option value="Kuril">Kuril</option>
+  						<option value="Boshundhara">Boshundhara</option>
+ 						 <option value="Norda">Norda</option>
+  						<option value="Notun Bazar">Notun Bazar</option>
+  						<option value="Badda">Badda</option>
+  						<option value="Rampura Bridge">Rampura Bridge</option>
+  						<option value="Banasree">Banasree</option>
+  						<option value="Demra">Demra</option>
+  						<option value="Uttara">Uttara</option>
+  						<option value="Airport">Airport</option>
+    				</select>
+						</div>
+						<br><br>
+					<h4> Drop off place: </h4>
+				<div class="custom-select">
+				<select class="dropdown" name="message-end">
+  						<option value="Khilgaon">Khilgaon</option>
+ 						 <option value="Gabtoli">Gabtoli</option>
+ 						 <option value="Technical">Technical</option>
+						 <option value="Ansar Camp">Ansar Camp</option>
+  						<option value="Mirpur-1">Mirpur-1</option>
+ 						 <option value="Sony Cinema Hall">Sony Cinema Hall</option>
+  						<option value="Mirpur-2">Mirpur-2</option>
+  						<option value="Mirpur-10">Mirpur-10</option>
+ 						 <option value="Mirpur-11">Mirpur-11</option>
+ 						 <option value="Purobi">Purobi</option>
+  						<option value="Kalshi">Kalshi</option>
+  						<option value="ECB Square">ECB Square</option>
+  						<option value="MES">MES</option>
+  						<option value="Sheura">Sheura</option>
+  						<option value="Kuril">Kuril</option>
+  						<option value="Boshundhara">Boshundhara</option>
+ 						 <option value="Norda">Norda</option>
+  						<option value="Notun Bazar">Notun Bazar</option>
+  						<option value="Badda">Badda</option>
+  						<option value="Rampura Bridge">Rampura Bridge</option>
+  						<option value="Banasree">Banasree</option>
+  						<option value="Demra">Demra</option>
+  						<option value="Uttara">Uttara</option>
+  						<option value="Airport">Airport</option>
+    				</select>
+				</div>
+					<br> <br>
+				<h4> Date: </h4>
+			<input type="date" name="message-date"> <br> <br>
+				<h4> Bus: </h4>
+		<div class="custom-select">
+			<select class="dropdown" name="message-bus" id="movie">
+  						<option value="Akash">Akash</option>
+ 						 <option value="Alif">Alif</option>
+ 						 <option value="Raida">Raida</option>
+						 <option value="VIP">VIP</option>
+  						<option value="BRTC">BRTC</option>
+ 						 <option value="Green Dhaka">Green Dhaka</option>
+  						<option value="Anabil">Anabil</option>
+  						<option value="Skyline">Skyline</option>
+ 						 <option value="Supravat">Supravat</option>
+    				</select>
+			</div>
+		<br>
+		<h2>Select your Seats: </h2>
+
+
+		<br>
+
+
+
+
+
+
+    <div class="container">
+
+
+        <div class="row">
+            <div><button class="seat" type="button" onclick="number1()"></button></div>
+            <div><button class="seat" type="button" onclick="number2()"></button></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div><button class="seat" type="button" onclick="number3()"></button></div>
+            <div><button class="seat" type="button" onclick="number4()"></button></div>
+
+        </div>
+		<div class="row">
+            <div><button class="seat" type="button" onclick="number5()"></button></div>
+            <div><button class="seat" type="button" onclick="number6()"></button></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div><button class="seat" type="button" onclick="number7()"></button></div>
+            <div><button class="seat" type="button" onclick="number8()"></button></div>
+
+        </div>
+		<div class="row">
+            <div><button class="seat" type="button" onclick="number9()"></button></div>
+            <div><button class="seat" type="button" onclick="number10()"></button></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div><button class="seat" type="button" onclick="number11()"></button></div>
+            <div><button class="seat" type="button" onclick="number12()"></button></div>
+
+        </div>
+		<div class="row">
+            <div><button class="seat" type="button" onclick="number13()"></button></div>
+            <div><button class="seat" type="button" onclick="number14()"></button></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div><button class="seat" type="button" onclick="number15()"></button></div>
+            <div><button class="seat" type="button" onclick="number16()"></button></div>
+
+        </div>
+		<div class="row">
+            <div><button class="seat" type="button" onclick="number17()"></button></div>
+            <div><button class="seat" type="button" onclick="number18()"></button></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div><button class="seat" type="button" onclick="number19()"></button></div>
+            <div><button class="seat" type="button" onclick="number20()"></button></div>
+
+        </div>
+		<div class="row">
+            <div><button class="seat" type="button" onclick="number21()"></button></div>
+            <div><button class="seat" type="button" onclick="number22()"></button></div>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div><button class="seat" type="button" onclick="number23()"></button></div>
+            <div><button class="seat" type="button" onclick="number24()"></button></div>
+
+        </div>
+
+
+
+    </div>
+
+			<p class="text">You have selected <span id="count">0</span> seats </p>
+			 <span id="display"></span>
+
+
+
+    <script src="/static/ticket.js"></script>
+
+				<textarea style="display:none;" id="test" name="message-text"></textarea>
+
+				<div class="container-contact100-form-btn">
+					<button class="contact100-form-btn button-ticket button2-ticket">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							<a>Submit</a>
+							<br>
+						</span>
+					</button>
+					<br> <br>
+					{% if message_name %}
+					<button class="contact100-form-btn button-ticket button2-ticket"><a href="{% url 'articles:ticket' %}">Buy Ticket</a></button>
+					{% endif %}
+				</div>
+			</form>
+		<br>
+		<h1>External sites: </h1>
+		<br>
+		<div>
+			<button class="contact100-form-btn button-ticket button2-ticket"><a href="https://www.buytickets.com.bd/">Buy Tickets BD</a></button>
+			<button class="contact100-form-btn button-ticket button2-ticket"><a href="https://www.shohoz.com/bus-tickets">Shohoz</a></button>
+			<button class="contact100-form-btn button-ticket button2-ticket"><a href="https://www.esheba.cnsbd.com/#/">Train ticket</a></button>
+			<button class="contact100-form-btn button-ticket button2-ticket"><a href="https://bdtickets.com/">BD tickets</a></button>
+		</div>
+
+</div>
+  <script>
+  function number1(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have entered: ";
+      test.innerHTML = "You have entered: ";
+    }
+    displaySpan.innerHTML += "A1";
+    test.innerHTML += "A1";
+  }
+
+	function number2(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "A2";
+    test.innerHTML += "A2";
+  }
+  function number3(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "A3";
+    test.innerHTML += "A3";
+  }
+  function number4(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "A4";
+    test.innerHTML += "A4";
+  }
+  function number5(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "B1";
+    test.innerHTML += "B1";
+  }
+  function number6(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "B2";
+    test.innerHTML += "B2";
+  }
+  function number7(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "B3";
+    test.innerHTML += "B3";
+  }
+  function number8(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "B4";
+    test.innerHTML += "B4";
+  }
+  function number9(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "C1";
+    test.innerHTML += "C1";
+  }
+  function number10(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "C2";
+    test.innerHTML += "C2";
+  }
+  function number11(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "C3";
+    test.innerHTML += "C3";
+  }
+  function number12(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "C4";
+    test.innerHTML += "C4";
+  }
+  function number13(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "D1";
+    test.innerHTML += "D1";
+  }
+  function number14(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "D2";
+    test.innerHTML += "D2";
+  }
+  function number15(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "D3";
+    test.innerHTML += "D3";
+  }
+  function number16(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "D4";
+    test.innerHTML += "D4";
+  }
+  function number17(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "E1";
+    test.innerHTML += "E1";
+  }
+  function number18(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "E2";
+    test.innerHTML += "E2";
+  }
+  function number19(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "E3";
+    test.innerHTML += "E3";
+  }
+  function number20(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "E4";
+    test.innerHTML += "E4";
+  }
+  function number21(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "F1";
+    test.innerHTML += "F1";
+  }
+  function number22(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "F2";
+    test.innerHTML += "F2";
+  }
+  function number23(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "F3";
+    test.innerHTML += "F3";
+  }
+  function number24(){
+    var displaySpan = document.getElementById("display");
+    var test = document.getElementById("test");
+    if(displaySpan.innerHTML){
+      displaySpan.innerHTML += "-";
+      test.innerHTML += "-";
+    } else {
+      displaySpan.innerHTML = "You have selected seat number: ";
+      test.innerHTML = "You have selected seat number: ";
+    }
+    displaySpan.innerHTML += "F4";
+    test.innerHTML += "F4";
+  }
+
+  </script>
+<style>
+.button-ticket {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.button2-ticket:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+input {
+    width: 100%;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #999;
+    padding: 6px 30px;
+    font-family: Poppins;
+    box-sizing: border-box;
+}
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+</style>
+
+<script>
+var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+</script>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<style>
+ h1, h2, h3, h4, h5, h6 {
+     letter-spacing: 0;
+     font-weight: normal;
+     position: relative;
+     padding: 0 0 10px 0;
+     font-weight: normal;
+     line-height: normal;
+     color: #111111;
+     margin: 0
+}
+h1{
+font-weight: bold;
+    color: #fff;
+    line-height: 40px;
+    font-size: 45px;
+    text-transform: uppercase;
+    background: #547d13;
+    display: inline-block;
+    padding: 20px 30px;
+}
+
+</style>
+
+ <div align="center">
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        <h1>Offers </h1>
+                        <br><br><br><br>
+                        {% for article in articles %}
+                            {% ifequal user article.user %}
+                                <h2>{{ article.title }}</h2>
+     <br>
+                            {% endifequal %}
+                        {% endfor %}
+
+                    </div>
+
+{% endblock %}

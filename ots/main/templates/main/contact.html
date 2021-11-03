@@ -1,0 +1,114 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<head>
+	<title>Contact Us</title>
+	<style>
+	body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url('/static/contact-bg.jpg');
+ background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style inputs */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style the container/contact section */
+.container {
+  border-radius: 5px;
+  padding: 10px;
+
+}
+.txt-white{
+color: white;
+}
+
+/* Create two columns that float next to eachother */
+.contact-column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+/* Clear floats after the columns */
+.contact-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .contact-column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+	</style>
+</head>
+<body>
+
+
+<div class="container">
+  <br><br>
+  <div style="text-align:center">
+    <h2 class="txt-white">Contact Us</h2>
+    <br>
+    <h4 class="txt-white">Swing by for a cup of coffee, or leave us a message</h4>
+  </div>
+  <br>
+  <div class="contact-row">
+    <div class="contact-column">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.410595261114!2d90.42337781534495!3d23.76838889400504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c78bc678693d%3A0x3e87f7b866c0e38!2sEast%20West%20University!5e0!3m2!1sen!2sbd!4v1630834301639!5m2!1sen!2sbd" width="900" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe><a href="https://putlocker-is.org/%22%3Eputlocker</a><br>
+						<style>.mapouter{position:relative;text-align:right;}</style>
+						<a href="https://www.embedgooglemap.net/%22%3E></a>
+    </div>
+    <div class="contact-column">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <label class="txt-white">Enter Name</label>
+        <input type="text" id="fname" name="message-name" placeholder="Your name..">
+        <label class="txt-white">Enter E-mail</label>
+        <input type="text" id="lname" name="message-email" placeholder="Your E-mail..">
+        <label class="txt-white">Phone</label>
+        <input type="text" id="lname" name="message-phone" placeholder="Phone no..">
+        <label for="subject" class="txt-white">Subject</label>
+        <textarea id="subject" name="message-message" placeholder="Write something.." style="height:170px"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+      {% if message_name %}
+				<div>
+					<h2 align="center">Thanks, {{ message_name }} for getting in touch with us. </h2>
+				</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+</body>
+{% endblock %}

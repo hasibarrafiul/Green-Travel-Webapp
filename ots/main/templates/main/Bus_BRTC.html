@@ -1,0 +1,200 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+<head>
+  <!-- basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- site metas -->
+  <title>shree</title>
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="/static/bus-bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="/static/style-bus.css">
+  <!-- Tweaks for older IEs-->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- about  -->
+<div id="about" class="about">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="about-box">
+          <h2>BRTC</h2>
+		  <p></p>
+				<h2>Route Number</h2>
+				  <p class="mb-4">
+                    A-257
+                  </p>
+				  <h2>Route Distribution</h2>
+                  <p>
+                   Mohammadpur - Asad Gate - Khamar Bari - Farmgate - Jahangir Gate - Mohakhali - Wireless - Gulshan 1 - Badda Link Road - Uttar Badda - Shahjadpur - Bashtola - Notun Bazar - Nadda - Bashundhara - Jamuna Future Park - Kuril Bishwa Road</p>
+				  <h2>Details</h2>
+                  <p>
+                    Residents of Dhaka have to take a bus to get from one place to another in Dhaka for work or livelihood. The bus services operating in Dhaka are known as city buses. Numerous city buses ply on multiple routes in Dhaka. There are three types of bus services in Dhaka according to the quality of passenger service. These are seating service, counter service and local bus service.
+                  </p>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 padding_rl">
+        <div class="about-box_img">
+          <figure><img src="/static/brtc.jpg"></figure>
+
+        </div>
+      </div>
+    </div>
+	<div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+	  <div class="about-box">
+	  <div style="background-color:white;">
+                         <h1>Reviews: </h1>
+                        {% for Balaka in Balaka %}
+                        {% ifequal Balaka.busname 'BRTC' %}
+                            <div>
+                                <h3>{{ Balaka.name }}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {% ifequal user Balaka.user %}
+                                <a href="{% url 'articles:deletebalaka' Balaka.id %}"><div class="icon-trash" style="float: right">
+    <div class="trash-lid" style="background-color: #02A7D7"></div>
+    <div class="trash-container" style="background-color: #02A7D7"></div> </a>
+                                {% endifequal %}</h3>
+                                <h4>{{ Balaka.text }}</h4>
+                                <h4>Rating: {{Balaka.rate }}</h4>
+                                <h4>{{ Balaka.date }}</h4>
+
+
+                                <br>
+                            </div>
+                        {% endifequal %}
+                        {% endfor %}
+
+                    </div>
+		<button class="button-ticket button2-ticket" type="submit"><a href="{% url 'articles:bolakareview' %}">Write a review</a></button>
+		<button class="button-ticket button2-ticket" type="submit"><a href="{% url 'articles:ticket_page' %}">Buy Ticket</a></button>
+		</div>
+	  </div>
+	  </div>
+  </div>
+</div>
+    <style>
+    .icon-trash {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+.icon-trash .trash-lid {
+  width: 62%;
+  height: 10%;
+  position: absolute;
+  left: 50%;
+  margin-left: -31%;
+  top: 10.5%;
+  background-color: #000;
+  border-top-left-radius: 80%;
+  border-top-right-radius: 80%;
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+
+.icon-trash .trash-lid:after {
+  content: "";
+  width: 26%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  margin-left: -13%;
+  margin-top: -10%;
+  background-color: inherit;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
+  -webkit-transform: rotate(-1deg);
+  -moz-transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+}
+
+.icon-trash .trash-container {
+  width: 56%;
+  height: 65%;
+  position: absolute;
+  left: 50%;
+  margin-left: -28%;
+  bottom: 10%;
+  background-color: #000;
+  border-bottom-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+}
+
+.icon-trash .trash-container:after {
+  content: "";
+  width: 110%;
+  height: 12%;
+  position: absolute;
+  left: 50%;
+  margin-left: -55%;
+  top: 0;
+  background-color: inherit;
+  border-bottom-left-radius: 45%;
+  border-bottom-right-radius: 45%;
+}
+
+.icon-trash .trash-line-1 {
+  width: 4%;
+  height: 50%;
+  position: absolute;
+  left: 38%;
+  margin-left: -2%;
+  bottom: 17%;
+  background-color: #252527;
+}
+
+.icon-trash .trash-line-2 {
+  width: 4%;
+  height: 50%;
+  position: absolute;
+  left: 50%;
+  margin-left: -2%;
+  bottom: 17%;
+  background-color: #252527;
+}
+
+.icon-trash .trash-line-3 {
+  width: 4%;
+  height: 50%;
+  position: absolute;
+  left: 62%;
+  margin-left: -2%;
+  bottom: 17%;
+  background-color: #252527;
+}
+
+.button-ticket {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+
+.button2-ticket:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+    </style>
+
+
+{% endblock %}

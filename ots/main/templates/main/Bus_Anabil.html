@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+    
+	<section class="tm-section tm-section-1">
+                <div class="tm-textbox tm-textbox-2 tm-bg-dark">
+                  <h2 class="tm-text-blue mb-4" align="center">Anabil</h2>
+				  <h2 class="tm-text-blue mb-4">Route Number</h2>
+                  <p class="mb-4">
+                    A-256
+                  </p>
+				  <h2 class="tm-text-blue mb-4">Route Distribution</h2>
+                  <p class="mb-4">
+                    Sign Board - Shonir Akhra - Jatrabari - Sayedabad - Mugdapara - Bashabo - Khilgaon - Malibagh Railgate - Hazipara - Rampura Bazar - Rampura Bridge - Merul - Badda - Uttar Badda - Shahjadpur - Bashtola - Notun Bazar - Nadda - Bashundhara - Jamuna Future Park - Kuril Bishwa Road - Khilkhet - Airport - Jashimuddin (Uttara) - Rajlakshmi - Azampur - House Building - Abdullahpur - Tongi - station Road - Mill Gate - Board Bazar - Gazipur Bypass - Gazipur Chourasta</p>
+				  <h2 class="tm-text-blue mb-4">Details</h2>
+                  <p class="mb-4">
+                    Residents of Dhaka have to take a bus to get from one place to another in Dhaka for work or livelihood. The bus services operating in Dhaka are known as city buses. Numerous city buses ply on multiple routes in Dhaka. There are three types of bus services in Dhaka according to the quality of passenger service. These are seating service, counter service and local bus service.
+                  </p>
+                    <h2 class="tm-text-blue mb-4">Anabil</h2>
+				  <img src="/static/anabil.jpg">
+                    <br>
+				  <div class="topnav">
+                      <div class="centerb">
+                            <button type="submit"><a href="{% url 'articles:ticket_page' %}">Buy Ticket</a></button>
+                        </div>
+
+                  </div>
+
+                </div>
+              </section>
+
+{% endblock %}

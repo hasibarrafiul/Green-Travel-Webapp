@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/ticket.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+.txt-white{
+    color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: sticky;
+  display: inline-block;
+}
+.dropdown-- {
+  position: sticky;
+  display: inline-block;
+  float: right;
+  height: 0px;
+  width: 5%;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown---content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown---content a:hover {background-color: #f1f1f1}
+
+.dropdown--:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown--:hover .dropbtn {
+  background-color: #3e8e41;
+}
+.left-padding{
+padding-right: 50px;
+}
+
+.roundbutton1{
+border-radius: 50%;
+}
+</style>
+</head>
+<body>
+<div class="topnav">
+        <a class="active" href="/main">Home</a>
+
+        <a href="{% url 'articles:about' %}">About</a>
+        <a href="{% url 'articles:contact' %}">Contact Us</a>
+        <a href="{% url 'articles:ticket_page' %}">Ticket Page</a>
+        <a href="{% url 'articles:offers_page' %}">Your Offers</a>
+
+
+    </div>
+<div class="dropdown-- " >
+  <button class="dropbtn roundbutton1" >{{ user.username }}</button>
+  <div class="dropdown-content">
+  <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+      <button type="submit" class="dropbtn ">Logout</button>
+  </form></a>
+  </div>
+</div>
+
+    <div class="Wrapper">
+
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
