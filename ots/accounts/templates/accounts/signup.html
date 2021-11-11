@@ -23,12 +23,14 @@
                         <h2 class="form-title">SIGN UP</h2>
                         <form method="POST" class="register-form" id="register-form">
                             {% csrf_token %}
-			{{form.username.label}}
-          {{form.username}}
-			{{form.password1.label}}
-          {{form.password1}}
-			{{form.password2.label}}
-          {{form.password2}}
+
+
+                            <input type="text" name="username" value="{{data.username}}" placeholder="Username"/> <br>
+                            <input type="text" name="email" value="{{data.email}}" placeholder="Email address"/> <br>
+                            <input type="password" name="password" value="{{data.password}}" placeholder="Password"/> <br>
+                            <input type="password" name="password2" value="{{data.password2}}" placeholder="Repeat Password"/> <br>
+
+
                             <div class="form-group form-button">
 								<div class="right">
             {% for field in form %}
@@ -37,6 +39,12 @@
             </div>
         {% endfor %}
         </div>
+
+                                {% for message in messages %}
+					<p id="messages">{{message}}</p>
+				{% endfor %}
+
+
                                 <input type="submit" name="signup_submit" id="signup" class="form-submit" value="Sign up"/>
                             </div>
                         </form>
