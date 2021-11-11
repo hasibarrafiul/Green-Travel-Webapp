@@ -1,86 +1,79 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+  	<title>Login Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-
-    <link rel="stylesheet" href="/static/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
-
-    <!-- Style -->
-    <link rel="stylesheet" href="/static/style-login.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Login </title>
-  </head>
-  <body>
+	<link rel="stylesheet" href="/static/css/login-style.css">
 
+	</head>
+	<body class="img js-fullheight" style="background-image: url(/static/images/Sunrise-at-Sajek-Valley.jpg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Welcome to Green Travel</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">Have an account?</h3>
+		      	<form action="#" class="signin-form" method="post">
+				{% csrf_token %}
+		      		<div class="form-group">
+		      			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username &nbsp; <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+		      		</div>
+	            <div class="form-group">
+	              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password &nbsp; <input class="#password-field" type="password" name="password" autocomplete="current-password" required="" id="id_password">
 
-  <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('/static/login-bg.jpg');"></div>
-    <div class="contents order-2 order-md-1">
-
-      <div class="container">
-
-        <div class="row align-items-center justify-content-center">
-				<h1 id="welcome--"> Welcome to Optimal Transportation System</h1>
-          <div class="col-md-7">
-
-            <div class="mb-4">
-              <h3>SIGN IN</h3>
-
-            </div>
-            <form action="#" method="post">
-			{% csrf_token %}
-              <div class="form-group first">
-                USERNAME &nbsp;&nbsp;&nbsp;
-                {{form.username}}
-
-              </div>
-              <div class="form-group last mb-3">
-                 PASSWORD &nbsp;&nbsp;&nbsp;
-                {{form.password}}
-				{% if request.GET.next %}
+				  {% if request.GET.next %}
 					<input type="hidden" name="next" value="{{ request.GET.next }}">
 				{% endif %}
-
-              </div>
-			  {% for message in messages %}
+	            </div>
+				{% for message in messages %}
 					<p id="messages">{{message}}</p>
 				{% endfor %}
 
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+		            	<label class="checkbox-wrap checkbox-primary">Remember Me
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="w-50 text-md-right">
+									<a href="#" style="color: #fff">Forgot Password</a>
+								</div>
+	            </div>
+				<div class="w-100 text-center">
+					Don't have an account? <a href="../signup/" class="ml-2">Sign Up</a>
+					</div>
+	          </form>
+	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+	          <div class="social d-flex text-center">
+	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+	          </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	<script src="/static/js/login-jquery.min.js"></script>
+  <script src="/static/js/login-popper.js"></script>
+  <script src="/static/js/login-bootstrap.min.js"></script>
+  <script src="/static/js/login-main.js"></script>
 
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-                <br /><br />
-                <div class="d-flex justify-content-center links">
-                        Don't have an account? <a href="../signup/" class="ml-2">Sign Up</a>
-                    </div>
-
-              <span class="d-block text-center my-4 text-muted">&mdash; Or Sign In With &mdash;</span>
-
-              <div class="social-login">
-									<p class="social-media d-flex justify-content-center">
-										<a href="{% url 'social:begin' 'facebook' %}" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="{% url 'social:begin' 'linkedin-oauth2' %}" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-linkedin"></span></a>
-									</p>
-              </div>
-
-
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-
-  </body>
+	</body>
 </html>
+
