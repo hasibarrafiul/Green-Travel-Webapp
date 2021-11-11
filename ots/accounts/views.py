@@ -18,7 +18,7 @@ def signup_view(request):
 
         if len(password)<6:
             messages.add_message(request, messages.ERROR, 'Password should be at least 6 character')
-            context['has_error']=True
+            context['has_error'] = True
 
         if password != password2:
             messages.add_message(request, messages.ERROR, 'Passwords should be same')
