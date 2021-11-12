@@ -62,6 +62,7 @@
 	          <div class="social d-flex text-center">
 	          	<a href="{% url 'social:begin' 'facebook' %}" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
 	          	<a href="{% url 'social:begin' 'linkedin-oauth2' %}" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Linked In</a>
+				  <a href="{% url 'social:begin' 'google-oauth2' %}" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-google mr-2"></span> Google+</a>
 	          </div>
 		      </div>
 				</div>
@@ -69,11 +70,47 @@
 		</div>
 	</section>
 
+
+<script type="text/javascript">
+  gapi.load('auth2', function () {
+    var auth2;
+
+    auth2 = gapi.auth2.init({
+      client_id: "<PUT SOCIAL_AUTH_GOOGLE_PLUS_KEY HERE>",
+      scope: "<PUT BACKEND SCOPE HERE>"
+    });
+
+    auth2.then(function () {
+      var button = document.getElementById("google-plus-button");
+      console.log("User is signed-in in Google+ platform?", auth2.isSignedIn.get() ? "Yes" : "No");
+
+      auth2.attachClickHandler(button, {}, function (googleUser) {
+        // Send access-token to backend to finish the authenticate
+        // with your application
+
+        var authResponse = googleUser.getAuthResponse();
+        var $form;
+        var $input;
+
+        $form = $("<form>");
+        $form.attr("action", "/complete/google-plus");
+        $form.attr("method", "post");
+        $input = $("<input>");
+        $input.attr("name", "id_token");
+        $input.attr("value", authResponse.id_token);
+        $form.append($input);
+        // Add csrf-token if needed
+        $(document.body).append($form);
+        $form.submit();
+      });
+    });
+  });
+</script>
 	<script src="/static/js/login-jquery.min.js"></script>
   <script src="/static/js/login-popper.js"></script>
   <script src="/static/js/login-bootstrap.min.js"></script>
   <script src="/static/js/login-main.js"></script>
-
+<script src="https://apis.google.com/js/api:client.js"></script>
 	</body>
 </html>
 

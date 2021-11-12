@@ -111,6 +111,8 @@ AUTHENTICATION_BACKENDS = [
 
     'social_core.backends.facebook.FacebookOAuth2',
 
+    'social_core.backends.google.GoogleOAuth2',
+
     'django.contrib.auth.backends.ModelBackend',
 ]
 
@@ -120,7 +122,10 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '7b52a01483057522ec2eb7d19812eadb'
 SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '860lai46b4mepo'
 SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'lrR9iQdMQQBG8eJO'
 
-LOGIN_REDIRECT_URL = '/main'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '136282293117-mr7hn3mpkdinsdplr24imqmiten3jr4n'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+
+LOGIN_REDIRECT_URL = '/main/'
 
 
 # Internationalization
