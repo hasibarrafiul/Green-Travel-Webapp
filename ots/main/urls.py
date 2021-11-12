@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^offers_page/$', views.offers, name="offers_page"),
     url(r'^bolakareview/$', views.bolakareview, name="bolakareview"),
     url(r'^ticket/$', views.ticket, name="ticket"),
-    path('deletebalaka/<str:pk>/$', views.deletebalaka, name="deletebalaka"),
+    #path('deletebalaka/<str:pk>/$', views.deletebalaka, name="deletebalaka"),
     url(r'^ticket_page/$', views.ticket_page, name="ticket_page"),
 
 

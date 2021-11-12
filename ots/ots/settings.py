@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL="accounts.User"
+
 
 # Application definition
 
@@ -156,9 +158,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #Email settings
+EMAIL_FROM_USER = os.environ.get('EMAIL_FROM_USER')
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
-EMAIL_HOST_USER = '2018-3-60-088@std.ewubd.edu'
-EMAIL_HOST_PASSWORD = 'rimqwpecooaxvdji'
+EMAIL_HOST_USER = 'rashikbuksh71@gmail.com'
+EMAIL_HOST_PASSWORD = 'bqmswcxdpkunlhvj'
 EMAIL_USE_TLS = True
 

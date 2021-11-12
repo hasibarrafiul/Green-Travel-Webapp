@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import Article
+
 from django.contrib.auth.decorators import login_required
 
 from django.http import FileResponse
@@ -13,7 +13,7 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from django.core.mail import send_mail
 
-from .models import balaka
+
 
 from . import forms
 
