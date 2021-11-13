@@ -128,30 +128,6 @@ def ticket(request):
     return FileResponse(buf, as_attachment=True, filename="ticket.pdf")
 
 
-# Air
-@login_required(login_url="/account/login/")
-def Air_Biman_Bangladesh(request):
-    return render(request, 'main/Air_Biman_Bangladesh.html')
-
-
-@login_required(login_url="/account/login/")
-def Air_Novoair(request):
-    return render(request, 'main/Air_Novoair.html')
-
-
-@login_required(login_url="/account/login/")
-def Air_US_Bangla(request):
-    return render(request, 'main/Air_US_Bangla.html')
-
-
-# Bus
-@login_required(login_url="/account/login/")
-def bolaka(request):
-
-    Balaka = balaka.objects.all().order_by('date')
-    return render(request, 'main/bolaka.html', {'Balaka': Balaka})
-
-
 @login_required(login_url="/account/login/")
 def bolakareview(request):
     form = forms.balakareview()
@@ -171,93 +147,5 @@ def bolakareview(request):
     return render(request, 'main/balakareview.html', {'form': form})
 
 
-def deletebalaka(request, pk):
-    instance = balaka.objects.get(id=pk)
-    instance.delete()
-    return redirect('articles:bolaka')
-
-
-@login_required(login_url="/account/login/")
-def Bus_Akash(request):
-    Balaka = balaka.objects.all().order_by('date')
-    return render(request, 'main/Bus_Akash.html', {'Balaka': Balaka})
-
-
-@login_required(login_url="/account/login/")
-def Bus_Alif(request):
-    Balaka = balaka.objects.all().order_by('date')
-    return render(request, 'main/Bus_Alif.html', {'Balaka': Balaka})
-
-
-@login_required(login_url="/account/login/")
-def Bus_Anabil(request):
-    return render(request, 'main/Bus_Anabil.html')
-
-
-@login_required(login_url="/account/login/")
-def Bus_BRTC(request):
-    Balaka = balaka.objects.all().order_by('date')
-    return render(request, 'main/Bus_BRTC.html', {'Balaka': Balaka})
-
-
-@login_required(login_url="/account/login/")
-def Bus_Green_Dhaka(request):
-    return render(request, 'main/Bus_Green_Dhaka.html')
-
-
-@login_required(login_url="/account/login/")
-def Bus_Raida(request):
-    Balaka = balaka.objects.all().order_by('date')
-    return render(request, 'main/Bus_Raida.html', {'Balaka': Balaka})
-
-
-
-@login_required(login_url="/account/login/")
-def Bus_Skyline(request):
-    return render(request, 'main/Bus_Skyline.html')
-
-
-@login_required(login_url="/account/login/")
-def Bus_Supravat(request):
-    return render(request, 'main/Bus_Supravat.html')
-
-
-@login_required(login_url="/account/login/")
-def Bus_VIP(request):
-    Balaka = balaka.objects.all().order_by('date')
-    return render(request, 'main/Bus_VIP.html', {'Balaka': Balaka})
-
-
-
-# Train
-@login_required(login_url="/account/login/")
-def Train_Chitra_Express(request):
-    return render(request, 'main/Train_Chitra_Express.html')
-
-
-@login_required(login_url="/account/login/")
-def Train_Ekota_Express(request):
-    return render(request, 'main/Train_Ekota_Express.html')
-
-
-@login_required(login_url="/account/login/")
-def Train_Mahanagar_Godhuli(request):
-    return render(request, 'main/Train_Mahanagar_Godhuli.html')
-
-
-@login_required(login_url="/account/login/")
-def Train_Suborno_Express(request):
-    return render(request, 'main/Train_Suborno_Express.html')
-
-
-@login_required(login_url="/account/login/")
-def Train_Tista_Express(request):
-    return render(request, 'main/Train_Tista_Express.html')
-
-
-@login_required(login_url="/account/login/")
-def offers(request):
-    articles = Article.objects.all()
-    return render(request, 'main/offers.html', {'articles': articles})
 
 
