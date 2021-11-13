@@ -4,60 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <title>Sign Up Form by Colorlib</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="/static/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/static/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="/static/style-signup.css">
+    <link rel="stylesheet" href="/static/css/signup-style.css">
 </head>
 <body>
 
-    <div class="main" style="background-image: url('/static/signup-bg.png');">
+    <div class="main">
 
         <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
             <div class="container">
                 <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">SIGN UP</h2>
-                        <form method="POST" class="register-form" id="register-form">
-                            {% csrf_token %}
 
+                    <form method="POST" id="register-form" class="register-form">
+					{% csrf_token %}
+                        <h2 class="form-title">Create account</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="first_name" value="{{data.first_name}}" placeholder="First name"/>
+                        </div>
+						<div class="form-group">
+                            <input type="text" class="form-input" name="last_name" value="{{data.last_name}}" placeholder="Last name"/>
+                        </div>
+						<div class="form-group">
+                            <input type="text" class="form-input" name="username" value="{{data.username}}" placeholder="Username"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" value="{{data.email}}" placeholder="Email address"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password" value="{{data.password}}" placeholder="Password"/>
+                            <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password2" value="{{data.password2}}" placeholder="Repeat Password"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="termsCheckBox" class="agree-term" value="Accept" onclick="terms_changed(this)"/>
+                            <label for="termsCheckBox" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        </div>
+                        <div class="form-group">
+							{% for field in form %}
+								<div class="fieldWrapper">
+									{{ field.errors }}
+								</div>
+							{% endfor %}
 
-                            <input type="text" name="username" value="{{data.username}}" placeholder="Username"/> <br>
-                            <input type="text" name="email" value="{{data.email}}" placeholder="Email address"/> <br>
-                            <input type="password" name="password" value="{{data.password}}" placeholder="Password"/> <br>
-                            <input type="password" name="password2" value="{{data.password2}}" placeholder="Repeat Password"/> <br>
-
-
-                            <div class="form-group form-button">
-								<div class="right">
-            {% for field in form %}
-            <div class="fieldWrapper">
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-        </div>
 
                                 {% for message in messages %}
 					<p id="messages">{{message}}</p>
 				{% endfor %}
-
-
-                                <input type="submit" name="signup_submit" id="signup" class="form-submit" value="Sign up"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="/static/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="../login/" class="signup-image-link">I am already member</a>
-                    </div>
+                            <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up" disabled>Sign Up</button>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Have already an account ? <a href="../login/" class="loginhere-link">Login here</a>
+                    </p>
                 </div>
             </div>
         </section>
 
     </div>
+    <script>
+ function terms_changed(termsCheckBox){
+    if(termsCheckBox.checked){
+        //Set the disabled property to FALSE and enable the button.
+        document.getElementById("submit_button").disabled = false;
+    } else{
+        //Otherwise, disable the submit button.
+        document.getElementById("submit_button").disabled = true;
+    }
+}
+    </script>
 
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/js/signup-main.js"></script>
 </body>
 </html>
