@@ -36,6 +36,8 @@ def send_activation_email(user, request):
 def signup_view(request):
     if request.method == 'POST':
         context = {'has_error': False, 'data': request.POST}
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
         email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -68,7 +70,7 @@ def signup_view(request):
         if context['has_error']:
             return render(request, 'accounts/signup.html', context)
 
-        user = User.objects.create_user(username=username, email=email)
+        user = User.objects.create_user(username=username, email=email,first_name=first_name, last_name=last_name)
         user.set_password(password)
         user.save()
 

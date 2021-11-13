@@ -49,7 +49,7 @@ def contact(request):
             'Mail Sent By '+message_name , # subject
             '\n'+'Senders Phone: '+message_phone + '\nSenders Email: '+message_email+ ' \nMessage: ' + message, #message
             message_email, #from mail
-            ['2018-3-60-088@std.ewubd.edu'], #tomail
+            ['rashikbuksh71@gmail.com'], #tomail
         )
         return render(request, 'main/contact.html', {'message_name': message_name})
     else:
