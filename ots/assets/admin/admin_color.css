@@ -34,7 +34,7 @@ font-family: Copperplate, fantasy;
 
 #header {
     text-align: center;
-    background:crimson;
+    background:#ed143d00;
 
     color: #fff;
 
@@ -71,7 +71,7 @@ div.breadcrumbs {
 
     /* color: #c4dce8; */
 
-    background: firebrick;
+    background: transparent;
 
 }
 
@@ -152,7 +152,6 @@ div.breadcrumbs a:focus, div.breadcrumbs a:hover {
 #user-tools a:focus, #user-tools a:hover {
 
     border: 0;
-
     color: #ddd;
 
 }
@@ -382,6 +381,8 @@ p{
     border: 2px solid white;
 
     border-radius: 32px;
+
+    background: transparent;
 
 }
 
