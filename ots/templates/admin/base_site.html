@@ -1,0 +1,29 @@
+{% extends "admin/base.html" %}
+
+{% comment %} {% load i18n  eatn_tags static %} {% endcomment %}
+
+{% load i18n %}
+
+{% load static %}
+
+ 
+
+{% block title %}{{ title }} | {% trans "Green Travel " %}{% endblock %}
+
+{% block extrastyle %}
+
+    <link rel="stylesheet" type="text/css" href="{% static "admin/admin_color.css" %}"/>
+
+{% endblock %}
+
+ 
+
+{% block branding %}
+
+    <h1 id="site-name">{% trans "Green Travel" %}</h1>
+
+{% endblock %}
+
+ 
+
+{% block nav-global %}{% endblock %}
