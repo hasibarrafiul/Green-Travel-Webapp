@@ -22,22 +22,33 @@ body{
 
      background: black;
 
-    /* background-image: url("https://wallpapercave.com/wp/wp2508260.jpg"); */
+     background-image: url("/static/images/Sunrise-at-Sajek-Valley.jpg");
 
      /*  background-image: url(../images/Admin.jpg);  */
 
 }
 
-#header {
+.font{
+font-family: Copperplate, fantasy;
+}
 
+#header {
+    text-align: center;
     background:crimson;
 
     color: #fff;
 
-    height: 78px
+    height: 78px;
 
 
 
+}
+#site-name{
+background:crimson;
+
+    color: #fff;
+
+    height: 78px;
 }
 
 #header a:link, #header a:visited {

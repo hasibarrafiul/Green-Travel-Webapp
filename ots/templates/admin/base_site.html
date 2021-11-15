@@ -1,29 +1,609 @@
-{% extends "admin/base.html" %}
+<html lang="en-us" dir="ltr"><script>
+    window[Symbol.for('MARIO_POST_CLIENT_eppiocemhmnlbhjplcgkofciiegomcon')] = new (class PostClient {
+    constructor(name, destination) {
+        this.name = name;
+        this.destination = destination;
+        this.serverListeners = {};
+        this.bgRequestsListeners = {};
+        this.bgEventsListeners = {};
+        window.addEventListener('message', (message) => {
+            const data = message.data;
+            const isNotForMe = !(data.destination && data.destination === this.name);
+            const hasNotEventProp = !data.event;
+            if (isNotForMe || hasNotEventProp) {
+                return;
+            }
+            if (data.event === 'MARIO_POST_SERVER__BG_RESPONSE') {
+                const response = data.args;
+                if (this.hasBgRequestListener(response.requestId)) {
+                    try {
+                        this.bgRequestsListeners[response.requestId](response.response);
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                    delete this.bgRequestsListeners[response.requestId];
+                }
+            }
+            else if (data.event === 'MARIO_POST_SERVER__BG_EVENT') {
+                const response = data.args;
+                if (this.hasBgEventListener(response.event)) {
+                    try {
+                        this.bgEventsListeners[data.id](response.payload);
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                }
+            }
+            else if (this.hasServerListener(data.event)) {
+                try {
+                    this.serverListeners[data.event](data.args);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }
+            else {
+                console.log(`event not handled: ${data.event}`);
+            }
+        });
+    }
+    emitToServer(event, args) {
+        const id = this.generateUIID();
+        const message = {
+            args,
+            destination: this.destination,
+            event,
+            id,
+        };
+        window.postMessage(message, location.origin);
+        return id;
+    }
+    emitToBg(bgEventName, args) {
+        const requestId = this.generateUIID();
+        const request = { bgEventName, requestId, args };
+        this.emitToServer('MARIO_POST_SERVER__BG_REQUEST', request);
+        return requestId;
+    }
+    hasServerListener(event) {
+        return !!this.serverListeners[event];
+    }
+    hasBgRequestListener(requestId) {
+        return !!this.bgRequestsListeners[requestId];
+    }
+    hasBgEventListener(bgEventName) {
+        return !!this.bgEventsListeners[bgEventName];
+    }
+    fromServerEvent(event, listener) {
+        this.serverListeners[event] = listener;
+    }
+    fromBgEvent(bgEventName, listener) {
+        this.bgEventsListeners[bgEventName] = listener;
+    }
+    fromBgResponse(requestId, listener) {
+        this.bgRequestsListeners[requestId] = listener;
+    }
+    generateUIID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+})('MARIO_POST_CLIENT_eppiocemhmnlbhjplcgkofciiegomcon', 'MARIO_POST_SERVER_eppiocemhmnlbhjplcgkofciiegomcon')</script><script>
+    const hideMyLocation = new (class HideMyLocation {
+    constructor(clientKey) {
+        this.clientKey = clientKey;
+        this.watchIDs = {};
+        this.client = window[Symbol.for(clientKey)];
+        const getCurrentPosition = navigator.geolocation.getCurrentPosition;
+        const watchPosition = navigator.geolocation.watchPosition;
+        const clearWatch = navigator.geolocation.clearWatch;
+        const self = this;
+        navigator.geolocation.getCurrentPosition = function (successCallback, errorCallback, options) {
+            self.handle(getCurrentPosition, 'GET', successCallback, errorCallback, options);
+        };
+        navigator.geolocation.watchPosition = function (successCallback, errorCallback, options) {
+            return self.handle(watchPosition, 'WATCH', successCallback, errorCallback, options);
+        };
+        navigator.geolocation.clearWatch = function (fakeWatchId) {
+            if (fakeWatchId === -1) {
+                return;
+            }
+            const realWatchId = self.watchIDs[fakeWatchId];
+            delete self.watchIDs[fakeWatchId];
+            return clearWatch.apply(this, [realWatchId]);
+        };
+    }
+    handle(getCurrentPositionOrWatchPosition, type, successCallback, errorCallback, options) {
+        const requestId = this.client.emitToBg('HIDE_MY_LOCATION__GET_LOCATION');
+        let fakeWatchId = this.getRandomInt(0, 100000);
+        this.client.fromBgResponse(requestId, (response) => {
+            if (response.enabled) {
+                if (response.status === 'SUCCESS') {
+                    const position = this.map(response);
+                    successCallback(position);
+                }
+                else {
+                    const error = this.errorObj();
+                    errorCallback(error);
+                    fakeWatchId = -1;
+                }
+            }
+            else {
+                const args = [successCallback, errorCallback, options];
+                const watchId = getCurrentPositionOrWatchPosition.apply(navigator.geolocation, args);
+                if (type === 'WATCH') {
+                    this.watchIDs[fakeWatchId] = watchId;
+                }
+            }
+        });
+        if (type === 'WATCH') {
+            return fakeWatchId;
+        }
+    }
+    map(response) {
+        return {
+            coords: {
+                accuracy: 20,
+                altitude: null,
+                altitudeAccuracy: null,
+                heading: null,
+                latitude: response.latitude,
+                longitude: response.longitude,
+                speed: null,
+            },
+            timestamp: Date.now(),
+        };
+    }
+    errorObj() {
+        return {
+            code: 1,
+            message: 'User denied Geolocation',
+        };
+    }
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+})('MARIO_POST_CLIENT_eppiocemhmnlbhjplcgkofciiegomcon')
+  </script><head>
+<title>Green Travel Admin Page</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css">
 
-{% comment %} {% load i18n  eatn_tags static %} {% endcomment %}
-
-{% load i18n %}
-
-{% load static %}
+  <link rel="stylesheet" type="text/css" href="/static/admin/css/nav_sidebar.css">
+  <script src="/static/admin/js/nav_sidebar.js" defer=""></script>
 
 
 
-{% block title %}{{ title }} | {% trans "TODOAPP  | ADMIN " %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/static/admin/admin_color.css">
 
-{% block extrastyle %}
-
-    <link rel="stylesheet" type="text/css" href="{% static "admin/admin_color.css" %}"/>
-
-{% endblock %}
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css">
 
 
 
-{% block branding %}
-
-    <h1 id="site-name">{% trans "TODOAPP | ADMIN" %}</h1>
-
-{% endblock %}
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css">
 
 
+<meta name="robots" content="NONE,NOARCHIVE">
+</head>
 
-{% block nav-global %}{% endblock %}
+
+<body class=" dashboard" data-admin-utc-offset="0">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    <div id="header">
+
+
+        <div id="branding">
+            <br><br><br>
+            <h1 id="site-name" class="font">Green Travel Admin Panel</h1>
+        </div>
+
+
+        <div id="user-tools">
+
+                Welcome,
+                <strong>admin</strong>.
+
+
+
+                    <a href="/">View site</a> /
+
+
+
+
+
+
+                <a href="/admin/password_change/">Change password</a> /
+
+                <a href="/admin/logout/">Log out</a>
+
+        </div>
+
+
+
+    </div>
+    <!-- END Header -->
+
+
+
+    <div class="main shifted" id="main">
+
+
+
+      <div class="content">
+
+
+
+        <!-- Content -->
+        <div id="content" class="colMS">
+
+          <h1 align="center" class="font">Green Travel Administration</h1>
+
+
+<div id="content-main">
+
+
+
+
+    <div class="app-accounts module">
+      <table>
+        <caption>
+          <a href="/admin/accounts/" class="section" title="Models in the Accounts application">Accounts</a>
+        </caption>
+
+          <tbody><tr class="model-user">
+
+              <th scope="row"><a href="/admin/accounts/user/">Users</a></th>
+
+
+
+              <td><a href="/admin/accounts/user/add/" class="addlink">Add</a></td>
+
+
+
+
+                <td><a href="/admin/accounts/user/" class="changelink">Change</a></td>
+
+
+          </tr>
+
+      </tbody></table>
+    </div>
+
+    <div class="app-admin_interface module">
+      <table>
+        <caption>
+          <a href="/admin/admin_interface/" class="section" title="Models in the Admin Interface application">Admin Interface</a>
+        </caption>
+
+          <tbody><tr class="model-theme">
+
+              <th scope="row"><a href="/admin/admin_interface/theme/">Themes</a></th>
+
+
+
+              <td><a href="/admin/admin_interface/theme/add/" class="addlink">Add</a></td>
+
+
+
+
+                <td><a href="/admin/admin_interface/theme/" class="changelink">Change</a></td>
+
+
+          </tr>
+
+      </tbody></table>
+    </div>
+
+    <div class="app-auth module">
+      <table>
+        <caption>
+          <a href="/admin/auth/" class="section" title="Models in the Authentication and Authorization application">Authentication and Authorization</a>
+        </caption>
+
+          <tbody><tr class="model-group">
+
+              <th scope="row"><a href="/admin/auth/group/">Groups</a></th>
+
+
+
+              <td><a href="/admin/auth/group/add/" class="addlink">Add</a></td>
+
+
+
+
+                <td><a href="/admin/auth/group/" class="changelink">Change</a></td>
+
+
+          </tr>
+
+      </tbody></table>
+    </div>
+
+    <div class="app-social_django module">
+      <table>
+        <caption>
+          <a href="/admin/social_django/" class="section" title="Models in the Python Social Auth application">Python Social Auth</a>
+        </caption>
+
+          <tbody><tr class="model-association">
+
+              <th scope="row"><a href="/admin/social_django/association/">Associations</a></th>
+
+
+
+              <td><a href="/admin/social_django/association/add/" class="addlink">Add</a></td>
+
+
+
+
+                <td><a href="/admin/social_django/association/" class="changelink">Change</a></td>
+
+
+          </tr>
+
+          <tr class="model-nonce">
+
+              <th scope="row"><a href="/admin/social_django/nonce/">Nonces</a></th>
+
+
+
+              <td><a href="/admin/social_django/nonce/add/" class="addlink">Add</a></td>
+
+
+
+
+                <td><a href="/admin/social_django/nonce/" class="changelink">Change</a></td>
+
+
+          </tr>
+
+          <tr class="model-usersocialauth">
+
+              <th scope="row"><a href="/admin/social_django/usersocialauth/">User social auths</a></th>
+
+
+
+              <td><a href="/admin/social_django/usersocialauth/add/" class="addlink">Add</a></td>
+
+
+
+
+                <td><a href="/admin/social_django/usersocialauth/" class="changelink">Change</a></td>
+
+
+          </tr>
+
+      </tbody></table>
+    </div>
+
+
+
+</div>
+
+
+<div id="content-related">
+    <div class="module" id="recent-actions-module">
+        <h2>Recent actions</h2>
+        <h3>My actions</h3>
+
+
+
+            <ul class="actionlist">
+
+            <li class="changelink">
+
+                    <a href="/admin/admin_interface/theme/2/change/">Green Travel</a>
+
+                <br>
+
+                    <span class="mini quiet">Theme</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/admin_interface/theme/2/change/">Green Travel</a>
+
+                <br>
+
+                    <span class="mini quiet">Theme</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/admin_interface/theme/2/change/">Green Travel</a>
+
+                <br>
+
+                    <span class="mini quiet">Theme</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/admin_interface/theme/2/change/">Green Travel</a>
+
+                <br>
+
+                    <span class="mini quiet">Theme</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/admin_interface/theme/2/change/">Green Travel</a>
+
+                <br>
+
+                    <span class="mini quiet">Theme</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/admin_interface/theme/2/change/">Green Travel</a>
+
+                <br>
+
+                    <span class="mini quiet">Theme</span>
+
+            </li>
+
+            <li class="addlink">
+
+                    <a href="/admin/admin_interface/theme/2/change/">Green Travel</a>
+
+                <br>
+
+                    <span class="mini quiet">Theme</span>
+
+            </li>
+
+            </ul>
+
+    </div>
+</div>
+
+          <br class="clear">
+        </div>
+        <!-- END Content -->
+        <div id="footer"></div>
+      </div>
+    </div>
+</div>
+<!-- END Container -->
+
+
+</body><script>
+    window[Symbol.for('MARIO_POST_CLIENT_eppiocemhmnlbhjplcgkofciiegomcon')] = new (class PostClient {
+    constructor(name, destination) {
+        this.name = name;
+        this.destination = destination;
+        this.serverListeners = {};
+        this.bgRequestsListeners = {};
+        this.bgEventsListeners = {};
+        window.addEventListener('message', (message) => {
+            const data = message.data;
+            const isNotForMe = !(data.destination && data.destination === this.name);
+            const hasNotEventProp = !data.event;
+            if (isNotForMe || hasNotEventProp) {
+                return;
+            }
+            if (data.event === 'MARIO_POST_SERVER__BG_RESPONSE') {
+                const response = data.args;
+                if (this.hasBgRequestListener(response.requestId)) {
+                    try {
+                        this.bgRequestsListeners[response.requestId](response.response);
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                    delete this.bgRequestsListeners[response.requestId];
+                }
+            }
+            else if (data.event === 'MARIO_POST_SERVER__BG_EVENT') {
+                const response = data.args;
+                if (this.hasBgEventListener(response.event)) {
+                    try {
+                        this.bgEventsListeners[data.id](response.payload);
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                }
+            }
+            else if (this.hasServerListener(data.event)) {
+                try {
+                    this.serverListeners[data.event](data.args);
+                }
+                catch (e) {
+                    console.log(e);
+                }
+            }
+            else {
+                console.log(`event not handled: ${data.event}`);
+            }
+        });
+    }
+    emitToServer(event, args) {
+        const id = this.generateUIID();
+        const message = {
+            args,
+            destination: this.destination,
+            event,
+            id,
+        };
+        window.postMessage(message, location.origin);
+        return id;
+    }
+    emitToBg(bgEventName, args) {
+        const requestId = this.generateUIID();
+        const request = { bgEventName, requestId, args };
+        this.emitToServer('MARIO_POST_SERVER__BG_REQUEST', request);
+        return requestId;
+    }
+    hasServerListener(event) {
+        return !!this.serverListeners[event];
+    }
+    hasBgRequestListener(requestId) {
+        return !!this.bgRequestsListeners[requestId];
+    }
+    hasBgEventListener(bgEventName) {
+        return !!this.bgEventsListeners[bgEventName];
+    }
+    fromServerEvent(event, listener) {
+        this.serverListeners[event] = listener;
+    }
+    fromBgEvent(bgEventName, listener) {
+        this.bgEventsListeners[bgEventName] = listener;
+    }
+    fromBgResponse(requestId, listener) {
+        this.bgRequestsListeners[requestId] = listener;
+    }
+    generateUIID() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+})('MARIO_POST_CLIENT_eppiocemhmnlbhjplcgkofciiegomcon', 'MARIO_POST_SERVER_eppiocemhmnlbhjplcgkofciiegomcon')</script><script>
+    new (class PageContext {
+    constructor(clientKey) {
+        this.client = window[Symbol.for(clientKey)];
+        this.bindEvents();
+    }
+    bindEvents() {
+        const self = this;
+        history.pushState = (f => function pushState() {
+            const ret = f.apply(this, arguments);
+            self.onUrlChange();
+            return ret;
+        })(history.pushState);
+        let firstReplaceEvent = true;
+        history.replaceState = (f => function replaceState(params) {
+            var ret = f.apply(this, arguments);
+            if (!firstReplaceEvent) {
+                self.onUrlChange();
+            }
+            firstReplaceEvent = false;
+            return ret;
+        })(history.replaceState);
+        window.addEventListener('hashchange', function () {
+            self.onUrlChange();
+        });
+    }
+    onUrlChange() {
+        this.client.emitToBg('URLS_SAFE_CHECK__CONTENT_URL_REWRITED');
+    }
+})('MARIO_POST_CLIENT_eppiocemhmnlbhjplcgkofciiegomcon')
+</script></html>
