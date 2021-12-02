@@ -45,13 +45,13 @@ nav{
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: rgb(8, 88, 32);
   color: black;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #082e19;
   color: white;
 }
 button{
@@ -72,13 +72,14 @@ color: white;
   color: #00ccfc;
 }
 .dropdown{
-background-color: #B2BEB5;
+background-color: #353333;
 color: black;
 
 }
 .dropdowndiv{
  line-height: 200%;
 }
+
 
 /*homepage extra*/
 .accordion {
