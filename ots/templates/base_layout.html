@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
     <meta charset="UTF-8">
-    <title>Home</title>
     <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="/static/ticket.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -133,9 +133,70 @@ padding-right: 50px;
 border-radius: 50%;
 }
 </style>
+<title>Green Travel</title>         
+        <link href="/static/home/css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" href="/static/home/img/favicon.ico">
+         
+        
+        <!------------Responsive css file------------->         
+        <link href="/static/home/css/responsive.css" rel="stylesheet" type="text/css">  
+                 
+        <!-------------Magnific popup css file------------->
+        <link href="/static/home/css/magnific-popup.css" rel="stylesheet" type="text/css"> 
+        
+        <!-------------Magnific popup css file------------->        
+         <link href="/static/home/css/owl.carousel.min.css" rel="stylesheet" type="text/css"> 
+         <link href="/static/home/css/owl.theme.default.min.css" rel="stylesheet" type="text/css">              
+                                                   
+        <!-------------Font Awesome cdn files------------->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+               
+        <!-------------Font Awesome cdn ends------------->
+         
+        <!-- Latest compiled and minified CSS -->
+       <link rel="stylesheet" href="/static/home/css/bootstrap.min.css" type="text/css"> 
+                  
+        <!-------------Animate css file------------->
+        <link href="/static/home/css/animate.css" type="text/css" rel="stylesheet">
+        
+       <!-- jQuery library -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                        
+        <!-------------Owl Carousel Js file------------->
+        <script src="/static/home/js/owl.carousel.min.js" type="text/javascript"></script>  
+                      
+        <!-------------Magnific popup Js file------------->
+       <script src="/static/home/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+        
+       <!-- Latest compiled JavaScript -->
+       <script src="/static/home/js/bootstrap.min.js" type="text/javascript"></script>
+       <!-- Start of Async Drift Code -->
+       <script>
+       !function() {
+         var t;
+         if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0, 
+         t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+         t.factory = function(e) {
+           return function() {
+             var n;
+             return n = Array.prototype.slice.call(arguments), n.unshift(e), t.push(n), t;
+           };
+         }, t.methods.forEach(function(e) {
+           t[e] = t.factory(e);
+         }), t.load = function(t) {
+           var e, n, o, i;
+           e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"), 
+           o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "/static/home/https://js.driftt.com/include/" + i + "/" + t + ".js", 
+           n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
+         });
+       }();
+       drift.SNIPPET_VERSION = '0.3.1';
+       drift.load('u4k3vh36tbfn');
+       </script>
+       <!-- End of Async Drift Code -->
 </head>
 <body>
-<div class="topnav">
+<!-- <div class="topnav">
         <a class="active" href="/main">Home</a>
 
         <a href="{% url 'articles:about' %}">About</a>
@@ -143,16 +204,16 @@ border-radius: 50%;
         <a href="{% url 'articles:ticket_page' %}">Ticket Page</a>
 
 
-    </div>
-<div class="dropdown-- " >
-  <button class="dropbtn roundbutton1" >{{ user.username }}</button>
-  <div class="dropdown-content">
-  <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                {% csrf_token %}
-      <button type="submit" class="dropbtn ">Logout</button>
-  </form></a>
-  </div>
-</div>
+    </div> -->
+    <!-- <div class="dropdown-- " >
+      <button class="dropbtn roundbutton1" >{{ user.username }}</button>
+      <div class="dropdown-content">
+      <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+          <button type="submit" class="dropbtn ">Logout</button>
+      </form></a>
+      </div>
+    </div> -->
 
     <div class="Wrapper">
 
