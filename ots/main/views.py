@@ -147,5 +147,9 @@ def bolakareview(request):
     return render(request, 'main/balakareview.html', {'form': form})
 
 
+@login_required(login_url="/account/login/")
+def hotel_booking(request):
+    return render(request, 'main/HotelBooking.html')
+
 
 

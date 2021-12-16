@@ -14,6 +14,8 @@ from .utils import generate_token
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
+
+
 # Create your views here.
 
 
@@ -28,8 +30,8 @@ def send_activation_email(user, request):
     })
 
     email = EmailMessage(subject=email_subject, body=email_body, from_email=settings.EMAIL_FROM_USER,
-                 to=[user.email]
-                 )
+                         to=[user.email]
+                         )
     email.send()
 
 
@@ -43,7 +45,7 @@ def signup_view(request):
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
 
-        if len(password)<6:
+        if len(password) < 6:
             messages.add_message(request, messages.ERROR, 'Password should be at least 6 character')
             context['has_error'] = True
 
@@ -70,10 +72,9 @@ def signup_view(request):
         if context['has_error']:
             return render(request, 'accounts/signup.html', context)
 
-        user = User.objects.create_user(username=username, email=email,first_name=first_name, last_name=last_name)
+        user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name)
         user.set_password(password)
         user.save()
-
 
         send_activation_email(user, request)
         messages.add_message(request, messages.ERROR, 'Account Created')
@@ -118,7 +119,6 @@ def logout_view(request):
 
 
 def activate_user(request, uidb64, token):
-
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
 
