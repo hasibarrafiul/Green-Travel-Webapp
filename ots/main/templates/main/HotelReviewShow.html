@@ -1,0 +1,31 @@
+<html>
+<body>
+
+ <h1>Reviews: </h1>
+  </div>
+                        {% for hotelReview in hotelReview %}
+                        {% ifequal hotelReview.hotelName 'Radisson Blu' %}
+                                <h3>{{ hotelReview.name }}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {% ifequal user hotelReview.user %}
+                                  </div>
+                             <a href="{% url 'articles:deleteHotelReview' hotelReview.id %}">
+                                  delete
+                                </a>
+                                {% endifequal %}</h3>
+                                <h4>{{ hotelReview.review }}</h4>
+                                <h4>Rating: {{hotelReview.rating }}</h4>
+                                <h4>{{ hotelReview.date }}</h4>
+
+
+                                <br>
+                            </div>
+                        {% endifequal %}
+                        {% endfor %}
+
+
+                    </div>
+
+
+</body>
+</html>

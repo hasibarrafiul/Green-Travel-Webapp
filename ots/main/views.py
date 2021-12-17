@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
+from .models import HotelReview
+
 
 from django.contrib.auth.decorators import login_required
 
@@ -152,4 +154,32 @@ def hotel_booking(request):
     return render(request, 'main/HotelBooking.html')
 
 
+@login_required(login_url="/account/login/")
+def hotelReview(request):
+    form = forms.HotelReview()
+    if request.method == 'POST':
+        form = forms.HotelReview(request.POST)
+        if form.is_valid():
+            # save to db
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            # instance = balaka.objects.get(id=id)
+            # instance.delete()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.HotelReview()
+    return render(request, 'main/HotelReview.html', {'form': form})
 
+
+@login_required(login_url="/account/login/")
+def hotelReviewShow(request):
+    hotelReview = HotelReview.objects.all().order_by('date')
+    return render(request, 'main/HotelReviewShow.html', {'hotelReview': hotelReview})
+
+
+def deleteHotelReview(request, pk):
+    instance = HotelReview.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:hotelReviewShow')
