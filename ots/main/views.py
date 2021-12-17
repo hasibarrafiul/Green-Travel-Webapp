@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 
 from .models import HotelReview
+from .models import ResturantReview
 
 
 from django.contrib.auth.decorators import login_required
@@ -152,3 +153,31 @@ def deleteHotelReview(request, pk):
     instance = HotelReview.objects.get(id=pk)
     instance.delete()
     return redirect('articles:hotelReviewShow')
+
+
+@login_required(login_url="/account/login/")
+def resturantReview(request):
+    form = forms.ResturantReview()
+    if request.method == 'POST':
+        form = forms.ResturantReview(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.ResturantReview()
+    return render(request, 'main/ResturantReview.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def resturantReviewShow(request):
+    resturantReview = ResturantReview.objects.all().order_by('date')
+    return render(request, 'main/ResturantReviewShow.html', {'resturantReview': resturantReview})
+
+
+def deleteresturantReview(request, pk):
+    instance = ResturantReview.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:resturantReviewShow')
