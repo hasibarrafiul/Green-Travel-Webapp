@@ -3,9 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview
+from .models import HotelReview, RoomModel
 from .models import ResturantReview
-
 
 from django.contrib.auth.decorators import login_required
 
@@ -38,12 +37,13 @@ def contact(request):
         message_phone = request.POST['message-phone']
         message = request.POST['message-message']
 
-        #send email
+        # send email
         send_mail(
-            'Mail Sent By '+message_name , # subject
-            '\n'+'Senders Phone: '+message_phone + '\nSenders Email: '+message_email+ ' \nMessage: ' + message, #message
-            message_email, #from mail
-            ['rashikbuksh71@gmail.com'], #tomail
+            'Mail Sent By ' + message_name,  # subject
+            '\n' + 'Senders Phone: ' + message_phone + '\nSenders Email: ' + message_email + ' \nMessage: ' + message,
+            # message
+            message_email,  # from mail
+            ['rashikbuksh71@gmail.com'],  # tomail
         )
         return render(request, 'main/contact.html', {'message_name': message_name})
     else:
@@ -95,17 +95,17 @@ def ticket(request):
         " ",
         "Email: " + mail,
         " ",
-        "Phone: "+phone,
+        "Phone: " + phone,
         " ",
-        "Pickup place: "+start,
+        "Pickup place: " + start,
         " ",
-        "Destination: "+end,
+        "Destination: " + end,
         " ",
-        "Journey Date: "+date,
+        "Journey Date: " + date,
         " ",
-        "Bus: "+bus,
+        "Bus: " + bus,
         " ",
-        ""+text,
+        "" + text,
         "",
         "All right reserved by optimal transportation system",
 
@@ -181,3 +181,9 @@ def deleteresturantReview(request, pk):
     instance = ResturantReview.objects.get(id=pk)
     instance.delete()
     return redirect('articles:resturantReviewShow')
+
+
+@login_required(login_url="/account/login/")
+def RoomShow(request):
+    roomModel = RoomModel.objects.all().order_by('slug')
+    return render(request, 'main/HotelRoom.html', {'roomModel': roomModel})

@@ -1,0 +1,30 @@
+<html>
+<body>
+<h3>Room</h3>
+  </div>
+                        {% for roomModel in roomModel %}
+                        {% ifequal roomModel.slug 'Pan_Pacific_Sonargoan' %}
+                                <h3>{{ roomModel.slug }}</h3>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <h4>{{ roomModel.roomtype }}</h4>
+                                <h4>{{ roomModel.beds }}</h4>
+                                <h4>{{ roomModel.baths }}</h4>
+                                <h4>{{ roomModel.guest }}</h4>
+                                <h4>{{ roomModel.amenities }}</h4>
+                                <h4>{{ roomModel.facilities }}</h4>
+                                <img src="{{ roomModel.room_Img1.url }} " alt="Not found"/>
+                                <img src="{{ roomModel.room_Img2.url }}"/>
+                                <img src="{{ roomModel.room_Img3.url }}"/>
+
+
+
+                                <br>
+                            </div>
+                        {% endifequal %}
+                        {% endfor %}
+
+
+                    </div>
+</body>
+</html>

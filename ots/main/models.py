@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-RATE_CHOICES=[
+RATE_CHOICES = [
     (1, '1 - Trash'),
     (2, '2- Horrible'),
     (3, '3- Terrible'),
@@ -15,7 +15,7 @@ RATE_CHOICES=[
 
 ]
 
-HotelChoices=[
+HotelChoices = [
     ('Pan Pacific Sonargoan', 'Pan Pacific Sonargoan'),
     ('Radisson Blu', 'Radisson Blu'),
     ('Hotel De Meridian', 'Hotel De Meridian'),
@@ -24,7 +24,7 @@ HotelChoices=[
     ('The Raintree Dhaka', 'The Raintree Dhaka')
 ]
 
-ResturantChoices=[
+ResturantChoices = [
     ('Sultans Dine', 'Sultans Dine'),
     ('Pizza Hut', 'Pizza Hut'),
     ('Chillox', 'Chillox'),
@@ -56,3 +56,16 @@ class ResturantReview(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class RoomModel(models.Model):
+    roomtype = models.CharField(max_length=20)
+    beds = models.CharField(max_length=20)
+    baths = models.CharField(max_length=20)
+    slug = models.SlugField()
+    guests = models.IntegerField()
+    amenities = models.TextField(max_length=3000, blank=True)
+    facilities = models.TextField(max_length=3000, blank=True)
+    room_Img1 = models.ImageField(blank=True, null=True)
+    room_Img2 = models.ImageField(blank=True, null=True)
+    room_Img3 = models.ImageField(blank=True, null=True)
