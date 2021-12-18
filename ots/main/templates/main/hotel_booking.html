@@ -1,0 +1,88 @@
+
+{% extends 'base_layout.html' %}
+
+
+{% block content %}
+<br>
+<div class="middle--">
+    <form action="" method="POST" class="contact100-form validate-form">
+				{% csrf_token %}
+
+		<h1> Enter your information:  </h1> <br>
+					<input class="input100" type="text" name="user-name" placeholder="Full Name"> <br> <br>
+
+					<input class="input100" type="text" name="user-email" placeholder="E-mail"> <br> <br>
+
+					<input class="input100" type="text" name="user-phone" placeholder="Phone"> <br> <br>
+
+
+					<br> <br>
+				<h4> Check-in Date: </h4>
+			<input type="date" name="checkin-date"> <br> <br>
+
+		<h4> Check-out Date: </h4>
+			<input type="date" name="checkout-date"> <br> <br>
+
+
+				<h4> Hotel Name: </h4>
+		<div class="custom-select">
+			<select class="dropdown" name="hotel-name" id="hotel">
+  						<option value="Pan Pacific Sonargoan">Pan Pacific Sonargoan</option>
+ 						 <option value="Radisson Blu">Radisson Blu</option>
+ 						 <option value="Hotel De Meridian">Hotel De Meridian</option>
+						 <option value="Empyrean Hotel">Empyrean Hotel</option>
+  						<option value="The Raintree Dhaka">The Raintree Dhaka</option>
+    				</select>
+			</div>
+		<br>
+		<br>
+
+
+		<h4> How many room do you want: </h4>
+		<div class="custom-select">
+			<select class="dropdown" name="room-numbers" id="room-numbers">
+  						<option value="1">1</option>
+ 						 <option value="2">2</option>
+ 						 <option value="3">3</option>
+						 <option value="4">4</option>
+  						<option value="5">5</option>
+    				</select>
+			</div>
+
+		<br><br>
+
+		<h4> Enter room type: </h4>
+		<div class="custom-select">
+			<select class="dropdown" name="room-type" id="room-type">
+  						<option value="Single Bed">Single Bed</option>
+ 						 <option value="Double Bed">Double Bed</option>
+ 						 <option value="King Size">King Size</option>
+						 <option value="Family Size">Family Size</option>
+    				</select>
+			</div>
+
+		<br><br>
+
+				<button class="contact100-form-btn button-ticket button2-ticket">
+						<span>
+							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
+							<a>Submit</a>
+							<br>
+
+						</span>
+					</button>
+					<h3>Once information is submitted, you can book the hotel.</h3>
+					{% if user_name %}
+
+					<button><a href="{% url 'articles:hotel_bookingPdf' %}">Book the hotel</a></button>
+					{% endif %}
+				<div class="container-contact100-form-btn">
+
+					<br> <br>
+				</div>
+			</form>
+		<br>
+
+</div>
+
+{% endblock %}
