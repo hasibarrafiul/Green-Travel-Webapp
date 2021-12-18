@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 
 from .models import HotelReview
-from .models import ResturantReview
+from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
 
@@ -136,6 +136,9 @@ def hotel_bookingPdf(request):
     hotel_name = hotel_booking.hotel_name
     room_number = hotel_booking.room_numbers
     room_type = hotel_booking.room_type
+
+    hotel_reservation_instance = HotelReservation.objects.create(user_name=name, user_email=mail, user_phone=phone, checkin_date=checkin, checkout_date=checkout, hotel_name=hotel_name, room_number=room_number, room_type=room_type, user=request.user)
+    hotel_reservation_instance.save()
 
     lines = [
         "Welcome to Green Travel",
