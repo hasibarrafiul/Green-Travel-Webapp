@@ -56,3 +56,15 @@ class ResturantReview(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class HotelReservation(models.Model):
+    user_name = models.CharField(max_length=20)
+    user_email = models.CharField(max_length=30)
+    user_phone = models.CharField(max_length=20)
+    checkin_date = models.CharField(max_length=20)
+    checkout_date = models.CharField(max_length=20)
+    hotel_name = models.CharField(max_length=20)
+    room_number = models.CharField(max_length=20)
+    room_type = models.CharField(max_length=20)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING)
