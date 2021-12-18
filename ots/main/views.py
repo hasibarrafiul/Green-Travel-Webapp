@@ -3,6 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
+from .models import HotelReview
+from .models import ResturantReview
+
 
 from django.contrib.auth.decorators import login_required
 
@@ -12,9 +15,6 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from django.core.mail import send_mail
-
-
-
 from . import forms
 
 
@@ -22,12 +22,6 @@ from . import forms
 @login_required(login_url="/accounts/login/")
 def homepage(request):
     return render(request, 'main/homepage.html')
-
-
-@login_required(login_url="/accounts/login/")
-def bus_details(request, slug):
-    # return HttpResponse(slug)
-    return render(request, 'main/bus_details.html')
 
 
 @login_required(login_url="/accounts/login/")
@@ -129,27 +123,61 @@ def ticket(request):
 
 
 @login_required(login_url="/account/login/")
-def bolakareview(request):
-    form = forms.balakareview()
-    if request.method == 'POST':
-        form = forms.balakareview(request.POST)
-        if form.is_valid():
-            # save to db
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            # instance = balaka.objects.get(id=id)
-            # instance.delete()
-            next = request.POST.get('next', '/')
-            return HttpResponseRedirect(next)
-    else:
-        form = forms.balakareview()
-    return render(request, 'main/balakareview.html', {'form': form})
-
-
-@login_required(login_url="/account/login/")
 def hotel_booking(request):
     return render(request, 'main/HotelBooking.html')
 
 
+@login_required(login_url="/account/login/")
+def hotelReview(request):
+    form = forms.HotelReview()
+    if request.method == 'POST':
+        form = forms.HotelReview(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.HotelReview()
+    return render(request, 'main/HotelReview.html', {'form': form})
 
+
+@login_required(login_url="/account/login/")
+def hotelReviewShow(request):
+    hotelReview = HotelReview.objects.all().order_by('date')
+    return render(request, 'main/HotelReviewShow.html', {'hotelReview': hotelReview})
+
+
+def deleteHotelReview(request, pk):
+    instance = HotelReview.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:hotelReviewShow')
+
+
+@login_required(login_url="/account/login/")
+def resturantReview(request):
+    form = forms.ResturantReview()
+    if request.method == 'POST':
+        form = forms.ResturantReview(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.ResturantReview()
+    return render(request, 'main/ResturantReview.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def resturantReviewShow(request):
+    resturantReview = ResturantReview.objects.all().order_by('date')
+    return render(request, 'main/ResturantReviewShow.html', {'resturantReview': resturantReview})
+
+
+def deleteresturantReview(request, pk):
+    instance = ResturantReview.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:resturantReviewShow')
