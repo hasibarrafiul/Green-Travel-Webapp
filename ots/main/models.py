@@ -33,6 +33,15 @@ ResturantChoices=[
     ('Kacchi Vai', 'Kacchi Vai')
 ]
 
+PlaceChoices=[
+    ('Dhaka', 'Dhaka'),
+    ('Cox-Bazar', 'Cox-Bazar'),
+    ('Sylhet', 'Sylhet'),
+    ('Cumilla', 'Cumilla'),
+    ('Gazipur', 'Gazipur'),
+    ('Rajshahi', 'Rajshahi')
+]
+
 
 class HotelReview(models.Model):
     name = models.CharField(max_length=20)
@@ -50,6 +59,18 @@ class ResturantReview(models.Model):
     name = models.CharField(max_length=20)
     date = models.DateTimeField(auto_now_add=True)
     resturantName = models.CharField(choices=ResturantChoices, max_length=100, default=None, null=True)
+    review = models.TextField(max_length=3000, blank=True)
+    rating = models.PositiveSmallIntegerField(choices=RATE_CHOICES, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return self.name
+
+
+class PlaceReview(models.Model):
+    name = models.CharField(max_length=20)
+    date = models.DateTimeField(auto_now_add=True)
+    placeName = models.CharField(choices=PlaceChoices, max_length=100, default=None, null=True)
     review = models.TextField(max_length=3000, blank=True)
     rating = models.PositiveSmallIntegerField(choices=RATE_CHOICES, null=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING)
