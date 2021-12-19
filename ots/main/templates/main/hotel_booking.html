@@ -1,88 +1,163 @@
+<!DOCTYPE HTML>
+<html class="supernova"><head>
+<link rel="shortcut icon" href="https://cdn.jotfor.ms/assets/img/favicons/favicon-2021.svg">
 
-{% extends 'base_layout.html' %}
+<title>Hotel Reservation Form</title>
+
+<link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251"/>
+
+    <style>
+body {
+  background-image: url('/static/home/img/11.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+
+</head>
+<body style="background-image: url('/static/home/img/11.jpg')">
+
+<form class="jotform-form" method="post" name="form_213521348385456" id="213521348385456" accept-charset="utf-8" autocomplete="on">
+	{% csrf_token %}
+  <input type="hidden" name="formID" value="213521348385456" />
+  <input type="hidden" id="JWTContainer" value="" />
+  <input type="hidden" id="cardinalOrderNumber" value="" />
+  <div role="main" class="form-all">
+    <ul class="form-section page-section">
+      <li id="cid_3" class="form-input-wide" data-type="control_head">
+        <div class="form-header-group  header-large">
+          <div class="header-text httal htvam">
+
+            <h1 id="header_3" class="form-header" data-component="header">
+                <a href="../"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
+              Hotel Reservation Form
+            </h1>
+            <div id="subHeader_3" class="form-subHeader">
+              Please complete the form below.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_text" id="id_4">
+        <div id="cid_4" class="form-input-wide" data-layout="full">
+          <div id="text_4" class="form-html" data-component="text">
+            Your registration will be verified prior to your arrival.
 
 
-{% block content %}
-<br>
-<div class="middle--">
-    <form action="" method="POST" class="contact100-form validate-form">
-				{% csrf_token %}
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_fullname" id="id_5">
+        <label class="form-label form-label-top form-label-auto" id="label_5" > Full Name </label>
+        <div id="cid_5" class="form-input-wide" data-layout="full">
+          <div data-wrapper-react="true">
+            <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+             <input class="form-textbox" type="text" name="user-name">
 
-		<h1> Enter your information:  </h1> <br>
-					<input class="input100" type="text" name="user-name" placeholder="Full Name"> <br> <br>
+            </span>
 
-					<input class="input100" type="text" name="user-email" placeholder="E-mail"> <br> <br>
+          </div>
+        </div>
+      </li>
+      <li class="form-line form-line-column form-col-1" data-type="control_phone" id="id_7">
+        <label class="form-label form-label-top form-label-auto" id="label_7" > Email </label>
+        <div id="cid_7" class="form-input-wide" data-layout="half">
+          <span class="form-sub-label-container" style="vertical-align:top">
+            <input class="form-textbox validate[Email]" type="text" name="user-email" placeholder="example@gmail.com">
 
-					<input class="input100" type="text" name="user-phone" placeholder="Phone"> <br> <br>
+          </span>
+        </div>
+      </li>
+      <li class="form-line form-line-column form-col-2" data-type="control_email" id="id_8">
+        <label class="form-label form-label-top form-label-auto" id="label_8" > Phone Number </label>
+        <div id="cid_8" class="form-input-wide" data-layout="half">
+          <span class="form-sub-label-container" style="vertical-align:top">
+            <input class="mask-phone-number form-textbox validate[Fill Mask]" type="text" name="user-phone" placeholder="+88XXXXXXXXXXX">
 
+          </span>
+        </div>
+      </li>
+      <li class="form-line allowTime" data-type="control_datetime" id="id_10">
+        <label class="form-label form-label-top" id="label_10" > Arrival - Date </label>
+		<input type="date" name="checkin-date">
 
-					<br> <br>
-				<h4> Check-in Date: </h4>
-			<input type="date" name="checkin-date"> <br> <br>
-
-		<h4> Check-out Date: </h4>
-			<input type="date" name="checkout-date"> <br> <br>
-
-
-				<h4> Hotel Name: </h4>
-		<div class="custom-select">
-			<select class="dropdown" name="hotel-name" id="hotel">
+      </li>
+      <li class="form-line allowTime" data-type="control_datetime" id="id_11">
+        <label class="form-label form-label-top" id="label_11" > Departure - Date </label>
+		<input type="date" name="checkout-date">
+      </li>
+      <li class="form-line form-line-column form-col-1" data-type="control_number" id="id_22">
+        <label class="form-label form-label-top" id="label_22" > Hotel Name </label>
+        <div id="cid_22" class="form-input-wide" data-layout="half">
+          <select class="time-dropdown form-dropdown" name="hotel-name" id="hotel">
   						<option value="Pan Pacific Sonargoan">Pan Pacific Sonargoan</option>
  						 <option value="Radisson Blu">Radisson Blu</option>
  						 <option value="Hotel De Meridian">Hotel De Meridian</option>
 						 <option value="Empyrean Hotel">Empyrean Hotel</option>
   						<option value="The Raintree Dhaka">The Raintree Dhaka</option>
     				</select>
-			</div>
-		<br>
-		<br>
-
-
-		<h4> How many room do you want: </h4>
-		<div class="custom-select">
-			<select class="dropdown" name="room-numbers" id="room-numbers">
+        </div>
+      </li>
+      <li class="form-line form-line-column form-col-2" data-type="control_number" >
+        <label class="form-label form-label-top" > Room Numbers </label>
+        <div  class="form-input-wide" data-layout="half">
+           <select class="time-dropdown form-dropdown" name="room-numbers" id="room-numbers">
   						<option value="1">1</option>
  						 <option value="2">2</option>
  						 <option value="3">3</option>
 						 <option value="4">4</option>
   						<option value="5">5</option>
     				</select>
-			</div>
+        </div>
+      </li>
 
-		<br><br>
-
-		<h4> Enter room type: </h4>
-		<div class="custom-select">
-			<select class="dropdown" name="room-type" id="room-type">
+	  <li class="form-line form-line-column form-col-2" data-type="control_number" id="id_23">
+        <label class="form-label form-label-top" id="label_23" > Room Type </label>
+        <div id="cid_23" class="form-input-wide" data-layout="half">
+           <select class="time-dropdown form-dropdown" name="room-type" id="room-type">
   						<option value="Single Bed">Single Bed</option>
  						 <option value="Double Bed">Double Bed</option>
  						 <option value="King Size">King Size</option>
 						 <option value="Family Size">Family Size</option>
     				</select>
-			</div>
+        </div>
+      </li>
 
-		<br><br>
 
-				<button class="contact100-form-btn button-ticket button2-ticket">
-						<span>
-							<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
-							<a>Submit</a>
-							<br>
+      <li class="form-line">
+        <div id="cid_2" class="form-input-wide">
+          <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
+            <button type="submit" class="form-submit-button submit-button jf-form-buttons">
+              Submit
+            </button>
+			  <br>
+			<h3>Once information is submitted, you can book the hotel.</h3>
 
-						</span>
-					</button>
-					<h3>Once information is submitted, you can book the hotel.</h3>
-					{% if user_name %}
+			  {% if user_name and user_email and user_phone and checkin_date and hotel_name and room_numbers and room_type %}
+            <button  type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField">
+              <a href="{% url 'articles:hotel_bookingPdf' %}" style="color: White">Book the hotel</a>
+            </button>
+			{% endif %}
 
-					<button><a href="{% url 'articles:hotel_bookingPdf' %}">Book the hotel</a></button>
-					{% endif %}
-				<div class="container-contact100-form-btn">
+          </div>
+        </div>
+      </li>
 
-					<br> <br>
-				</div>
-			</form>
-		<br>
 
-</div>
 
-{% endblock %}
+
+
+
+      <li style="clear:both">
+      </li>
+      <li style="display:none">
+        Should be Empty:
+        <input type="text" name="website" value="" />
+      </li>
+    </ul>
+  </div>
+
+</form></body>
+</html>
+

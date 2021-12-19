@@ -13,6 +13,7 @@ import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+from reportlab.lib.utils import ImageReader
 
 from django.core.mail import send_mail
 from . import forms
@@ -118,7 +119,7 @@ def hotel_booking(request):
     hotel_booking.room_numbers = request.POST.get('room-numbers')
     hotel_booking.room_type = request.POST.get('room-type')
 
-    return render(request, 'main/hotel_booking.html', {'user_name': hotel_booking.user_name})
+    return render(request, 'main/hotel_booking.html', {'user_name': hotel_booking.user_name, 'user_email': hotel_booking.user_email, 'user_phone': hotel_booking.user_phone, 'checkin_date': hotel_booking.checkin_date,'checkout_date': hotel_booking.checkout_date, 'hotel_name': hotel_booking.hotel_name, 'room_numbers': hotel_booking.room_numbers, 'room_type':  hotel_booking.room_type})
 
 
 def hotel_bookingPdf(request):
@@ -127,6 +128,7 @@ def hotel_bookingPdf(request):
     textob = c.beginText()
     textob.setTextOrigin(inch, inch)
     textob.setFont("Helvetica", 14)
+    logo = ImageReader('https://i.ibb.co/MPcBtHf/logo1.jpg')
 
     name = hotel_booking.user_name
     mail = hotel_booking.user_email
@@ -141,34 +143,47 @@ def hotel_bookingPdf(request):
     hotel_reservation_instance.save()
 
     lines = [
-        "Welcome to Green Travel",
         " ",
-        "Your Reservation confirmation is below",
         " ",
-        "Full name: " + name,
         " ",
-        "Email: " + mail,
         " ",
-        "Phone: " + phone,
         " ",
-        "Check-in date: " + checkin,
         " ",
-        "Check-out date: " + checkout,
+
+        "                                     Welcome to Green Travel",
         " ",
-        "Hotel name: " + hotel_name,
+        "                           Your Reservation confirmation is below",
         " ",
-        "Total number of rooms: " + room_number,
         " ",
-        "Room type: " + room_type,
+        " ",
+        "        Full name: " + name,
+        " ",
+        "        Email: " + mail,
+        " ",
+        "        Phone: " + phone,
+        " ",
+        "        Check-in date: " + checkin,
+        " ",
+        "        Check-out date: " + checkout,
+        " ",
+        "        Hotel name: " + hotel_name,
+        " ",
+        "        Total number of rooms: " + room_number,
+        " ",
+        "        Room type: " + room_type,
+        " ",
+        " ",
         "",
-        "Thank you for using Green Travel",
-        "All right reserved by Green Travel",
+        "                               Thank you for using Green Travel",
+        "",
+        "                               All right reserved by Green Travel",
 
     ]
 
     for line in lines:
         textob.textLine(line)
 
+    c.drawImage(logo, 170, 10, mask='auto', anchor='c')
     c.drawText(textob)
     c.showPage()
     c.save()
