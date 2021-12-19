@@ -188,7 +188,7 @@ def RoomShow(request):
 
     hotel = hotel_name.split('_')
     mylist = ' '.join(hotel)
-    context['mylist'] =mylist
+    context['mylist'] = mylist
     return render(request, 'main/HotelRoom.html', context)
 
 
