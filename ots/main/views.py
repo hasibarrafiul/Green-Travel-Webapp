@@ -122,7 +122,6 @@ def ticket(request):
     return FileResponse(buf, as_attachment=True, filename="ticket.pdf")
 
 
-
 @login_required(login_url="/account/login/")
 def hotelReview(request):
     form = forms.HotelReview()
@@ -182,13 +181,17 @@ def deleteresturantReview(request, pk):
 @login_required(login_url="/account/login/")
 def RoomShow(request):
     roomModel = RoomModel.objects.all().order_by('slug')
-    print(hotel_page.hotel_name)
-    return render(request, 'main/HotelRoom.html', {'roomModel': roomModel})
+    context = {}
+    hotel_name = request.POST.get('hotel-name')
+    context['hotel_name'] = hotel_name
+    context['roomModel'] = roomModel
+
+    hotel = hotel_name.split('_')
+    mylist = ' '.join(hotel)
+    context['mylist'] =mylist
+    return render(request, 'main/HotelRoom.html', context)
 
 
 @login_required(login_url="/account/login/")
 def hotel_page(request):
-    hotel_page.hotel_name= request.POST.get('hotel-name')
-    print(hotel_page.hotel_name)
-    return render(request, 'main/HotelPage.html', {'hotel_name': hotel_page.hotel_name})
-
+    return render(request, 'main/HotelPage.html')
