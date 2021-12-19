@@ -123,8 +123,10 @@ def ticket(request):
 
 
 @login_required(login_url="/account/login/")
-def hotel_booking(request):
-    return render(request, 'main/HotelBooking.html')
+def hotel_page(request):
+    hotel_page.hotelname= request.POST.get('hotel-name')
+    print(hotel_page.hotelname)
+    return render(request, 'main/HotelPage.html')
 
 
 @login_required(login_url="/account/login/")
@@ -186,4 +188,6 @@ def deleteresturantReview(request, pk):
 @login_required(login_url="/account/login/")
 def RoomShow(request):
     roomModel = RoomModel.objects.all().order_by('slug')
+    print(hotel_page.hotelname)
     return render(request, 'main/HotelRoom.html', {'roomModel': roomModel})
+

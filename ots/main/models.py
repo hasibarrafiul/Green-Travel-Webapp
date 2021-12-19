@@ -16,12 +16,12 @@ RATE_CHOICES = [
 ]
 
 HotelChoices = [
-    ('Pan Pacific Sonargoan', 'Pan Pacific Sonargoan'),
-    ('Radisson Blu', 'Radisson Blu'),
-    ('Hotel De Meridian', 'Hotel De Meridian'),
-    ('Grand Plaza Hotel', 'Grand Plaza Hotel'),
-    ('Empyrean Hotel', 'Empyrean Hotel'),
-    ('The Raintree Dhaka', 'The Raintree Dhaka')
+    ('Pan Pacific Sonargoan', 'Pan_Pacific_Sonargoan'),
+    ('Radisson Blu', 'Radisson_Blu'),
+    ('Hotel De Meridian', 'Hotel_De_Meridian'),
+    ('Grand Plaza Hotel', 'Grand_Plaza_Hotel'),
+    ('Empyrean Hotel', 'Empyrean_Hotel'),
+    ('The Raintree Dhaka', 'The_Raintree_Dhaka')
 ]
 
 ResturantChoices = [
