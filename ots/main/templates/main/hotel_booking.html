@@ -140,6 +140,9 @@ body {
             </button>
 			{% endif %}
 
+              {% if not user_name and not user_email and not user_phone and not checkin_date and not hotel_name and not room_numbers and not room_type %}
+                <h3>Please Enter all the information to confirm reservation</h3>
+                {% endif %}
           </div>
         </div>
       </li>

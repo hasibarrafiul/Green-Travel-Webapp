@@ -122,6 +122,7 @@ def hotel_booking(request):
     return render(request, 'main/hotel_booking.html', {'user_name': hotel_booking.user_name, 'user_email': hotel_booking.user_email, 'user_phone': hotel_booking.user_phone, 'checkin_date': hotel_booking.checkin_date,'checkout_date': hotel_booking.checkout_date, 'hotel_name': hotel_booking.hotel_name, 'room_numbers': hotel_booking.room_numbers, 'room_type':  hotel_booking.room_type})
 
 
+@login_required(login_url="/account/login/")
 def hotel_bookingPdf(request):
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
