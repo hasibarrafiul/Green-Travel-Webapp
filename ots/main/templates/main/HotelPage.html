@@ -1,12 +1,15 @@
 <html>
 <body>
-<form action="/get-text" method="POST">
-    <a href="/main/room" value="Pan_Pacific_Sonargoan">Pan Pacific Sonargoan<input name="hotel-name" value="Pan_Pacific_Sonargoan"></a>
-    <a href="#" value="Radisson_Blu">Radisson Blu</a>
+<form method="POST">
+    {% csrf_token %}
+    <input name="hotel-name" value="Pan_Pacific_Sonargoan">
+    <input name="hotel-name" value="Radisson_Blu">
     <a href="#" value="Hotel_De_Meridian">Hotel De Meridian</a>
     <a href="#" value="Grand_Plaza_Hotel">Grand Plaza Hotel</a>
     <a href="#" value="Empyrean_Hotel">Empyrean Hotel</a>
     <a href="#" value="The_Raintree_Dhaka">The Raintree Dhaka</a>
+
+    <button type="submit"> ggwp</button>
 
 </form>
 

@@ -122,12 +122,6 @@ def ticket(request):
     return FileResponse(buf, as_attachment=True, filename="ticket.pdf")
 
 
-@login_required(login_url="/account/login/")
-def hotel_page(request):
-    hotel_page.hotelname= request.POST.get('hotel-name')
-    print(hotel_page.hotelname)
-    return render(request, 'main/HotelPage.html')
-
 
 @login_required(login_url="/account/login/")
 def hotelReview(request):
@@ -188,6 +182,13 @@ def deleteresturantReview(request, pk):
 @login_required(login_url="/account/login/")
 def RoomShow(request):
     roomModel = RoomModel.objects.all().order_by('slug')
-    print(hotel_page.hotelname)
+    print(hotel_page.hotel_name)
     return render(request, 'main/HotelRoom.html', {'roomModel': roomModel})
+
+
+@login_required(login_url="/account/login/")
+def hotel_page(request):
+    hotel_page.hotel_name= request.POST.get('hotel-name')
+    print(hotel_page.hotel_name)
+    return render(request, 'main/HotelPage.html', {'hotel_name': hotel_page.hotel_name})
 
