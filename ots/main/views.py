@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview
+from .models import HotelReview, PlaceReview
 from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
@@ -74,6 +74,7 @@ def hotelReviewShow(request):
     return render(request, 'main/HotelReviewShow.html', {'hotelReview': hotelReview})
 
 
+@login_required(login_url="/account/login/")
 def deleteHotelReview(request, pk):
     instance = HotelReview.objects.get(id=pk)
     instance.delete()
@@ -102,10 +103,40 @@ def resturantReviewShow(request):
     return render(request, 'main/ResturantReviewShow.html', {'resturantReview': resturantReview})
 
 
+@login_required(login_url="/account/login/")
 def deleteresturantReview(request, pk):
     instance = ResturantReview.objects.get(id=pk)
     instance.delete()
     return redirect('articles:resturantReviewShow')
+
+
+@login_required(login_url="/account/login/")
+def placeReview(request):
+    form = forms.PlaceReview()
+    if request.method == 'POST':
+        form = forms.PlaceReview(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.PlaceReview()
+    return render(request, 'main/PlaceReview.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def placeReviewShow(request):
+    placeReview = PlaceReview.objects.all().order_by('date')
+    return render(request, 'main/PlaceReviewShow.html', {'placeReview': placeReview})
+
+
+@login_required(login_url="/account/login/")
+def deleteplaceReview(request, pk):
+    instance = PlaceReview.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:placeReviewShow')
 
 
 @login_required(login_url="/account/login/")

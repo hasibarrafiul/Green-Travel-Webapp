@@ -12,3 +12,9 @@ class ResturantReview(forms.ModelForm):
     class Meta:
         model = models.ResturantReview
         fields = ['name', 'resturantName', 'review', 'rating']
+
+
+class PlaceReview(forms.ModelForm):
+    class Meta:
+        model = models.PlaceReview
+        fields = ['name', 'placeName', 'review', 'rating']
