@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview, RoomModel
+from .models import HotelReview, RoomModel, Place
 from .models import ResturantReview
 
 from django.contrib.auth.decorators import login_required
@@ -195,3 +195,12 @@ def RoomShow(request):
 @login_required(login_url="/account/login/")
 def hotel_page(request):
     return render(request, 'main/HotelPage.html')
+
+
+def placelist(request):
+    return render(request, 'main/placelist.html')
+
+
+def place(request):
+    place_show = Place.objects.all().order_by('name')
+    return render(request, 'main/place.html', {'place_show': place_show})
