@@ -232,7 +232,7 @@ def RoomShow(request):
     context['hotel_name'] = hotel_name
     context['roomModel'] = roomModel
 
-    hotel = hotel_name.split('')
+    hotel = hotel_name.split('_')
     mylist = ' '.join(hotel)
     context['mylist'] = mylist
     return render(request, 'main/HotelRoom.html', context)

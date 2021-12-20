@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from django.contrib import admin
-from .models import HotelReview, HotelReservation, PlaceReview
+from .models import HotelReview, HotelReservation, PlaceReview, RoomModel
 from .models import ResturantReview
 
 admin.site.register(HotelReview)
