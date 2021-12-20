@@ -102,3 +102,13 @@ class RoomModel(models.Model):
     room_Img1 = models.ImageField(blank=True, null=True)
     room_Img2 = models.ImageField(blank=True, null=True)
     room_Img3 = models.ImageField(blank=True, null=True)
+
+class Place(models.Model):
+    name = models.CharField(max_length=50)
+    slug = models.SlugField()
+    description = models.TextField(max_length=3000, blank=True)
+    route = models.TextField(max_length=3000, blank=True)
+    map_link = models.TextField(max_length=3000, blank=True)
+    place_Img1 = models.ImageField(blank=True, null=True)
+    place_Img2 = models.ImageField(blank=True, null=True)
+    place_Img3 = models.ImageField(blank=True, null=True)

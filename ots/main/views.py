@@ -240,3 +240,12 @@ def RoomShow(request):
 def hotel_page(request):
     return render(request, 'main/HotelPage.html')
 
+
+
+def placelist(request):
+    return render(request, 'main/placelist.html')
+
+
+def place(request):
+    place_show = Place.objects.all().order_by('name')
+    return render(request, 'main/place.html', {'place_show': place_show})
