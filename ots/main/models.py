@@ -16,8 +16,8 @@ RATE_CHOICES=[
 ]
 
 HotelChoices=[
-    ('Pan Pacific Sonargoan', 'Pan Pacific Sonargoan'),
-    ('Radisson Blu', 'Radisson Blu'),
+    ('Pan_Pacific_Sonargoan', 'Pan Pacific Sonargoan'),
+    ('Radisson_Blu', 'Radisson Blu'),
     ('Hotel De Meridian', 'Hotel De Meridian'),
     ('Grand Plaza Hotel', 'Grand Plaza Hotel'),
     ('Empyrean Hotel', 'Empyrean Hotel'),

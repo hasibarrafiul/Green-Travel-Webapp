@@ -69,16 +69,10 @@ def hotelReview(request):
 
 
 @login_required(login_url="/account/login/")
-def hotelReviewShow(request):
-    hotelReview = HotelReview.objects.all().order_by('date')
-    return render(request, 'main/HotelReviewShow.html', {'hotelReview': hotelReview})
-
-
-@login_required(login_url="/account/login/")
 def deleteHotelReview(request, pk):
     instance = HotelReview.objects.get(id=pk)
     instance.delete()
-    return redirect('articles:hotelReviewShow')
+    return redirect('articles:hotel_page')
 
 
 @login_required(login_url="/account/login/")
@@ -226,18 +220,23 @@ def hotel_bookingPdf(request):
 
 @login_required(login_url="/account/login/")
 def RoomShow(request):
+    hotelReview = HotelReview.objects.all().order_by('date')
     roomModel = RoomModel.objects.all().order_by('slug')
     context = {}
     hotel_name = request.POST.get('hotel-name')
     context['hotel_name'] = hotel_name
     context['roomModel'] = roomModel
 
+    context['hotelReview'] = hotelReview
+
     hotel = hotel_name.split('_')
     mylist = ' '.join(hotel)
     context['mylist'] = mylist
+
     return render(request, 'main/HotelRoom.html', context)
 
 
 @login_required(login_url="/account/login/")
 def hotel_page(request):
     return render(request, 'main/HotelPage.html')
+
