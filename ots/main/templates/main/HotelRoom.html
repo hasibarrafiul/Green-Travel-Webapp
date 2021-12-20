@@ -32,13 +32,13 @@
 					<div class="h-full w-1/2 flex flex-wrap">
 						<div class="clearfix">
 				  <div class="img-container">
-				  <img src="{{ roomModel.room_Img1.url }}" alt="Error" style="width:100%">
+				  <img src="{{ roomModel.room_Img1.url }}" alt="Error" style="width:100%" height="186px" width="446">
 				  </div>
 				  <div class="img-container">
-				  <img src="{{ roomModel.room_Img2.url }}" alt="Error" style="width:100%">
+				  <img src="{{ roomModel.room_Img2.url }}" alt="Error" style="width:100%" height="186px" width="446">
 				  </div>
 				  <div class="img-container">
-				  <img src="{{ roomModel.room_Img3.url }}" alt="Error" style="width:100%">
+				  <img src="{{ roomModel.room_Img3.url }}" alt="Error" style="width:100%" height="186px" width="446">
 				  </div>
 				</div>
 
@@ -47,10 +47,13 @@
 
 					<div class="w-1/2">
 						<div class="flex border-section">
-							<span class="mr-5 font-light">{{ roomModel.roomtype }}</span>
-							<span class="mr-5 font-light">{{ roomModel.beds }}</span>
-							<span class="mr-5 font-light">{{ room.baths }}</span>
-							<span class="mr-5 font-light">{{ room.guest }}</span>
+							<span class="mr-5 font-light">Room Type: {{ roomModel.roomtype }}e</span>
+							<br>
+							<span class="mr-5 font-light">Beds: {{ roomModel.beds }}</span>
+							<br>
+							<span class="mr-5 font-light">Baths: {{ roomModel.baths }}</span>
+							<br>
+							<span class="mr-5 font-light">Guests: {{ roomModel.guests }}</span>
 						</div>
 						<div class="border-section">
 							<h5 class="font-medium text-lg mb-5">Amenities</h5>
