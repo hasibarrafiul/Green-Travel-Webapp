@@ -5496,6 +5496,7 @@ a {
 }
 .u-label {
   font-weight: normal;
+  color: black;
 }
 .u-form ::placeholder {
   opacity: 0.5;

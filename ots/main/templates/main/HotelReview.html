@@ -2,8 +2,10 @@
 <head>
    <link rel="stylesheet" href="/static/nicepage.css" media="screen">
 
-
     <meta name="generator" content="Nicepage 3.24.3, nicepage.com">
+   <link rel="stylesheet" href="/static/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <link rel="stylesheet" href="/static/css/signup-style.css">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
 <style>
 body {
@@ -16,84 +18,87 @@ body {
 </head>
 
   <body class="u-body" >
-    <section class="u-clearfix u-palette-1-base u-section-1" id="carousel_2bcf" style="background-color: transparent;background-color: rgba(0, 0, 255, 0.4);">
+    <section class="u-clearfix u-palette-1-base u-section-1" id="carousel_2bcf" style="background-color: transparent;background-color: rgba(0, 0, 0, 0);">
       <div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xs u-sheet-1">
-        <h2 class="u-text u-text-default u-text-1">Write Review</h2>
         <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
             <div class="u-layout-row">
               <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-1">
                 <div class="u-container-layout u-container-layout-1">
-                  <h6 class="u-text u-text-2">call us</h6>
-                  <p class="u-text u-text-3">1 (234) 567-891<br>1 (234) 987-654
+                  <h6 class="u-text u-text-2 black">Call us</h6>
+                  <p class="u-text u-text-3 black">1 (234) 567-891<br>1 (234) 987-654
                   </p>
-                  <h6 class="u-text u-text-4">location</h6>
-                  <p class="u-text u-text-5">East West University, Dhaka<br>Bangladesh, BD
+                  <h6 class="u-text u-text-4 black">Location</h6>
+                  <p class="u-text u-text-5 black">East West University, Dhaka<br>Bangladesh, BD
                   </p>
-                  <h6 class="u-text u-text-6">Our top services</h6>
-                  <ul class="u-custom-list u-text u-text-7">
-                    <li>
-                      <div class="class u-list-icon">
-                        <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">✔</div>
-                      </div>Buy Ticket
-                    </li>
-                    <li>
-                      <div class="class u-list-icon">
-                        <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">✔</div>
-                      </div>Routes
-                    </li>
-                    <li>
-                      <div class="class u-list-icon">
-                        <div xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content">✔</div>
-                      </div>Review
-                    </li>
-                  </ul>
                 </div>
               </div>
-              <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-40 u-layout-cell-2">
-                <div class="u-container-layout u-container-layout-2">
-                  <div class="u-expanded-width u-form u-form-1">
-                    <form action="#" method="POST" class="u-clearfix u-form-spacing-30 u-form-vertical u-inner-form" style="padding: 0;" source="custom" name="form">
-                      {% csrf_token %}
-					  <div class="u-form-group u-form-name u-form-partition-factor-2">
-                        <label class="u-label">Your Name</label>
-                        {{form.name}}
-                      </div>
-                      <div class="u-form-address u-form-group u-form-partition-factor-2 u-form-group-2">
-                        <label class="u-label">Hotel Name</label>
-                        {{form.hotelName}}
-                      </div>
-                      <div class="u-form-email u-form-group u-form-partition-factor-2">
-                        <label class="u-label">Review</label>
-						{{form.review}}
+              <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+
+                    <form method="POST" id="register-form" class="register-form">
+					{% csrf_token %}
+                        <h2 class="form-title">Write Review</h2>
+
+						<div class="form-group">
+                            <label class="u-label">Your Name</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.name}}
                         </div>
-                      <div class="u-form-group u-form-message">
-                        <label class="u-label">Rating</label>
-                        {{form.rating}}
-						</div>
+                        <div class="form-group">
+                            <label class="u-label">Hotel Name</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.hotelName}}
+                        </div>
+                        <div class="form-group">
+							<label class="u-label align" data-align="top">Review</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.review}}
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">Rating</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<select name="rating" required="" id="id_rating" value="{{ form.rating }}" style="text-color:black;">
+                                </select>
+                        </div>
 
-
-                        <input type="submit" value="Submit">
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
 
                     </form>
-                  </div>
+
                 </div>
-              </div>
+            </div>
+        </section>
+
+    </div>
             </div>
           </div>
         </div>
       </div>
     </section>
   </body>
-
 <style>
-  label{
-  color: white;
-  }
+    label{
+    color:black;
+    }
+    select{
+  width: 180px;
+
+  color: black;
+}
+input{
+    color:black;
+}
+textarea {
+    color:black;
+}
+select option { color: black; }
+.black{
+    color:black;
+}
 </style>
-
-
-
-
-</body>
 </html>

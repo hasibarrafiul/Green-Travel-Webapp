@@ -32,7 +32,9 @@
             {% ifequal roomModel.slug hotel_name %}
 				<div class="flex justify-between">
 					   <div class="mb-5">
-						   <h1 class="text-3xl font-medium mb-px">{{ mylist }}</h1>
+						   <h1 class="text-3xl font-medium mb-px">
+							   <a href="../hotel_page"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
+							   {{ mylist }}</h1>
 					   </div>
 				 </div>
 				<div class="-mt-5 container max-w-full h-75vh flex mb-20" xmlns:rooms="http://www.w3.org/1999/xhtml"
@@ -82,11 +84,11 @@
                         {% ifequal hotelReview.hotelName hotel_name %}
 						<table align="center" border="0" cellspacing="0" cellpadding="10" class="rcorners2" >
 							<tr >
-								<td width="150"><img src="/static/user.png" height="150px" width="150px" ></td>
+								<td width="200"><img src="/static/user.png" height="150px" width="150px" ></td>
 									<td width="500" >
-									<h1> &nbsp;&nbsp;&nbsp;&nbsp;{{ hotelReview.name }} </h1>
-										<h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating Given: {{hotelReview.rating }}/10</h4>
-                                	<h4> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ hotelReview.review }}</h4>
+									<h1> {{ hotelReview.name }} </h1>
+										<h4> Rating Given: {{hotelReview.rating }}/10</h4>
+                                	<h4> {{ hotelReview.review }}</h4>
 							</td>
 								<td VALIGN=TOP width="60" style="text-align:center">
 									{% ifequal user hotelReview.user %}
