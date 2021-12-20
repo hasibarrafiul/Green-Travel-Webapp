@@ -24,4 +24,7 @@ urlpatterns = [
     url(r'^hotel_booking/$', views.hotel_booking, name="hotel_booking"),
     path('hotel_bookingPdf', views.hotel_bookingPdf, name="hotel_bookingPdf"),
 
+    url(r'^hotel_page/$', views.hotel_page, name="hotel_page"),
+    url(r'^room/$', views.RoomShow, name="RoomShow"),
+
 ]

@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview, PlaceReview
+from .models import HotelReview, PlaceReview, RoomModel
 from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
@@ -222,3 +222,22 @@ def hotel_bookingPdf(request):
     buf.seek(0)
 
     return FileResponse(buf, as_attachment=True, filename='room.pdf')
+
+
+@login_required(login_url="/account/login/")
+def RoomShow(request):
+    roomModel = RoomModel.objects.all().order_by('slug')
+    context = {}
+    hotel_name = request.POST.get('hotel-name')
+    context['hotel_name'] = hotel_name
+    context['roomModel'] = roomModel
+
+    hotel = hotel_name.split('')
+    mylist = ' '.join(hotel)
+    context['mylist'] = mylist
+    return render(request, 'main/HotelRoom.html', context)
+
+
+@login_required(login_url="/account/login/")
+def hotel_page(request):
+    return render(request, 'main/HotelPage.html')

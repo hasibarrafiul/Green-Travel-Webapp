@@ -89,3 +89,16 @@ class HotelReservation(models.Model):
     room_number = models.CharField(max_length=20)
     room_type = models.CharField(max_length=20)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING)
+
+
+class RoomModel(models.Model):
+    roomtype = models.CharField(max_length=20)
+    beds = models.CharField(max_length=20)
+    baths = models.CharField(max_length=20)
+    slug = models.SlugField()
+    guests = models.IntegerField()
+    amenities = models.TextField(max_length=3000, blank=True)
+    facilities = models.TextField(max_length=3000, blank=True)
+    room_Img1 = models.ImageField(blank=True, null=True)
+    room_Img2 = models.ImageField(blank=True, null=True)
+    room_Img3 = models.ImageField(blank=True, null=True)
