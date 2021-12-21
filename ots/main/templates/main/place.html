@@ -32,7 +32,9 @@
   {% ifequal place_show.slug place_name %}
 				<div class="flex justify-between">
 					   <div class="mb-5">
-						   <h1 class="text-3xl font-medium mb-px">{{ place_show.name }}</h1>
+						   <h1 class="text-3xl font-medium mb-px">
+							   <a href="../placelist"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
+							   {{ place_show.name }}</h1>
 					   </div>
 				 </div>
 				<div class="-mt-5 container max-w-full h-75vh flex mb-20" xmlns:rooms="http://www.w3.org/1999/xhtml" xmlns:rooms="http://www.w3.org/1999/xhtml">
