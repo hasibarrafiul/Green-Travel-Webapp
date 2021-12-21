@@ -71,5 +71,36 @@
 					</div>
         {% endifequal %}
 {% endfor %}
+
+
+<h1 align="center">Reviews </h1>
+  </div>
+                        {% for placeReview in placeReview %}
+                        {% ifequal placeReview.placeName place_name %}
+						<table align="center" border="0" cellspacing="0" cellpadding="10" class="rcorners2" >
+							<tr >
+								<td width="200"><img src="/static/user.png" height="150px" width="150px" ></td>
+									<td width="500" >
+									<h1> {{ placeReview.name }} </h1>
+										<h4> Rating Given: {{placeReview.rating }}/10</h4>
+                                	<h4> {{ placeReview.review }}</h4>
+							</td>
+								<td VALIGN=TOP width="60" style="text-align:center">
+									{% ifequal user placeReview.user %}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteHotelReview' hotelReview.id %}">
+                                  <img src="/static/delete-circle-icon.png" height="30px" width="30px">
+										{% endifequal %}
+                                </a>
+								</td>
+                                <br>
+							</tr>
+						</table>
+                        {% endifequal %}
+
+                        {% endfor %}
+
+                    </div>
+
+					<h3 align="center"><a href="../placeReview"><img src="/static/writeareview.png"></a></h3>
 </body>
 </html>

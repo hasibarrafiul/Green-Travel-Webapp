@@ -35,7 +35,7 @@ ResturantChoices=[
 
 PlaceChoices=[
     ('Dhaka', 'Dhaka'),
-    ('Cox-Bazar', 'Cox-Bazar'),
+    ('Cox_Bazar', 'Cox-Bazar'),
     ('Sylhet', 'Sylhet'),
     ('Cumilla', 'Cumilla'),
     ('Gazipur', 'Gazipur'),
