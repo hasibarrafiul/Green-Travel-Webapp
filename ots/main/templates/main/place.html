@@ -87,7 +87,7 @@
 							</td>
 								<td VALIGN=TOP width="60" style="text-align:center">
 									{% ifequal user placeReview.user %}
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteHotelReview' hotelReview.id %}">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteplaceReview' placeReview.id %}">
                                   <img src="/static/delete-circle-icon.png" height="30px" width="30px">
 										{% endifequal %}
                                 </a>

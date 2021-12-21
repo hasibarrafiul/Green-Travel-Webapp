@@ -16,7 +16,6 @@ urlpatterns = [
     url(r'^resturantReviewShow/$', views.resturantReviewShow, name="resturantReviewShow"),
     path('deleteResturantReview/<str:pk>/$', views.deleteresturantReview, name="deleteResturantReview"),
     url(r'^placeReview/$', views.placeReview, name="placeReview"),
-    url(r'^placeReviewShow/$', views.placeReviewShow, name="placeReviewShow"),
     path('deleteplaceReview/<str:pk>/$', views.deleteplaceReview, name="deleteplaceReview"),
 
 

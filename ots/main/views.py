@@ -121,16 +121,10 @@ def placeReview(request):
 
 
 @login_required(login_url="/account/login/")
-def placeReviewShow(request):
-    placeReview = PlaceReview.objects.all().order_by('date')
-    return render(request, 'main/PlaceReviewShow.html', {'placeReview': placeReview})
-
-
-@login_required(login_url="/account/login/")
 def deleteplaceReview(request, pk):
     instance = PlaceReview.objects.get(id=pk)
     instance.delete()
-    return redirect('articles:placeReviewShow')
+    return redirect('articles:placelist')
 
 
 @login_required(login_url="/account/login/")
