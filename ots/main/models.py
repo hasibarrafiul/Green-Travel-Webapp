@@ -25,6 +25,8 @@ HotelChoices = [
 ]
 
 ResturantChoices = [
+    ('Istanbul_Restaurant', 'Istanbul Restaurant'),
+    ('The_Dining_Lounge', 'The Dining Lounge'),
     ('Sultans_Dine', 'Sultans Dine'),
     ('Pizza_Hut', 'Pizza Hut'),
     ('Chillox', 'Chillox'),

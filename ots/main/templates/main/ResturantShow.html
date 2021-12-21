@@ -25,6 +25,13 @@
   clear: both;
   display: table;
 }
+body {
+  background-image: url('/static/res_back.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  color: white;
+}
 </style>
 </head>
 <body>
@@ -43,7 +50,7 @@
 					<div class="h-full w-1/2 flex flex-wrap">
 						<div class="clearfix">
 				  <div class="img-container">
-				  <img src="{{ resturant_show.res_img.url }}" alt="Error" style="width:100%" height="200px" width="446">
+				  <img src="{{ resturant_show.res_img.url }}" alt="Error" style="width:100%" height="300px" width="446">
 				  </div>
 				</div>
 
@@ -72,19 +79,19 @@
 
  <h1 align="center">Reviews </h1>
   </div>
-                        {% for hotelReview in hotelReview %}
-                        {% ifequal hotelReview.hotelName hotel_name %}
+                        {% for resturantReview in resturantReview %}
+                        {% ifequal resturantReview.resturantName resturant_name %}
 						<table align="center" border="0" cellspacing="0" cellpadding="10" class="rcorners2" >
 							<tr >
 								<td width="200"><img src="/static/user.png" height="150px" width="150px" ></td>
 									<td width="500" >
-									<h1> {{ hotelReview.name }} </h1>
-										<h4> Rating Given: {{hotelReview.rating }}/10</h4>
-                                	<h4> {{ hotelReview.review }}</h4>
+									<h1> {{ resturantReview.name }} </h1>
+										<h4> Rating Given: {{resturantReview.rating }}/10</h4>
+                                	<h4> {{ resturantReview.review }}</h4>
 							</td>
 								<td VALIGN=TOP width="60" style="text-align:center">
-									{% ifequal user hotelReview.user %}
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteHotelReview' hotelReview.id %}">
+									{% ifequal user resturantReview.user %}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteResturantReview' resturantReview.id %}">
                                   <img src="/static/delete-circle-icon.png" height="30px" width="30px">
 										{% endifequal %}
                                 </a>
@@ -98,7 +105,7 @@
 
                     </div>
 
-					<h3 align="center"><a href="../hotelReview"><img src="/static/writeareview.png"></a></h3>
+					<h3 align="center"><a href="../resturantReview"><img src="/static/writeareview.png"></a></h3>
 
 </body>
 </html>

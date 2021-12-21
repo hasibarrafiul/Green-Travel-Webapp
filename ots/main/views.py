@@ -92,16 +92,10 @@ def resturantReview(request):
 
 
 @login_required(login_url="/account/login/")
-def resturantReviewShow(request):
-    resturantReview = ResturantReview.objects.all().order_by('date')
-    return render(request, 'main/ResturantReviewShow.html', {'resturantReview': resturantReview})
-
-
-@login_required(login_url="/account/login/")
 def deleteresturantReview(request, pk):
     instance = ResturantReview.objects.get(id=pk)
     instance.delete()
-    return redirect('articles:resturantReviewShow')
+    return redirect('articles:resturantList')
 
 
 @login_required(login_url="/account/login/")
@@ -264,9 +258,12 @@ def resturantList(request):
 
 
 def resturantShow(request):
+    resturantReview = ResturantReview.objects.all().order_by('date')
     resturant_show = ResturantInfo.objects.all().order_by('name')
     context = {}
     place_name = request.POST.get('hotel-name')
     context['resturant_name'] = place_name
     context['resturant_show'] = resturant_show
+
+    context['resturantReview'] = resturantReview
     return render(request, 'main/ResturantShow.html', context)
