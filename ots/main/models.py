@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-RATE_CHOICES=[
+RATE_CHOICES = [
     (1, '1 - Trash'),
     (2, '2- Horrible'),
     (3, '3- Terrible'),
@@ -15,7 +15,7 @@ RATE_CHOICES=[
 
 ]
 
-HotelChoices=[
+HotelChoices = [
     ('Pan_Pacific_Sonargoan', 'Pan Pacific Sonargoan'),
     ('Radisson_Blu', 'Radisson Blu'),
     ('Hotel De Meridian', 'Hotel De Meridian'),
@@ -24,7 +24,7 @@ HotelChoices=[
     ('The Raintree Dhaka', 'The Raintree Dhaka')
 ]
 
-ResturantChoices=[
+ResturantChoices = [
     ('Sultans Dine', 'Sultans Dine'),
     ('Pizza Hut', 'Pizza Hut'),
     ('Chillox', 'Chillox'),
@@ -33,9 +33,9 @@ ResturantChoices=[
     ('Kacchi Vai', 'Kacchi Vai')
 ]
 
-PlaceChoices=[
+PlaceChoices = [
     ('Dhaka', 'Dhaka'),
-    ('Cox-Bazar', 'Cox-Bazar'),
+    ('Cox_Bazar', 'Cox Bazar'),
     ('Sylhet', 'Sylhet'),
     ('Cumilla', 'Cumilla'),
     ('Gazipur', 'Gazipur'),
@@ -102,6 +102,7 @@ class RoomModel(models.Model):
     room_Img1 = models.ImageField(blank=True, null=True)
     room_Img2 = models.ImageField(blank=True, null=True)
     room_Img3 = models.ImageField(blank=True, null=True)
+
 
 class Place(models.Model):
     name = models.CharField(max_length=50)
