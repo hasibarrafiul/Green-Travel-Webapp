@@ -18,19 +18,19 @@ RATE_CHOICES=[
 HotelChoices=[
     ('Pan_Pacific_Sonargoan', 'Pan Pacific Sonargoan'),
     ('Radisson_Blu', 'Radisson Blu'),
-    ('Hotel De Meridian', 'Hotel De Meridian'),
-    ('Grand Plaza Hotel', 'Grand Plaza Hotel'),
-    ('Empyrean Hotel', 'Empyrean Hotel'),
-    ('The Raintree Dhaka', 'The Raintree Dhaka')
+    ('Hotel_De_Meridian', 'Hotel De Meridian'),
+    ('Grand_Plaza_Hotel', 'Grand Plaza Hotel'),
+    ('Empyrean_Hotel', 'Empyrean Hotel'),
+    ('The_Raintree_Dhaka', 'The Raintree Dhaka')
 ]
 
 ResturantChoices=[
-    ('Sultans Dine', 'Sultans Dine'),
-    ('Pizza Hut', 'Pizza Hut'),
+    ('Sultans_Dine', 'Sultans Dine'),
+    ('Pizza_Hut', 'Pizza Hut'),
     ('Chillox', 'Chillox'),
     ('Khanas', 'Khanas'),
-    ('Burger King', 'Burger King'),
-    ('Kacchi Vai', 'Kacchi Vai')
+    ('Burger_King', 'Burger King'),
+    ('Kacchi_Vai', 'Kacchi Vai')
 ]
 
 PlaceChoices=[
