@@ -28,4 +28,8 @@ urlpatterns = [
     url(r'^placelist/$', views.placelist, name="placelist"),
     url(r'^place/$', views.place, name="place"),
 
+    url(r'^resturant/$', views.resturantShow, name="resturantShow"),
+    url(r'^resturantList/$', views.resturantList, name="resturantList"),
+
+
 ]

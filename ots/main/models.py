@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-RATE_CHOICES=[
+RATE_CHOICES = [
     (1, '1 - Trash'),
     (2, '2- Horrible'),
     (3, '3- Terrible'),
@@ -15,7 +15,7 @@ RATE_CHOICES=[
 
 ]
 
-HotelChoices=[
+HotelChoices = [
     ('Pan_Pacific_Sonargoan', 'Pan Pacific Sonargoan'),
     ('Radisson_Blu', 'Radisson Blu'),
     ('Hotel_De_Meridian', 'Hotel De Meridian'),
@@ -24,7 +24,7 @@ HotelChoices=[
     ('The_Raintree_Dhaka', 'The Raintree Dhaka')
 ]
 
-ResturantChoices=[
+ResturantChoices = [
     ('Sultans_Dine', 'Sultans Dine'),
     ('Pizza_Hut', 'Pizza Hut'),
     ('Chillox', 'Chillox'),
@@ -33,7 +33,7 @@ ResturantChoices=[
     ('Kacchi_Vai', 'Kacchi Vai')
 ]
 
-PlaceChoices=[
+PlaceChoices = [
     ('Dhaka', 'Dhaka'),
     ('Cox_Bazar', 'Cox-Bazar'),
     ('Sylhet', 'Sylhet'),
@@ -103,6 +103,7 @@ class RoomModel(models.Model):
     room_Img2 = models.ImageField(blank=True, null=True)
     room_Img3 = models.ImageField(blank=True, null=True)
 
+
 class Place(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField()
@@ -112,3 +113,13 @@ class Place(models.Model):
     place_Img1 = models.ImageField(blank=True, null=True)
     place_Img2 = models.ImageField(blank=True, null=True)
     place_Img3 = models.ImageField(blank=True, null=True)
+
+
+class ResturantInfo(models.Model):
+    name = models.CharField(max_length=300)
+    slug = models.SlugField()
+    address = models.TextField(max_length=3000, blank=True)
+    description = models.TextField(max_length=3000, blank=True)
+    menu = models.TextField(max_length=3000, blank=True)
+    website = models.CharField(max_length=500)
+    res_img = models.ImageField(blank=True, null=True)

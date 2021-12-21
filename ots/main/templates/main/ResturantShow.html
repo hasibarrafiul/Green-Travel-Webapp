@@ -1,0 +1,104 @@
+<html>
+<head>
+<style>
+
+.rcorners2 {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+
+  height: 150px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.img-container {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+{% for resturant_show in resturant_show %}
+            {% ifequal resturant_show.slug resturant_name %}
+				<div class="flex justify-between">
+					   <div class="mb-5">
+						   <h1 class="text-3xl font-medium mb-px">
+							   <a href="../resturantList"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
+							   {{ resturant_show.name }}</h1>
+					   </div>
+				 </div>
+				<div class="-mt-5 container max-w-full h-75vh flex mb-20" xmlns:rooms="http://www.w3.org/1999/xhtml"
+					 xmlns:rooms="http://www.w3.org/1999/xhtml">
+					<div class="h-full w-1/2 bg-center bg-cover" style="background-image:url({{room.first_photo}})"></div>
+					<div class="h-full w-1/2 flex flex-wrap">
+						<div class="clearfix">
+				  <div class="img-container">
+				  <img src="{{ resturant_show.res_img.url }}" alt="Error" style="width:100%" height="200px" width="446">
+				  </div>
+				</div>
+
+					</div>
+				</div>
+
+					<div class="w-1/2">
+						<div class="border-section">
+							<h5 class="font-medium text-lg mb-5">Address</h5>
+							<p>{{ resturant_show.address }}</p>
+						</div>
+						<div class="border-section">
+							<h5 class="font-medium text-lg mb-5">Description</h5>
+                            <p>{{ resturant_show.description }}</p>
+						</div>
+						<div class="border-section">
+								<h5 class="font-medium text-lg mb-5">Menu</h5>
+								<p>{{ resturant_show.menu }}</p>
+							</div>
+						<div class="border-section">
+							<p class="font-medium text-lg mb-5">Resturant <a href="{{ resturant_show.website }}">Website</a></p>
+							</div>
+					</div>
+        {% endifequal %}
+{% endfor %}
+
+ <h1 align="center">Reviews </h1>
+  </div>
+                        {% for hotelReview in hotelReview %}
+                        {% ifequal hotelReview.hotelName hotel_name %}
+						<table align="center" border="0" cellspacing="0" cellpadding="10" class="rcorners2" >
+							<tr >
+								<td width="200"><img src="/static/user.png" height="150px" width="150px" ></td>
+									<td width="500" >
+									<h1> {{ hotelReview.name }} </h1>
+										<h4> Rating Given: {{hotelReview.rating }}/10</h4>
+                                	<h4> {{ hotelReview.review }}</h4>
+							</td>
+								<td VALIGN=TOP width="60" style="text-align:center">
+									{% ifequal user hotelReview.user %}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteHotelReview' hotelReview.id %}">
+                                  <img src="/static/delete-circle-icon.png" height="30px" width="30px">
+										{% endifequal %}
+                                </a>
+								</td>
+                                <br>
+							</tr>
+						</table>
+                        {% endifequal %}
+
+                        {% endfor %}
+
+                    </div>
+
+					<h3 align="center"><a href="../hotelReview"><img src="/static/writeareview.png"></a></h3>
+
+</body>
+</html>

@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview, PlaceReview, RoomModel, Place
+from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo
 from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
@@ -257,3 +257,16 @@ def place(request):
     context['placeReview'] = placeReview
 
     return render(request, 'main/place.html', context)
+
+
+def resturantList(request):
+    return render(request, 'main/ResturantList.html')
+
+
+def resturantShow(request):
+    resturant_show = ResturantInfo.objects.all().order_by('name')
+    context = {}
+    place_name = request.POST.get('hotel-name')
+    context['resturant_name'] = place_name
+    context['resturant_show'] = resturant_show
+    return render(request, 'main/ResturantShow.html', context)
