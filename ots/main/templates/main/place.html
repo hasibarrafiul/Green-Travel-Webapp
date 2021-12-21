@@ -1,0 +1,73 @@
+<html>
+<head>
+<style>
+
+.rcorners2 {
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+
+  height: 150px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.img-container {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<body>
+  {% for place_show in place_show %}
+  {% ifequal place_show.slug place_name %}
+				<div class="flex justify-between">
+					   <div class="mb-5">
+						   <h1 class="text-3xl font-medium mb-px">{{ place_show.name }}</h1>
+					   </div>
+				 </div>
+				<div class="-mt-5 container max-w-full h-75vh flex mb-20" xmlns:rooms="http://www.w3.org/1999/xhtml" xmlns:rooms="http://www.w3.org/1999/xhtml">
+					<div class="h-full w-1/2 bg-center bg-cover" style="background-image:url({{roomModel.first_photo}})"></div>
+					<div class="h-full w-1/2 flex flex-wrap">
+						<div class="clearfix">
+				  <div class="img-container">
+				  <img src="{{ place_show.place_Img1.url }}" alt="Error" style="width:100%" height="250px" width="446">
+				  </div>
+				  <div class="img-container">
+				  <img src="{{ place_show.place_Img2.url }}" alt="Error" style="width:100%" height="250px" width="446">
+				  </div>
+				  <div class="img-container">
+				  <img src="{{ place_show.place_Img3.url }}" alt="Error" style="width:100%" height="250px" width="446">
+				  </div>
+				</div>
+
+					</div>
+				</div>
+
+					<div class="w-1/2">
+						<div class="border-section">
+							<h5 class="font-medium text-lg mb-5">Description</h5>
+							<p>{{ place_show.description }}</p>
+						</div>
+						<div class="border-section">
+							<h5 class="font-medium text-lg mb-5">Route</h5>
+                            <p>{{ place_show.route }}</p>
+						</div>
+						<div class="border-section">
+							<h5 class="font-medium text-lg mb-5">Link</h5>
+                            <a href="{{ place_show.map_link }}">Map link</a>
+						</div>
+					</div>
+        {% endifequal %}
+{% endfor %}
+</body>
+</html>

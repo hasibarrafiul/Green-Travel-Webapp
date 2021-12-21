@@ -26,4 +26,7 @@ urlpatterns = [
     url(r'^hotel_page/$', views.hotel_page, name="hotel_page"),
     url(r'^room/$', views.RoomShow, name="RoomShow"),
 
+    url(r'^placelist/$', views.placelist, name="placelist"),
+    url(r'^place/$', views.place, name="place"),
+
 ]

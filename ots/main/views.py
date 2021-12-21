@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview, PlaceReview, RoomModel
+from .models import HotelReview, PlaceReview, RoomModel, Place
 from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
@@ -144,7 +144,11 @@ def hotel_booking(request):
     hotel_booking.room_numbers = request.POST.get('room-numbers')
     hotel_booking.room_type = request.POST.get('room-type')
 
-    return render(request, 'main/hotel_booking.html', {'user_name': hotel_booking.user_name, 'user_email': hotel_booking.user_email, 'user_phone': hotel_booking.user_phone, 'checkin_date': hotel_booking.checkin_date,'checkout_date': hotel_booking.checkout_date, 'hotel_name': hotel_booking.hotel_name, 'room_numbers': hotel_booking.room_numbers, 'room_type':  hotel_booking.room_type})
+    return render(request, 'main/hotel_booking.html',
+                  {'user_name': hotel_booking.user_name, 'user_email': hotel_booking.user_email,
+                   'user_phone': hotel_booking.user_phone, 'checkin_date': hotel_booking.checkin_date,
+                   'checkout_date': hotel_booking.checkout_date, 'hotel_name': hotel_booking.hotel_name,
+                   'room_numbers': hotel_booking.room_numbers, 'room_type': hotel_booking.room_type})
 
 
 @login_required(login_url="/account/login/")
@@ -165,7 +169,10 @@ def hotel_bookingPdf(request):
     room_number = hotel_booking.room_numbers
     room_type = hotel_booking.room_type
 
-    hotel_reservation_instance = HotelReservation.objects.create(user_name=name, user_email=mail, user_phone=phone, checkin_date=checkin, checkout_date=checkout, hotel_name=hotel_name, room_number=room_number, room_type=room_type, user=request.user)
+    hotel_reservation_instance = HotelReservation.objects.create(user_name=name, user_email=mail, user_phone=phone,
+                                                                 checkin_date=checkin, checkout_date=checkout,
+                                                                 hotel_name=hotel_name, room_number=room_number,
+                                                                 room_type=room_type, user=request.user)
     hotel_reservation_instance.save()
 
     lines = [
@@ -240,3 +247,19 @@ def RoomShow(request):
 def hotel_page(request):
     return render(request, 'main/HotelPage.html')
 
+
+def placelist(request):
+    return render(request, 'main/placelist.html')
+
+
+def place(request):
+    placeReview = PlaceReview.objects.all().order_by('date')
+    place_show = Place.objects.all().order_by('name')
+    context = {}
+    place_name = request.POST.get('hotel-name')
+    context['place_name'] = place_name
+    context['place_show'] = place_show
+
+    context['placeReview'] = placeReview
+
+    return render(request, 'main/place.html', context)
