@@ -1,7 +1,8 @@
 from django.test import SimpleTestCase, TestCase
 from django.urls import reverse, resolve
+from .forms import HotelReview, ResturantReview, PlaceReview
 
-from .models import HotelReview, ResturantReview, PlaceReview, RoomModel, Place, ResturantInfo
+from .models import RoomModel, Place, ResturantInfo
 from .views import homepage, about, contact, hotelReview, deleteHotelReview, resturantReview, deleteresturantReview, \
     placeReview, \
     deleteplaceReview, hotel_booking, hotel_bookingPdf, RoomShow, hotel_page, placelist, place, resturantList, \
@@ -203,3 +204,50 @@ class TestModels(TestCase):
         self.assertEquals(self.resturantInfo.description, 'test description')
         self.assertEquals(self.resturantInfo.menu, 'test menu')
         self.assertEquals(self.resturantInfo.website, 'test website')
+
+
+class TestForms(SimpleTestCase):
+    def test_HotelReview_Form_Valid_Data(self):
+        form = HotelReview(data={
+            'name': 'test name',
+            'hotelName': 'Radisson_Blu',
+            'review': 'test review',
+            'rating': 10
+        })
+
+        self.assertTrue(form.is_valid())
+
+    def test_HotelReview_Form_no_data(self):
+        form = HotelReview(data={})
+        self.assertFalse(form.is_valid())
+        self.assertEquals(len(form.errors), 3)
+
+    def test_ResturantReview_Form_Valid_Data(self):
+        form = ResturantReview(data={
+            'name': 'test name',
+            'resturantName': 'The_Dining_Lounge',
+            'review': 'test review',
+            'rating': 10
+        })
+
+        self.assertTrue(form.is_valid())
+
+    def test_ResturantReview_Form_no_data(self):
+        form = HotelReview(data={})
+        self.assertFalse(form.is_valid())
+        self.assertEquals(len(form.errors), 3)
+
+    def test_PlaceReview_Form_Valid_Data(self):
+        form = PlaceReview(data={
+            'name': 'test name',
+            'placeName': 'Dhaka',
+            'review': 'test review',
+            'rating': 10
+        })
+
+        self.assertTrue(form.is_valid())
+
+    def test_PlaceReview_Form_no_data(self):
+        form = PlaceReview(data={})
+        self.assertFalse(form.is_valid())
+        self.assertEquals(len(form.errors), 3)
