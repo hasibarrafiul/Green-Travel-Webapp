@@ -1,7 +1,13 @@
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 from django.urls import reverse, resolve
-from .views import homepage, about, contact, hotelReview, deleteHotelReview, resturantReview, deleteresturantReview, placeReview, \
-    deleteplaceReview, hotel_booking, hotel_bookingPdf, RoomShow, hotel_page, placelist, place, resturantList, resturantShow
+
+from .models import HotelReview, ResturantReview, PlaceReview, RoomModel, Place, ResturantInfo
+from .views import homepage, about, contact, hotelReview, deleteHotelReview, resturantReview, deleteresturantReview, \
+    placeReview, \
+    deleteplaceReview, hotel_booking, hotel_bookingPdf, RoomShow, hotel_page, placelist, place, resturantList, \
+    resturantShow
+
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 
 class UrlsTest(SimpleTestCase):
@@ -74,7 +80,7 @@ class UrlsTest(SimpleTestCase):
         self.assertEquals(resolve(url).func, resturantShow)
 
 
-class ViewTest(SimpleTestCase):
+class ViewTest(TestCase):
     def test_homepage(self):
         response = self.client.get(reverse('articles:list'))
         self.assertEquals(response.status_code, 302)
@@ -127,7 +133,73 @@ class ViewTest(SimpleTestCase):
         response = self.client.post(reverse('articles:hotel_page'))
         self.assertEquals(response.status_code, 302)
 
+    def test_placelist(self):
+        response = self.client.post(reverse('articles:placelist'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'main/placelist.html')
+
+    def test_place(self):
+        response = self.client.post(reverse('articles:place'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'main/place.html')
+
+    def test_resturantList(self):
+        response = self.client.post(reverse('articles:resturantList'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'main/ResturantList.html')
+
+    def test_resturantShow(self):
+        response = self.client.post(reverse('articles:resturantShow'))
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'main/ResturantShow.html')
 
 
+class TestModels(TestCase):
 
+    def test_RoomModel(self):
+        self.roomModel = RoomModel.objects.create(
+            roomtype='test room',
+            beds='test bed',
+            baths='test bath',
+            slug='test_slug',
+            guests=10,
+            amenities='test amenities',
+            facilities='test facilities'
+        )
+        self.assertEquals(self.roomModel.roomtype, 'test room')
+        self.assertEquals(self.roomModel.beds, 'test bed')
+        self.assertEquals(self.roomModel.baths, 'test bath')
+        self.assertEquals(self.roomModel.slug, 'test_slug')
+        self.assertEquals(self.roomModel.guests, 10)
+        self.assertEquals(self.roomModel.amenities, 'test amenities')
+        self.assertEquals(self.roomModel.facilities, 'test facilities')
 
+    def test_Place(self):
+        self.place = Place.objects.create(
+            name='test place',
+            slug='test_slug',
+            description='test description',
+            route='test route',
+            map_link='test map-link'
+        )
+        self.assertEquals(self.place.name, 'test place')
+        self.assertEquals(self.place.slug, 'test_slug')
+        self.assertEquals(self.place.description, 'test description')
+        self.assertEquals(self.place.route, 'test route')
+        self.assertEquals(self.place.map_link, 'test map-link')
+
+    def test_ResturantInfo(self):
+        self.resturantInfo = ResturantInfo.objects.create(
+            name='test resturant',
+            slug='test_slug',
+            address='test address',
+            description='test description',
+            menu='test menu',
+            website='test website'
+        )
+        self.assertEquals(self.resturantInfo.name, 'test resturant')
+        self.assertEquals(self.resturantInfo.slug, 'test_slug')
+        self.assertEquals(self.resturantInfo.address, 'test address')
+        self.assertEquals(self.resturantInfo.description, 'test description')
+        self.assertEquals(self.resturantInfo.menu, 'test menu')
+        self.assertEquals(self.resturantInfo.website, 'test website')
