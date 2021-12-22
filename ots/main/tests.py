@@ -79,5 +79,55 @@ class ViewTest(SimpleTestCase):
         response = self.client.get(reverse('articles:list'))
         self.assertEquals(response.status_code, 302)
 
+    def test_about(self):
+        response = self.client.get(reverse('articles:about'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_homepage(self):
+        response = self.client.post(reverse('articles:contact'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_hotelReview(self):
+        response = self.client.post(reverse('articles:hotelReview'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_deleteHotelReview(self):
+        response = self.client.post(reverse('articles:deleteHotelReview', args=['slug']))
+        self.assertEquals(response.status_code, 302)
+
+    def test_resturantReview(self):
+        response = self.client.post(reverse('articles:resturantReview'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_deleteresturantReview(self):
+        response = self.client.post(reverse('articles:deleteResturantReview', args=['slug']))
+        self.assertEquals(response.status_code, 302)
+
+    def test_placeReview(self):
+        response = self.client.post(reverse('articles:placeReview'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_deleteplaceReview(self):
+        response = self.client.post(reverse('articles:deleteplaceReview', args=['slug']))
+        self.assertEquals(response.status_code, 302)
+
+    def test_hotel_booking(self):
+        response = self.client.post(reverse('articles:hotel_booking'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_hotel_bookingPdf(self):
+        response = self.client.post(reverse('articles:hotel_bookingPdf'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_RoomShow(self):
+        response = self.client.post(reverse('articles:RoomShow'))
+        self.assertEquals(response.status_code, 302)
+
+    def test_hotel_page(self):
+        response = self.client.post(reverse('articles:hotel_page'))
+        self.assertEquals(response.status_code, 302)
+
+
+
 
 
