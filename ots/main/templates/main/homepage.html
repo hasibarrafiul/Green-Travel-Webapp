@@ -31,12 +31,12 @@
                    <li><a href="#contact_area" class="smooth-scroll">Carrier</a></li>
                    <li><a href="#map" class="location smooth-scroll">Our Location</a></li>
                    <li>
-                    <div class="dropdown-- collapse navbar-collapse" id="navi " >
-                      <button class="dropbtn nav navbar-nav navbar-right " >{{ user.username }}</button>
-                      <div class="dropdown-content">
-                      <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                    <div class="dropdown" style="background-color: #00000000;">
+                        <button class="dropbtn location smooth-scroll" style="background-color: #00000000;">{{ user.username }}</button>
+                        <div class="dropdown-content" style="background-color: #00000000;">
+                          <a ><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                                     {% csrf_token %}
-                          <button type="submit" class="dropbtn ">Logout</button>
+                          <button type="submit" class="dropbtn " style="background-color: #00000000;">Logout</button>
                       </form></a>
                       </div>
                     </div>
