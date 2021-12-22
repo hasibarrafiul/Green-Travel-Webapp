@@ -1,4 +1,4 @@
-# Travel Guide WebApp
+# Green Travel WebApp
 <br>
 Introduction:
 Green Traveler’s is a web-app through which users can search for their desired destination and tourism activities based on tourist places. <br>
@@ -26,7 +26,8 @@ Features: <br>
 16. 24/7 Support Chatbot<br>
 17. Room Reservation<br>
 18. Reservation Confirmation (Generate pdf)<br>
-19. Unit Testing<br><br>
+19. Unit Testing<br>
+
 Upcoming Features: <br>
 1. Search Restaurants<br>
 2. Search Hotels<br>
