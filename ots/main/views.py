@@ -147,5 +147,7 @@ def bolakareview(request):
     return render(request, 'main/balakareview.html', {'form': form})
 
 
-
+@login_required(login_url="/account/login/")
+def culturalfood(request):
+    return render(request, 'main/culturalfood.html')
 
