@@ -80,7 +80,7 @@
      
  });
 
-
+//chat bot function
     (function(d, m){
         var kommunicateSettings = 
             {"appId":"14a9cf733c320c5453296abee0b321c07","popupWidget":true,"automaticChatOpenOnNavigation":true};
