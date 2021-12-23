@@ -30,5 +30,7 @@ urlpatterns = [
     url(r'^resturant/$', views.resturantShow, name="resturantShow"),
     url(r'^resturantList/$', views.resturantList, name="resturantList"),
 
+    url(r'^cultural_food/$', views.culturalfood, name="cultural_food"),
+
 
 ]

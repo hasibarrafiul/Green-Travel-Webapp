@@ -267,3 +267,8 @@ def resturantShow(request):
 
     context['resturantReview'] = resturantReview
     return render(request, 'main/ResturantShow.html', context)
+
+
+@login_required(login_url="/account/login/")
+def culturalfood(request):
+    return render(request, 'main/culturalfood.html')
