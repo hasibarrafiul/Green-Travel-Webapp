@@ -14,5 +14,8 @@ urlpatterns = [
     url(r'^ticket/$', views.ticket, name="ticket"),
     #path('deletebalaka/<str:pk>/$', views.deletebalaka, name="deletebalaka"),
     url(r'^ticket_page/$', views.ticket_page, name="ticket_page"),
+    
+    #cultural food 
+    url(r'^cultural_food/$', views.culturalfood , name="culturalfood"),
 
 ]

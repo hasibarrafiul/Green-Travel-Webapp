@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^$', views.homepage),
 
 
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
