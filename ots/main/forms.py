@@ -18,3 +18,9 @@ class PlaceReview(forms.ModelForm):
     class Meta:
         model = models.PlaceReview
         fields = ['name', 'placeName', 'review', 'rating']
+
+
+class UserProfile(forms.ModelForm):
+    class Meta:
+        model = models.userProfile
+        fields = ['user_name', 'user_phone', 'user_address', 'bio', 'user_image']

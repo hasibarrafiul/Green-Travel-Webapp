@@ -277,8 +277,17 @@ def culturalfood(request):
 @login_required(login_url="/account/login/")
 def UserProfile(requset):
     profile = userProfile.objects.all()
+    profile2 = userProfile.objects.filter(user= requset.user).first()
+    b = ''
+    if profile2 is None:
+        b= 'NoData'
+        print("No data")
+
+
     context = {}
     context['profile'] = profile
+    context['booli'] = b
+
     return render(requset, 'main/user_profile.html', context)
 
 
@@ -288,4 +297,20 @@ def updateUserProfile(request, pk):
     instance.user_name = 'Updated'
     instance.save()
     return redirect('articles:user_profile')
+
+
+@login_required(login_url="/account/login/")
+def createProfile(request):
+    form = forms.UserProfile()
+    if request.method == 'POST':
+        form = forms.UserProfile(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.UserProfile()
+    return render(request, 'main/createprofile.html', {'form': form})
 
