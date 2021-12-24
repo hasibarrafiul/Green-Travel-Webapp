@@ -125,3 +125,13 @@ class ResturantInfo(models.Model):
     menu = models.TextField(max_length=3000, blank=True)
     website = models.CharField(max_length=500)
     res_img = models.ImageField(blank=True, null=True)
+
+
+class userProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    user_name = models.CharField(max_length=300, null=True)
+    user_phone = models.CharField(max_length=20, null=True)
+    user_address = models.CharField(max_length=20, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+    bio = models.CharField(max_length=300, null=True)
+    user_image = models.ImageField(blank=True, null=True)

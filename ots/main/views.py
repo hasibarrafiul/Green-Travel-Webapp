@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo
+from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile
 from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
@@ -272,3 +272,20 @@ def resturantShow(request):
 @login_required(login_url="/account/login/")
 def culturalfood(request):
     return render(request, 'main/culturalfood.html')
+
+
+@login_required(login_url="/account/login/")
+def UserProfile(requset):
+    profile = userProfile.objects.all()
+    context = {}
+    context['profile'] = profile
+    return render(requset, 'main/user_profile.html', context)
+
+
+@login_required(login_url="/account/login/")
+def updateUserProfile(request, pk):
+    instance = userProfile.objects.get(id=pk)
+    instance.user_name = 'Updated'
+    instance.save()
+    return redirect('articles:user_profile')
+

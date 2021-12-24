@@ -1,0 +1,20 @@
+<html>
+<body>
+
+  </div>
+                        {% for profile in profile %}
+                            {% ifequal user profile.user %}
+                                    <img src="{{ profile.user_image.url }}" alt="Error" height="100px" width="100px">
+									<h1> {{ profile.user_name }} </h1>
+									<h1> {{ profile.user_phone }} </h1>
+									<h1> {{ profile.user_address }} </h1>
+									<h1> {{ profile.bio }} </h1>
+                                    <a href="{% url 'articles:update_user_profile' profile.id %}">update </a>
+                      {% endifequal %}
+
+                        {% endfor %}
+
+                    </div>
+
+</body>
+</html>

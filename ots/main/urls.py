@@ -32,5 +32,8 @@ urlpatterns = [
 
     url(r'^cultural_food/$', views.culturalfood, name="cultural_food"),
 
+    url(r'^user_profile/$', views.UserProfile, name="user_profile"),
+    path(r'^update_user_profile/<str:pk>/$', views.updateUserProfile, name="update_user_profile"),
+
 
 ]
