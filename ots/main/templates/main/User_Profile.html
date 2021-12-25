@@ -17,7 +17,31 @@
 									<h1> {{ profile.user_phone }} </h1>
 									<h1> {{ profile.user_address }} </h1>
 									<h1> {{ profile.bio }} </h1>
-                                    <a href="{% url 'articles:update_profile' %}">update </a>
+
+                                    Update your profile:
+
+                                     <form method="post" autocomplete="on">
+                                        {% csrf_token %}
+                                        Enter your new name:
+                                        <input type="text" name="user_name">
+
+                                        Enter your new phone number:
+                                        <input type="text" name="phone_number">
+
+                                        Enter your new address:
+                                        <input type="text" name="address">
+
+                                        Enter your new bio:
+                                        <input type="text" name="bio">
+
+                                        <button type="submit">
+                                            Submit
+                                        </button>
+                                    {% if name or bio or phone or address %}
+                                    <a href="{% url 'articles:update_user_profile' profile.id %}">Save Changes </a>
+                                    {% endif %}
+                                     </form>
+
 
                       {% endif %}
                         {% endfor %}
@@ -25,6 +49,8 @@
                                <a href="{% url 'articles:create_profile' %}">Create Profile </a>
                         {% endif %}
                     </div>
+
+
 
 </body>
 </html>

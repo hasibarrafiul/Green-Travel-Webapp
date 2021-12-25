@@ -275,26 +275,45 @@ def culturalfood(request):
 
 
 @login_required(login_url="/account/login/")
-def UserProfile(requset):
+def UserProfile(request):
+    UserProfile.user_name = request.POST.get('user_name')
+    UserProfile.phone = request.POST.get('phone_number')
+    UserProfile.address = request.POST.get('address')
+    UserProfile.bio = request.POST.get('bio')
+
     profile = userProfile.objects.all()
-    profile2 = userProfile.objects.filter(user= requset.user).first()
+    profile2 = userProfile.objects.filter(user= request.user).first()
     b = ''
     if profile2 is None:
         b= 'NoData'
         print("No data")
 
-
     context = {}
     context['profile'] = profile
     context['booli'] = b
+    context['name'] = UserProfile.user_name
+    context['phone'] = UserProfile.phone
+    context['address'] = UserProfile.address
+    context['bio'] = UserProfile.bio
 
-    return render(requset, 'main/user_profile.html', context)
+    return render(request, 'main/user_profile.html', context)
 
 
 @login_required(login_url="/account/login/")
 def updateUserProfile(request, pk):
     instance = userProfile.objects.get(id=pk)
-    instance.user_name = 'Updated'
+    if UserProfile.user_name != '':
+        instance.user_name = UserProfile.user_name
+
+    if UserProfile.phone != '':
+        instance.user_phone = UserProfile.phone
+
+    if UserProfile.address != '':
+        instance.user_address = UserProfile.address
+
+    if UserProfile.bio != '':
+        instance.bio = UserProfile.bio
+
     instance.save()
     return redirect('articles:user_profile')
 
@@ -314,13 +333,6 @@ def createProfile(request):
         form = forms.UserProfile()
     return render(request, 'main/createprofile.html', {'form': form})
 
-
-@login_required(login_url="/account/login/")
-def update_profile(request):
-    profile = userProfile.objects.all()
-    context = {}
-    context['profile'] = profile
-    return render(request, 'main/update_user_profile.html', context)
 
 
 @login_required(login_url="/account/login/")
