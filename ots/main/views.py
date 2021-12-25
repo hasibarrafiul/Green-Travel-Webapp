@@ -321,3 +321,4 @@ def update_profile(request):
     context = {}
     context['profile'] = profile
     return render(request, 'main/update_user_profile.html', context)
+
