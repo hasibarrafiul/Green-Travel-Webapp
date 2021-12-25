@@ -314,3 +314,10 @@ def createProfile(request):
         form = forms.UserProfile()
     return render(request, 'main/createprofile.html', {'form': form})
 
+
+@login_required(login_url="/account/login/")
+def update_profile(request):
+    profile = userProfile.objects.all()
+    context = {}
+    context['profile'] = profile
+    return render(request, 'main/update_user_profile.html', context)
