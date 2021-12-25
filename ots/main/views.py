@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo
+from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile
 from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
@@ -273,4 +273,51 @@ def resturantShow(request):
 def culturalfood(request):
     return render(request, 'main/culturalfood.html')
 
-    
+
+@login_required(login_url="/account/login/")
+def UserProfile(requset):
+    profile = userProfile.objects.all()
+    profile2 = userProfile.objects.filter(user= requset.user).first()
+    b = ''
+    if profile2 is None:
+        b= 'NoData'
+        print("No data")
+
+
+    context = {}
+    context['profile'] = profile
+    context['booli'] = b
+
+    return render(requset, 'main/user_profile.html', context)
+
+
+@login_required(login_url="/account/login/")
+def updateUserProfile(request, pk):
+    instance = userProfile.objects.get(id=pk)
+    instance.user_name = 'Updated'
+    instance.save()
+    return redirect('articles:user_profile')
+
+
+@login_required(login_url="/account/login/")
+def createProfile(request):
+    form = forms.UserProfile()
+    if request.method == 'POST':
+        form = forms.UserProfile(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.UserProfile()
+    return render(request, 'main/createprofile.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def update_profile(request):
+    profile = userProfile.objects.all()
+    context = {}
+    context['profile'] = profile
+    return render(request, 'main/update_user_profile.html', context)
