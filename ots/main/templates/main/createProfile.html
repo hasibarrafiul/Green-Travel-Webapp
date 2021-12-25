@@ -1,0 +1,39 @@
+<html>
+<body>
+<form method="POST" id="register-form" class="form-horizontal form_middle" enctype='multipart/form-data'>
+					{% csrf_token %}
+                        <h2 class="form-title">Create Profile</h2>
+
+						<div class="form-group">
+                            <label class="u-label">Your Name</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.user_name}}
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">User Phone</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.user_phone}}
+                        </div>
+                        <div class="form-group">
+							<label class="u-label align" data-align="top">Address</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.user_address}}
+                        </div>
+                         <div class="form-group">
+							<label class="u-label align" data-align="top">Bio</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.bio}}
+                        </div>
+                            <div class="form-group">
+							<label class="u-label align" data-align="top">Image</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.user_image}}
+                        </div>
+
+
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+
+                    </form>
+
+</body>
+</html>

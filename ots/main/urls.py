@@ -34,5 +34,11 @@ urlpatterns = [
     url(r'^reservation_new/$', views.reservationnew, name="reservation_new"),
 
 
+    url(r'^user_profile/$', views.UserProfile, name="user_profile"),
+    path(r'^update_user_profile/<str:pk>/$', views.updateUserProfile, name="update_user_profile"),
+    url(r'^create_profile/$', views.createProfile, name="create_profile"),
+    url(r'^update_profile/$', views.update_profile, name="update_profile"),
+
+
 
 ]

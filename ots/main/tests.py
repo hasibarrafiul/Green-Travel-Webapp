@@ -251,3 +251,4 @@ class TestForms(SimpleTestCase):
         form = PlaceReview(data={})
         self.assertFalse(form.is_valid())
         self.assertEquals(len(form.errors), 3)
+
