@@ -321,3 +321,9 @@ def update_profile(request):
     context = {}
     context['profile'] = profile
     return render(request, 'main/update_user_profile.html', context)
+
+
+@login_required(login_url="/account/login/")
+def reservationnew(request):
+    return render(request, 'main/reservationnew.html')
+
