@@ -272,3 +272,7 @@ def resturantShow(request):
 @login_required(login_url="/account/login/")
 def culturalfood(request):
     return render(request, 'main/culturalfood.html')
+
+@login_required(login_url="/account/login/")
+def reservationnew(request):
+    return render(request, 'main/reservationnew.html')    
