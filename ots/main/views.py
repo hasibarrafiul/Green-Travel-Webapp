@@ -1,3 +1,4 @@
+from PIL import Image
 from django.forms.widgets import Input
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
@@ -275,18 +276,46 @@ def culturalfood(request):
 
 
 @login_required(login_url="/account/login/")
+def updateUserProfile(request, pk):
+    instance = userProfile.objects.get(id=pk)
+    instance.save()
+    updateUserProfile.primaryKey = pk
+    return redirect('articles:user_profile')
+
+
+@login_required(login_url="/account/login/")
 def UserProfile(request):
+    primaryKey = request.POST.get('primaryKey')
+    if primaryKey is None:
+        primaryKey = 1
+    instance = userProfile.objects.get(id=primaryKey)
     UserProfile.user_name = request.POST.get('user_name')
     UserProfile.phone = request.POST.get('phone_number')
     UserProfile.address = request.POST.get('address')
     UserProfile.bio = request.POST.get('bio')
+    UserProfile.image = request.FILES.get('image')
+
+    if UserProfile.user_name is not None and UserProfile.user_name != '':
+        instance.user_name = UserProfile.user_name
+
+    if UserProfile.phone is not None and UserProfile.phone != '':
+        instance.user_phone = UserProfile.phone
+
+    if UserProfile.address is not None and UserProfile.address != '':
+        instance.user_address = UserProfile.address
+
+    if UserProfile.bio is not None and UserProfile.bio!= '':
+        instance.bio = UserProfile.bio
+
+    if UserProfile.image is not None:
+        instance.user_image = UserProfile.image
+    instance.save()
 
     profile = userProfile.objects.all()
-    profile2 = userProfile.objects.filter(user= request.user).first()
+    profile2 = userProfile.objects.filter(user=request.user).first()
     b = ''
     if profile2 is None:
-        b= 'NoData'
-        print("No data")
+        b = 'NoData'
 
     context = {}
     context['profile'] = profile
@@ -295,27 +324,10 @@ def UserProfile(request):
     context['phone'] = UserProfile.phone
     context['address'] = UserProfile.address
     context['bio'] = UserProfile.bio
+    context['image'] = UserProfile.image
 
     return render(request, 'main/user_profile.html', context)
 
-
-@login_required(login_url="/account/login/")
-def updateUserProfile(request, pk):
-    instance = userProfile.objects.get(id=pk)
-    if UserProfile.user_name != '':
-        instance.user_name = UserProfile.user_name
-
-    if UserProfile.phone != '':
-        instance.user_phone = UserProfile.phone
-
-    if UserProfile.address != '':
-        instance.user_address = UserProfile.address
-
-    if UserProfile.bio != '':
-        instance.bio = UserProfile.bio
-
-    instance.save()
-    return redirect('articles:user_profile')
 
 
 @login_required(login_url="/account/login/")
@@ -334,8 +346,6 @@ def createProfile(request):
     return render(request, 'main/createprofile.html', {'form': form})
 
 
-
 @login_required(login_url="/account/login/")
 def reservationnew(request):
     return render(request, 'main/reservationnew.html')
-
