@@ -219,10 +219,12 @@ def hotel_bookingPdf(request):
 def RoomShow(request):
     hotelReview = HotelReview.objects.all().order_by('date')
     roomModel = RoomModel.objects.all().order_by('slug')
+    profile = userProfile.objects.all()
     context = {}
     hotel_name = request.POST.get('hotel-name')
     context['hotel_name'] = hotel_name
     context['roomModel'] = roomModel
+    context['profile'] = profile
 
     context['hotelReview'] = hotelReview
 
@@ -245,11 +247,13 @@ def placelist(request):
 def place(request):
     placeReview = PlaceReview.objects.all().order_by('date')
     place_show = Place.objects.all().order_by('name')
+    profile = userProfile.objects.all()
+
     context = {}
     place_name = request.POST.get('hotel-name')
     context['place_name'] = place_name
     context['place_show'] = place_show
-
+    context['profile'] = profile
     context['placeReview'] = placeReview
 
     return render(request, 'main/place.html', context)
@@ -262,10 +266,12 @@ def resturantList(request):
 def resturantShow(request):
     resturantReview = ResturantReview.objects.all().order_by('date')
     resturant_show = ResturantInfo.objects.all().order_by('name')
+    profile = userProfile.objects.all()
     context = {}
     place_name = request.POST.get('hotel-name')
     context['resturant_name'] = place_name
     context['resturant_show'] = resturant_show
+    context['profile'] = profile
 
     context['resturantReview'] = resturantReview
     return render(request, 'main/ResturantShow.html', context)
