@@ -15,8 +15,11 @@
                     </form>
 
                         {% for forum in forum %}
+                        {% if forum.message_user == user %}
+                        <h1 align="right"> {{ forum.message_user }} ->  {{ forum.message }}</h1>
+                        {% else %}
                         <h1> {{ forum.message_user }} ->  {{ forum.message }}</h1>
-
+                        {% endif %}
                         {% endfor %}
 
 </body>

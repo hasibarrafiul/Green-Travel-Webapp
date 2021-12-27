@@ -315,6 +315,9 @@ def UserProfile(request):
     context['bio'] = UserProfile.bio
     context['image'] = UserProfile.image
 
+    userBookedHotels = HotelReservation.objects.filter(user=request.user)
+    context['userBookedHotels'] = userBookedHotels
+
     return render(request, 'main/user_profile.html', context)
 
 

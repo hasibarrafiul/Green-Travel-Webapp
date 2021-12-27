@@ -49,6 +49,17 @@
                         {% if booli == 'NoData' %}
                                <a href="{% url 'articles:create_profile' %}">Create Profile </a>
                         {% endif %}
+
+                        <h1>
+                            Your previously reserved hotels:
+                            <br>
+                            {% for userBookedHotels in userBookedHotels %}
+                            Hotel name: {{ userBookedHotels.hotel_name }} <br>
+                            Checkin date: {{ userBookedHotels.checkin_date }}<br>
+                            Checkout date: {{ userBookedHotels.checkout_date }}<br>
+                            <br>
+                            {% endfor %}
+                        </h1>
                     </div>
 
 
