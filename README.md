@@ -27,21 +27,24 @@ Features: <br>
 17. Room Reservation<br>
 18. Reservation Confirmation (Generate pdf)<br>
 19. Unit Testing<br>
+20. direct message<br>
+21. forum messages<br>
 
 Upcoming Features: <br>
 1. Search Restaurants<br>
 2. Search Hotels<br>
 3. Search Places<br>
-4. User Profile<br>
-5. User Search<br>
-6. Carrer Opportunities<br>
-7. User get offers<br>
-8. Wishlist<br>
-9. Blogs<br>
-10. Explore<br>
-11. User Review about the app (Home Component)<br>
-12. User Direct message conversations<br>
-13. Map with directions<br>
+4. Search User<br>
+5. User Profile<br>
+6. User Search<br>
+7. Carrer Opportunities<br>
+8. User get offers<br>
+9. Wishlist<br>
+10. Blogs<br>
+11. Explore<br>
+12. User Review about the app (Home Component)<br>
+13. User Direct message conversations<br>
+14. Map with directions<br>
 
 This is an web application developed using python and Django. <br>
 Screenshots: 
