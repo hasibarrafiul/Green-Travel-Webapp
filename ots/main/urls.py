@@ -35,5 +35,6 @@ urlpatterns = [
     url(r'^user_profile/$', views.UserProfile, name="user_profile"),
     url(r'^create_profile/$', views.createProfile, name="create_profile"),
     url(r'^direct_message/$', views.directmessage, name="direct_message"),
+    url(r'^sent_message/$', views.sentmessage, name="sent_message"),
 
 ]

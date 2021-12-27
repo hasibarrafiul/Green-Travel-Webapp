@@ -352,8 +352,26 @@ def reservationnew(request):
 
 @login_required(login_url="/account/login/")
 def directmessage(request):
+    userName = userProfile.objects.all()
     Chat = chat.objects.all().order_by('date')
     context = {}
     context['chat'] = Chat
+    context['userName'] = userName
     return render(request, 'main/directMessage.html', context)
+
+
+@login_required(login_url="/account/login/")
+def sentmessage(request):
+    form = forms.chatForm()
+    if request.method == 'POST':
+        form = forms.chatForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.from_user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.chatForm()
+    return render(request, 'main/messageSend.html', {'form': form})
 
