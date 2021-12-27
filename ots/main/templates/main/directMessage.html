@@ -1,0 +1,29 @@
+<html>
+<body>
+
+  </div>
+    <a href="{% url 'articles:sent_message' %}"><h1>Send a new message</h1></a>
+            <h1>Your Inbox:</h1>
+
+                        {% for chat in chat %}
+                            {% if user == chat.to_user %}
+                                    {% for userName in userName %}
+                                    {% if chat.from_user == userName.user %}
+                                    <h1>Name: {{ userName.user_name }}</h1>
+                                        {% endif %}
+                                        {% endfor %}
+									<h1> {{ chat.from_user }} </h1>
+									<h1> {{ chat.chat }} </h1>
+									<h1> {{ chat.date }} </h1>
+                                    <h1>..............................................</h1>
+
+                      {% endif %}
+                        {% endfor %}
+
+
+                    </div>
+
+
+
+</body>
+</html>

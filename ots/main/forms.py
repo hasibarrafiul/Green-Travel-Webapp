@@ -24,3 +24,10 @@ class UserProfile(forms.ModelForm):
     class Meta:
         model = models.userProfile
         fields = ['user_name', 'user_phone', 'user_address', 'bio', 'user_image']
+
+
+class chatForm(forms.ModelForm):
+    class Meta:
+        model = models.chat
+        fields = ['to_user', 'chat']
+

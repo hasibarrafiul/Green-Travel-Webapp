@@ -17,7 +17,6 @@ urlpatterns = [
     url(r'^placeReview/$', views.placeReview, name="placeReview"),
     path('deleteplaceReview/<str:pk>/$', views.deleteplaceReview, name="deleteplaceReview"),
 
-
     url(r'^hotel_booking/$', views.hotel_booking, name="hotel_booking"),
     path('hotel_bookingPdf', views.hotel_bookingPdf, name="hotel_bookingPdf"),
 
@@ -33,10 +32,9 @@ urlpatterns = [
     url(r'^cultural_food/$', views.culturalfood, name="cultural_food"),
     url(r'^reservation_new/$', views.reservationnew, name="reservation_new"),
 
-
     url(r'^user_profile/$', views.UserProfile, name="user_profile"),
     url(r'^create_profile/$', views.createProfile, name="create_profile"),
-
-
+    url(r'^direct_message/$', views.directmessage, name="direct_message"),
+    url(r'^sent_message/$', views.sentmessage, name="sent_message"),
 
 ]

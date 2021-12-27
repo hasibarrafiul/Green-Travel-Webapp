@@ -1,0 +1,25 @@
+<html>
+<body>
+
+<form method="POST" id="register-form" class="register-form">
+					{% csrf_token %}
+                        <h2 class="form-title">Write Review</h2>
+
+						<div class="form-group">
+                            <label class="u-label">Send message to</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.to_user}}
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">Your message</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.chat}}
+                        </div>
+
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+
+                    </form>
+
+
+</body>
+</html>
