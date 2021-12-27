@@ -1,0 +1,23 @@
+<html>
+<body>
+
+<form method="POST" id="register-form" class="register-form">
+					{% csrf_token %}
+
+						<div class="form-group">
+                            <label class="u-label">Send Messages</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.message}}
+
+
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+                    </div>
+                    </form>
+
+                        {% for forum in forum %}
+                        <h1> {{ forum.message_user }} ->  {{ forum.message }}</h1>
+
+                        {% endfor %}
+
+</body>
+</html>

@@ -3,9 +3,10 @@ from django.forms.widgets import Input
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
+from django.urls import reverse
 
 from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile, chat
-from .models import ResturantReview, HotelReservation
+from .models import ResturantReview, HotelReservation, chatForumMessages
 
 from django.contrib.auth.decorators import login_required
 
@@ -353,7 +354,7 @@ def reservationnew(request):
 @login_required(login_url="/account/login/")
 def directmessage(request):
     userName = userProfile.objects.all()
-    Chat = chat.objects.all().order_by('date')
+    Chat = chat.objects.all().order_by('-date')
     context = {}
     context['chat'] = Chat
     context['userName'] = userName
@@ -369,9 +370,30 @@ def sentmessage(request):
             instance = form.save(commit=False)
             instance.from_user = request.user
             instance.save()
+            url = reverse('articles:direct_message')
             next = request.POST.get('next', '/')
-            return HttpResponseRedirect(next)
+            return HttpResponseRedirect(url)
     else:
         form = forms.chatForm()
     return render(request, 'main/messageSend.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def chatForum(request):
+    form = forms.chatForumForm()
+    if request.method == 'POST':
+        form = forms.chatForumForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.message_user = request.user
+            instance.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = forms.chatForumForm()
+
+    forum = chatForumMessages.objects.all().order_by('-date')
+    context = {}
+    context['forum'] = forum
+    context['form'] = form
+    return render(request, 'main/chatForum.html', context)
 
