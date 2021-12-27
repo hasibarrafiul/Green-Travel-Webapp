@@ -1,0 +1,22 @@
+<html>
+<body>
+
+  </div>
+
+
+
+                        {% for chat in chat %}
+                            {% if user == chat.to_user %}
+
+									<h1> {{ chat.from_user }} </h1>
+									<h1> {{ chat.chat }} </h1>
+									<h1> {{ chat.date }} </h1>
+
+                      {% endif %}
+                        {% endfor %}
+                    </div>
+
+
+
+</body>
+</html>

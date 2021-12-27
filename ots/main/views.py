@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.template import loader
 
-from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile
+from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile, chat
 from .models import ResturantReview, HotelReservation
 
 from django.contrib.auth.decorators import login_required
@@ -329,7 +329,6 @@ def UserProfile(request):
     return render(request, 'main/user_profile.html', context)
 
 
-
 @login_required(login_url="/account/login/")
 def createProfile(request):
     form = forms.UserProfile()
@@ -349,3 +348,12 @@ def createProfile(request):
 @login_required(login_url="/account/login/")
 def reservationnew(request):
     return render(request, 'main/reservationnew.html')
+
+
+@login_required(login_url="/account/login/")
+def directmessage(request):
+    Chat = chat.objects.all().order_by('date')
+    context = {}
+    context['chat'] = Chat
+    return render(request, 'main/directMessage.html', context)
+
