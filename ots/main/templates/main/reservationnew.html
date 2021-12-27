@@ -1,8 +1,3 @@
-{% extends 'base_layout.html' %}
-
-{% block content %}
-{% load static %}
-<!DOCTYPE html>
 <html lang="en">
   <head>
 
@@ -30,6 +25,12 @@
     <link rel="stylesheet" href="/static/reservationnew/css/helpers.css">
     <link rel="stylesheet" href="/static/reservationnew/css/style.css">
 
+
+    <link rel="shortcut icon" href="https://cdn.jotfor.ms/assets/img/favicons/favicon-2021.svg">
+    <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251"/>
+
+    <title>Hotel Reservation Page </title>
+
   </head>
   <body data-spy="scroll" data-target="#probootstrap-navbar" data-offset="200">
   
@@ -39,7 +40,6 @@
     
 
     <section class="probootstrap-cover overflow-hidden relative"  style="background-image: url('/static/reservationnew/images/slider1.jpg');"  id="section-home">
-      <div class="overlay"></div>
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md">
@@ -47,97 +47,142 @@
             
           </div> 
           <div class="col-md probootstrap-animate">
-            <form action="#" class="probootstrap-form">
-              <div class="form-group">
-                <div class="row mb-3">
-                  <div class="col-md">
-                    <div class="form-group">
-                      <label for="id_label_single">Hotel Name</label>
 
-                      <label for="id_label_single" style="width: 100%;">
-                        <select class="js-example-basic-single js-states form-control" id="id_label_single" style="width: 100%;">
-                          <option value="Pan Pacific Sonargoan">Pan Pacific Sonargoan</option>
-                          <option value="Radisson Blu">Radisson Blu</option>
-                          <option value="Hotel De Meridian">Hotel De Meridian</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                          <option value="Empyrean Hotel">Empyrean Hotel</option>
-                        </select>
-                      </label>
+<form class="jotform-form probootstrap-form" method="post" name="form_213521348385456" id="213521348385456" accept-charset="utf-8" autocomplete="on">
+	{% csrf_token %}
+  <input type="hidden" name="formID" value="213521348385456" />
+  <input type="hidden" id="JWTContainer" value="" />
+  <input type="hidden" id="cardinalOrderNumber" value="" />
+<ul class="form-section page-section">
+      <li id="cid_3" class="form-input-wide" data-type="control_head">
+        <div class="form-header-group  header-large">
+          <div class="header-text httal htvam">
+
+            <h1 id="header_3" class="form-header" data-component="header">
+                <a href="../"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
+              Hotel Reservation Form
+            </h1>
+            <div id="subHeader_3" class="form-subHeader">
+              Please complete the form below.
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_text" id="id_4">
+        <div id="cid_4" class="form-input-wide" data-layout="full">
+          <div id="text_4" class="form-html" data-component="text">
+            Your registration will be verified prior to your arrival.
 
 
-                    </div>
-                  </div>
-                  <div class="col-md">
-                    <div class="form-group">
-                      <label for="id_label_single2">Room Type</label>
-                      <div class="probootstrap_select-wrap">
-                        <label for="id_label_single2" style="width: 100%;">
-                        <select class="js-example-basic-single js-states form-control" id="id_label_single2" style="width: 100%;">
-                          <option value="Single Bed">Single Bed</option>
-                          <option value="Double Bed">Double Bed</option>
-                          <option value="Family Bed">Family Bed</option>
-                        </select>
-                      </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- END row -->
-                <div class="row mb-5">
-                  <div class="col-md">
-                    <div class="form-group">
-                      <label for="probootstrap-date-departure">Departure</label>
-                      <div class="probootstrap-date-wrap">
-                        <span class="icon ion-calendar"></span> 
-                        <input type="text" id="probootstrap-date-departure" class="form-control" placeholder="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md">
-                    <div class="form-group">
-                      <label for="probootstrap-date-arrival">Arrival</label>
-                      <div class="probootstrap-date-wrap">
-                        <span class="icon ion-calendar"></span> 
-                        <input type="text" id="probootstrap-date-arrival" class="form-control" placeholder="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- END row -->
-                <!-- END row -->
-                <div class="row mb-5">
-                    <div class="col-md">
-                      <div class="form-group">
-                        <label for="probootstrap-date-departure">Full Name</label>
-                        <div class="probootstrap-date-wrap">
-                          <input type="text"class="form-control" placeholder=" Enter your full name">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md">
-                      <div class="form-group">
-                        <label for="probootstrap-date-arrival">Email Address</label>
-                        <div class="probootstrap-date-wrap"> 
-                          <input type="text" class="form-control" placeholder="Enter your email address">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- END row -->
-                <div class="row">
-                  <div class="col-md">
-                    <input type="submit" value="Submit" class="btn btn-primary btn-block">
-                  </div>
-                </div>
-              </div>
-            </form>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_fullname" id="id_5">
+        <label class="form-label form-label-top form-label-auto" id="label_5" > Full Name </label>
+        <div id="cid_5" class="form-input-wide" data-layout="full">
+          <div data-wrapper-react="true">
+            <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+             <input class="form-textbox" type="text" name="user-name">
+
+            </span>
+
+          </div>
+        </div>
+      </li>
+      <li class="form-line form-line-column form-col-1" data-type="control_phone" id="id_7">
+        <label class="form-label form-label-top form-label-auto" id="label_7" > Email </label>
+        <div id="cid_7" class="form-input-wide" data-layout="half">
+          <span class="form-sub-label-container" style="vertical-align:top">
+            <input class="form-textbox validate[Email]" type="text" name="user-email" placeholder="example@gmail.com">
+
+          </span>
+        </div>
+      </li>
+      <li class="form-line form-line-column form-col-2" data-type="control_email" id="id_8">
+        <label class="form-label form-label-top form-label-auto" id="label_8" > Phone Number </label>
+        <div id="cid_8" class="form-input-wide" data-layout="half">
+          <span class="form-sub-label-container" style="vertical-align:top">
+            <input class="mask-phone-number form-textbox validate[Fill Mask]" type="text" name="user-phone" placeholder="+88XXXXXXXXXXX">
+
+          </span>
+        </div>
+      </li>
+      <li class="form-line allowTime" data-type="control_datetime" id="id_10">
+        <label class="form-label form-label-top" id="label_10" > Arrival - Date </label>
+		<input type="date" name="checkin-date">
+
+      </li>
+      <li class="form-line allowTime" data-type="control_datetime" id="id_11">
+        <label class="form-label form-label-top" id="label_11" > Departure - Date </label>
+		<input type="date" name="checkout-date">
+      </li>
+      <li class="form-line form-line-column form-col-1" data-type="control_number" id="id_22">
+        <label class="form-label form-label-top" id="label_22" > Hotel Name </label>
+        <div id="cid_22" class="form-input-wide" data-layout="half">
+          <select class="time-dropdown form-dropdown" name="hotel-name" id="hotel">
+  						<option value="Pan Pacific Sonargoan">Pan Pacific Sonargoan</option>
+ 						 <option value="Radisson Blu">Radisson Blu</option>
+ 						 <option value="Hotel De Meridian">Hotel De Meridian</option>
+						 <option value="Empyrean Hotel">Empyrean Hotel</option>
+  						<option value="The Raintree Dhaka">The Raintree Dhaka</option>
+    				</select>
+        </div>
+      </li>
+      <li class="form-line form-line-column form-col-2" data-type="control_number" >
+        <label class="form-label form-label-top" > Room Numbers </label>
+        <div  class="form-input-wide" data-layout="half">
+           <select class="time-dropdown form-dropdown" name="room-numbers" id="room-numbers">
+  						<option value="1">1</option>
+ 						 <option value="2">2</option>
+ 						 <option value="3">3</option>
+						 <option value="4">4</option>
+  						<option value="5">5</option>
+    				</select>
+        </div>
+      </li>
+
+	  <li class="form-line form-line-column form-col-2" data-type="control_number" id="id_23">
+        <label class="form-label form-label-top" id="label_23" > Room Type </label>
+        <div id="cid_23" class="form-input-wide" data-layout="half">
+           <select class="time-dropdown form-dropdown" name="room-type" id="room-type">
+  						<option value="Single Bed">Single Bed</option>
+ 						 <option value="Double Bed">Double Bed</option>
+ 						 <option value="King Size">King Size</option>
+						 <option value="Family Size">Family Size</option>
+    				</select>
+        </div>
+      </li>
+
+
+      <li class="form-line">
+        <div id="cid_2" class="form-input-wide">
+          <div data-align="center" class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
+            <button type="submit" class="form-submit-button submit-button jf-form-buttons">
+              Submit
+            </button>
+			  <br>
+			<h3>Once information is submitted, you can book the hotel.</h3>
+
+			  {% if user_name and user_email and user_phone and checkin_date and hotel_name and room_numbers and room_type %}
+            <button  type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField">
+              <a href="{% url 'articles:hotel_bookingPdf' %}" style="color: White">Book the hotel</a>
+            </button>
+			{% endif %}
+
+              {% if not user_name and not user_email and not user_phone and not checkin_date and not hotel_name and not room_numbers and not room_type %}
+                <h3>Please Enter all the information to confirm reservation</h3>
+                {% endif %}
+          </div>
+        </div>
+      </li>
+      <li style="clear:both">
+      </li>
+      <li style="display:none">
+        Should be Empty:
+        <input type="text" name="website" value="" />
+      </li>
+    </ul>
+</form>
           </div>
         </div>
       </div>
@@ -433,7 +478,7 @@
 
               <div>
                 <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-                  <img src="/static/reservationnew/images/sajek-3.jpg"class="img-fluid">
+                  <img src="/static/reservationnew/images/sajek-3.jpg" class="img-fluid">
                   <div class="media-body">
                     <h5 class="mb-3">Important Announcement</h5>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
@@ -526,5 +571,3 @@
     <script src="/static/reservationnew/js/main.js"></script>
   </body>
 </html>
-
-{% endblock %}

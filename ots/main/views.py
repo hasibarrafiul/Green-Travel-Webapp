@@ -124,24 +124,6 @@ def deleteplaceReview(request, pk):
 
 
 @login_required(login_url="/account/login/")
-def hotel_booking(request):
-    hotel_booking.user_name = request.POST.get('user-name')
-    hotel_booking.user_email = request.POST.get('user-email')
-    hotel_booking.user_phone = request.POST.get('user-phone')
-    hotel_booking.checkin_date = request.POST.get('checkin-date')
-    hotel_booking.checkout_date = request.POST.get('checkout-date')
-    hotel_booking.hotel_name = request.POST.get('hotel-name')
-    hotel_booking.room_numbers = request.POST.get('room-numbers')
-    hotel_booking.room_type = request.POST.get('room-type')
-
-    return render(request, 'main/hotel_booking.html',
-                  {'user_name': hotel_booking.user_name, 'user_email': hotel_booking.user_email,
-                   'user_phone': hotel_booking.user_phone, 'checkin_date': hotel_booking.checkin_date,
-                   'checkout_date': hotel_booking.checkout_date, 'hotel_name': hotel_booking.hotel_name,
-                   'room_numbers': hotel_booking.room_numbers, 'room_type': hotel_booking.room_type})
-
-
-@login_required(login_url="/account/login/")
 def hotel_bookingPdf(request):
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
@@ -150,14 +132,14 @@ def hotel_bookingPdf(request):
     textob.setFont("Helvetica", 14)
     logo = ImageReader('https://i.ibb.co/MPcBtHf/logo1.jpg')
 
-    name = hotel_booking.user_name
-    mail = hotel_booking.user_email
-    phone = hotel_booking.user_phone
-    checkin = hotel_booking.checkin_date
-    checkout = hotel_booking.checkout_date
-    hotel_name = hotel_booking.hotel_name
-    room_number = hotel_booking.room_numbers
-    room_type = hotel_booking.room_type
+    name = reservationnew.user_name
+    mail = reservationnew.user_email
+    phone = reservationnew.user_phone
+    checkin = reservationnew.checkin_date
+    checkout = reservationnew.checkout_date
+    hotel_name = reservationnew.hotel_name
+    room_number = reservationnew.room_numbers
+    room_type = reservationnew.room_type
 
     hotel_reservation_instance = HotelReservation.objects.create(user_name=name, user_email=mail, user_phone=phone,
                                                                  checkin_date=checkin, checkout_date=checkout,
@@ -354,7 +336,20 @@ def createProfile(request):
 
 @login_required(login_url="/account/login/")
 def reservationnew(request):
-    return render(request, 'main/reservationnew.html')
+    reservationnew.user_name = request.POST.get('user-name')
+    reservationnew.user_email = request.POST.get('user-email')
+    reservationnew.user_phone = request.POST.get('user-phone')
+    reservationnew.checkin_date = request.POST.get('checkin-date')
+    reservationnew.checkout_date = request.POST.get('checkout-date')
+    reservationnew.hotel_name = request.POST.get('hotel-name')
+    reservationnew.room_numbers = request.POST.get('room-numbers')
+    reservationnew.room_type = request.POST.get('room-type')
+
+    return render(request, 'main/reservationnew.html',
+                  {'user_name': reservationnew.user_name, 'user_email': reservationnew.user_email,
+                   'user_phone': reservationnew.user_phone, 'checkin_date': reservationnew.checkin_date,
+                   'checkout_date': reservationnew.checkout_date, 'hotel_name': reservationnew.hotel_name,
+                   'room_numbers': reservationnew.room_numbers, 'room_type': reservationnew.room_type})
 
 
 @login_required(login_url="/account/login/")

@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^placeReview/$', views.placeReview, name="placeReview"),
     path('deleteplaceReview/<str:pk>/$', views.deleteplaceReview, name="deleteplaceReview"),
 
-    url(r'^hotel_booking/$', views.hotel_booking, name="hotel_booking"),
+    url(r'^reservation_new/$', views.reservationnew, name="reservation_new"),
     path('hotel_bookingPdf', views.hotel_bookingPdf, name="hotel_bookingPdf"),
 
     url(r'^hotel_page/$', views.hotel_page, name="hotel_page"),
@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^resturantList/$', views.resturantList, name="resturantList"),
 
     url(r'^cultural_food/$', views.culturalfood, name="cultural_food"),
-    url(r'^reservation_new/$', views.reservationnew, name="reservation_new"),
+
 
     url(r'^user_profile/$', views.UserProfile, name="user_profile"),
     url(r'^create_profile/$', views.createProfile, name="create_profile"),
