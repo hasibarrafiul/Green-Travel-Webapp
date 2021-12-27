@@ -142,3 +142,9 @@ class chat(models.Model):
     to_user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING, related_name='to_user')
     chat = models.CharField(max_length=300, null=True)
     date = models.DateTimeField(auto_now_add=True)
+
+
+class chatForumMessages(models.Model):
+    message_user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING)
+    message = models.CharField(max_length=300, null=True)
+    date = models.DateTimeField(auto_now_add=True)
