@@ -31,10 +31,9 @@ Features: <br>
 21. Forum messages<br>
 22. Wishlist<br>
 23. User Profile<br>
-24. User Direct message conversations<br>
-25. Cultural Food <br>
-26. User get offers<br>
-27. Customized Admin Panel <br>
+24. Cultural Food <br>
+25. User get offers<br>
+26. Customized Admin Panel <br>
 
 Upcoming Features: <br>
 1. Search Restaurants<br>
