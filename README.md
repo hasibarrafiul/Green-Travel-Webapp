@@ -34,6 +34,7 @@ Features: <br>
 24. User Direct message conversations<br>
 25. Cultural Food <br>
 26. User get offers<br>
+27. Customized Admin Panel <br>
 
 Upcoming Features: <br>
 1. Search Restaurants<br>
