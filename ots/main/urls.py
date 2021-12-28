@@ -43,4 +43,6 @@ urlpatterns = [
     url(r'^wishlist/$', views.wishList, name="wishlist"),
     path('deletewishlist/<str:pk>/$', views.deletewishlist, name="deletewishlist"),
 
+    url(r'^offers/$', views.giveOffer, name="offers"),
+
 ]
