@@ -152,6 +152,6 @@ class chatForumMessages(models.Model):
 
 class wishlist(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING)
-    PlaceName = models.CharField(choices=PlaceChoices, max_length=100, default=None, null=True)
+    PlaceName = models.CharField(choices=PlaceChoices, max_length=100, default=None, null=True, unique=True)
     date = models.DateTimeField(auto_now_add=True)
 
