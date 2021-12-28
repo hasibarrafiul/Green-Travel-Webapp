@@ -40,12 +40,11 @@ Upcoming Features: <br>
 2. Search Hotels<br>
 3. Search Places<br>
 4. Search User<br>
-5. User Search<br>
-6. Carrer Opportunities<br>
-7. Blogs<br>
-8. Explore<br>
-9. User Review about the app (Home Component)<br>
-10. Map with directions<br>
+5. Carrer Opportunities<br>
+6. Blogs<br>
+7. Explore<br>
+8. User Review about the app (Home Component)<br>
+9. Map with directions<br>
 
 This is an web application developed using python and Django. <br>
 Screenshots: 
