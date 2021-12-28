@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from django.contrib import admin
 from .models import HotelReview, RoomModel, PlaceReview, Place, ResturantInfo, HotelReservation, userProfile, chat
-from .models import ResturantReview, chatForumMessages
+from .models import ResturantReview, chatForumMessages, wishlist
 
 admin.site.register(HotelReview)
 admin.site.register(ResturantReview)
@@ -14,3 +14,4 @@ admin.site.register(HotelReservation)
 admin.site.register(userProfile)
 admin.site.register(chat)
 admin.site.register(chatForumMessages)
+admin.site.register(wishlist)

@@ -1,0 +1,28 @@
+<html>
+<body>
+
+<h1>Add a place to wishlist:</h1>
+<form method="POST" id="register-form" class="register-form">
+					{% csrf_token %}
+						<div class="form-group">
+                            <label class="u-label">Enter a place</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.PlaceName}}
+                        </div>
+
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+
+                    </form>
+<form method="POST" action="/main/place/">
+{% csrf_token %}
+    <h1>Wish List:</h1>
+        {% for WishList in WishList %}
+        {% if WishList.user == user %}
+        <h1>Place Name: {{ WishList.PlaceName }}  <button style="padding-left:10px;" type="submit" name="hotel-name" value="{{ WishList.PlaceName }}" class="accommodation-list__button--12985 hoverState"><img src="/static/advance.png" width="50" height="50"></button>
+            <a href="{% url 'articles:deletewishlist' WishList.id %}"><img src="/static/delete-circle-icon.png" height="30px" width="30px">
+                                </a> </h1>
+        {% endif %}
+        {% endfor %}
+    </form>
+</body>
+</html>
