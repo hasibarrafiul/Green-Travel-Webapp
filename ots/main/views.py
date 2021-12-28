@@ -6,7 +6,7 @@ from django.template import loader
 from django.urls import reverse
 
 from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile, chat
-from .models import ResturantReview, HotelReservation, chatForumMessages
+from .models import ResturantReview, HotelReservation, chatForumMessages, wishlist
 
 from django.contrib.auth.decorators import login_required
 
@@ -400,4 +400,31 @@ def chatForum(request):
     context['forum'] = forum
     context['form'] = form
     return render(request, 'main/chatForum.html', context)
+
+
+@login_required(login_url="/account/login/")
+def wishList(request):
+    form = forms.wishlistForm()
+    if request.method == 'POST':
+        form = forms.wishlistForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = forms.wishlistForm()
+
+    WishList = wishlist.objects.all().order_by('-date')
+    context = {}
+    context['WishList'] = WishList
+    context['form'] = form
+    return render(request, 'main/wishlist.html', context)
+
+
+@login_required(login_url="/account/login/")
+def deletewishlist(request, pk):
+    instance = wishlist.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:wishlist')
 
