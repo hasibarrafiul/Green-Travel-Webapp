@@ -480,3 +480,4 @@ def hotelsearch(request):
         roomModel = RoomModel.objects.filter(slug__icontains=search2)
         context['roomModel'] = roomModel
     return render(request, 'main/hotelsearch.html', context)
+
