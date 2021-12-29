@@ -1,0 +1,15 @@
+<html>
+<body>
+        {% for blogs in blogs %}
+        {{ blogs.Title }}  <a href="{% url 'articles:deleteBlog' blogs.id %}">Delete</a><br>
+        {% if blogs.place_Img1 %}
+        <img src="{{ blogs.place_Img1.url }}" alt="Error" height="500px" width="500px"><br>
+        {% endif %}
+        {{ blogs.text }}<br>
+        {{ blogs.user }}<br>
+        {{ blogs.date }}<br>
+
+        <br>
+        {% endfor %}
+</body>
+</html>

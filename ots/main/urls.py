@@ -49,4 +49,9 @@ urlpatterns = [
     url(r'^placesearch/$', views.placesearch, name="placesearch"),
     url(r'^resturantsearch/$', views.resturantsearch, name="resturantsearch"),
 
+    url(r'^blogList/$', views.blogList, name="blogList"),
+    path('blogPage/<str:pk>/$', views.blogPage, name="blogPage"),
+    path('deleteBlog/<str:pk>/$', views.deleteBlog, name="deleteBlog"),
+    url(r'^createBlog/$', views.createBlog, name="createBlog"),
+
 ]
