@@ -54,4 +54,7 @@ urlpatterns = [
     path('deleteBlog/<str:pk>/$', views.deleteBlog, name="deleteBlog"),
     url(r'^createBlog/$', views.createBlog, name="createBlog"),
 
+    url(r'^usersearch/$', views.usersearch, name="usersearch"),
+    url(r'^searcheduser/$', views.searcheduser, name="searcheduser"),
+
 ]

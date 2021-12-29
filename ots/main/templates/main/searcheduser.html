@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Search Page</title>
+</head>
+<body>
+<form method="POST" action="">
+    {% csrf_token %}
+            {% if usersearch %}
+                <h1>you searched for {{ usersearch }}</h1>
+        {% for userprofile in userprofile %}
+            {{ userprofile.user_name }}
+    {% if userprofile.user_image %}
+    <img src="{{ userprofile.user_image.url }}" alt="Error" height="100px" width="100px">
+    {% endif %}
+    <br>
+        {% endfor %}
+
+    {% endif %}
+<p></p>
+</form>
+</body>
+</html>
