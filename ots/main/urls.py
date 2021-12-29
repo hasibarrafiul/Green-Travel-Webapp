@@ -53,6 +53,7 @@ urlpatterns = [
     path('blogPage/<str:pk>/$', views.blogPage, name="blogPage"),
     path('deleteBlog/<str:pk>/$', views.deleteBlog, name="deleteBlog"),
     url(r'^createBlog/$', views.createBlog, name="createBlog"),
+    path('editBlogs/<str:pk>/$', views.editBlogs, name="editBlogs"),
 
     url(r'^usersearch/$', views.usersearch, name="usersearch"),
     url(r'^searcheduser/$', views.searcheduser, name="searcheduser"),

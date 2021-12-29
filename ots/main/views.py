@@ -525,6 +525,36 @@ def createBlog(request):
 
 
 @login_required(login_url="/account/login/")
+def editBlogs(request, pk):
+    blogs = userBlog.objects.get(id=pk)
+    blogDate = blogs.date
+    blogTitle = blogs.Title
+    blogtext = blogs.text
+    blogimage = blogs.place_Img1
+    form = forms.createBlogForm()
+    if request.method == 'POST':
+        form = forms.createBlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.id = pk
+            instance.user = request.user
+            if form.cleaned_data['Title'] is None or form.cleaned_data['Title'] == '':
+                instance.Title = blogTitle
+            if form.cleaned_data['text'] is None or form.cleaned_data['text'] == '':
+                instance.text = blogtext
+            if form.cleaned_data['place_Img1'] is None:
+                instance.place_Img1 = blogimage
+
+            instance.date = blogDate
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.createBlogForm()
+    return render(request, 'main/editBlogs.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
 def usersearch(request):
     return render(request, 'main/usersearch.html')
 
