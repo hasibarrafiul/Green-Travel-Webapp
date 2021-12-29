@@ -474,7 +474,7 @@ def hotelsearch(request):
     if request.method == 'POST':
         search = request.POST['hotel-search']
         search1 = search.split(' ')
-        search2 = ('').join(search1)
+        search2 = ('_').join(search1)
         context = {}
         context['hotelsearch'] = search
         roomModel = RoomModel.objects.filter(slug__icontains=search2)
