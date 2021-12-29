@@ -45,4 +45,8 @@ urlpatterns = [
 
     url(r'^offers/$', views.giveOffer, name="offers"),
 
+    url(r'^hotelsearch/$', views.hotelsearch, name="hotelsearch"),
+    url(r'^placesearch/$', views.placesearch, name="placesearch"),
+    url(r'^resturantsearch/$', views.resturantsearch, name="resturantsearch"),
+
 ]

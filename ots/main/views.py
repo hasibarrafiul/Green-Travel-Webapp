@@ -445,3 +445,38 @@ def giveOffer(request):
     elif count >= 10:
         context['offer'] = '50'
     return render(request, 'main/offers.html', context)
+
+
+@login_required(login_url="/account/login/")
+def resturantsearch(request):
+    if request.method == 'POST':
+        search = request.POST['resturant-search']
+        context = {}
+        context['resturantsearch'] = search
+        resturant = ResturantInfo.objects.filter(name__icontains=search)
+        context['resturant'] = resturant
+    return render(request, 'main/resturantsearch.html', context)
+
+
+@login_required(login_url="/account/login/")
+def placesearch(request):
+    if request.method == 'POST':
+        search = request.POST['place-search']
+        context = {}
+        context['placesearch'] = search
+        place = Place.objects.filter(name__icontains=search)
+        context['place'] = place
+    return render(request, 'main/placesearch.html', context)
+
+
+@login_required(login_url="/account/login/")
+def hotelsearch(request):
+    if request.method == 'POST':
+        search = request.POST['hotel-search']
+        search1 = search.split(' ')
+        search2 = ('').join(search1)
+        context = {}
+        context['hotelsearch'] = search
+        roomModel = RoomModel.objects.filter(slug__icontains=search2)
+        context['roomModel'] = roomModel
+    return render(request, 'main/hotelsearch.html', context)

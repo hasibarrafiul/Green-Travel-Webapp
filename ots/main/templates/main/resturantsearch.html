@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" action="/main/resturant/">
+{% csrf_token %}
+    {% if resturantsearch %}
+        <h1>you searched for {{ resturantsearch }}</h1>
+        {% for resturant in resturant %}
+    {{ resturant.name }}
+    <button style="padding-left:10px;" type="submit" name="hotel-name" value="{{ resturant.slug }}" class="accommodation-list__button--12985 hoverState"><img src="/static/advance.png" width="50" height="50"></button>
+        {% endfor %}
+    {% endif %}
+<p></p>
+</form>
+</body>
+</html>
