@@ -1,0 +1,9 @@
+<html>
+<body>
+        {% for blogs in blogs %}
+        {{ blogs.Title }}  <a href="{% url 'articles:blogPage' blogs.id %}">goto</a><br>
+        {{ blogs.date }}
+        <br>
+        {% endfor %}
+</body>
+</html>

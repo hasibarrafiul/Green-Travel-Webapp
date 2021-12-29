@@ -1,0 +1,98 @@
+<html>
+<head>
+   <link rel="stylesheet" href="/static/nicepage.css" media="screen">
+
+    <meta name="generator" content="Nicepage 3.24.3, nicepage.com">
+   <link rel="stylesheet" href="/static/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <link rel="stylesheet" href="/static/css/signup-style.css">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+<style>
+body {
+  background-image: url('/static/home/img/11.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
+</head>
+
+  <body class="u-body" >
+    <section class="u-clearfix u-palette-1-base u-section-1" id="carousel_2bcf" style="background-color: transparent;background-color: rgba(0, 0, 0, 0);">
+      <div class="u-clearfix u-sheet u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+                  <h6 class="u-text u-text-2 black">Call us</h6>
+                  <p class="u-text u-text-3 black">1 (234) 567-891<br>1 (234) 987-654
+                  </p>
+                  <h6 class="u-text u-text-4 black">Location</h6>
+                  <p class="u-text u-text-5 black">East West University, Dhaka<br>Bangladesh, BD
+                  </p>
+                </div>
+              </div>
+              <div class="main">
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container">
+                <div class="signup-content">
+
+                    <form method="POST" id="register-form" class="register-form" enctype='multipart/form-data'>
+					{% csrf_token %}
+                        <h2 class="form-title">Write a blog</h2>
+
+						<div class="form-group">
+                            <label class="u-label">Title </label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.Title}}
+                        </div>
+                        <div class="form-group">
+                            <label class="u-label">Experience</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.text}}
+                        </div>
+                        <div class="form-group">
+							<label class="u-label align" data-align="top">Image</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							{{form.place_Img1}}
+                        </div>
+
+                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+
+                    </form>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+<style>
+    label{
+    color:black;
+    }
+    select{
+  width: 180px;
+
+  color: black;
+}
+input{
+    color:black;
+}
+textarea {
+    color:black;
+}
+select option { color: black; }
+.black{
+    color:black;
+}
+</style>
+</html>

@@ -42,3 +42,9 @@ class wishlistForm(forms.ModelForm):
     class Meta:
         model = models.wishlist
         fields = ['PlaceName']
+
+
+class createBlogForm(forms.ModelForm):
+    class Meta:
+        model = models.userBlog
+        fields = ['Title', 'text', 'place_Img1']

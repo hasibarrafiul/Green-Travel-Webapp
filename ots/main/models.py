@@ -155,3 +155,11 @@ class wishlist(models.Model):
     PlaceName = models.CharField(choices=PlaceChoices, max_length=100, default=None, null=True, unique=True)
     date = models.DateTimeField(auto_now_add=True)
 
+
+class userBlog(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=None, on_delete=models.DO_NOTHING)
+    Title = models.CharField(max_length=300, null=True)
+    text = models.TextField(max_length=3000, blank=True)
+    place_Img1 = models.ImageField(blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+

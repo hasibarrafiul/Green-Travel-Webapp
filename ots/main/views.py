@@ -6,7 +6,7 @@ from django.template import loader
 from django.urls import reverse
 
 from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile, chat
-from .models import ResturantReview, HotelReservation, chatForumMessages, wishlist
+from .models import ResturantReview, HotelReservation, chatForumMessages, wishlist, userBlog
 
 from django.contrib.auth.decorators import login_required
 
@@ -480,4 +480,46 @@ def hotelsearch(request):
         roomModel = RoomModel.objects.filter(slug__icontains=search2)
         context['roomModel'] = roomModel
     return render(request, 'main/hotelsearch.html', context)
+
+
+@login_required(login_url="/account/login/")
+def blogList(request):
+    blogs = userBlog.objects.all().order_by('-date')
+    context = {}
+    context['blogs'] = blogs
+    return render(request, 'main/BlogLists.html', context)
+
+
+@login_required(login_url="/account/login/")
+def blogPage(request, pk):
+    if pk is None:
+        blog = userBlog.objects.filter(id=1)
+    else:
+        blog = userBlog.objects.filter(id=pk)
+    context = {}
+    context['blogs'] = blog
+    return render(request, 'main/blogPage.html', context)
+
+
+@login_required(login_url="/account/login/")
+def deleteBlog(request, pk):
+    instance = userBlog.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:blogList')
+
+
+@login_required(login_url="/account/login/")
+def createBlog(request):
+    form = forms.createBlogForm()
+    if request.method == 'POST':
+        form = forms.createBlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
+    else:
+        form = forms.createBlogForm()
+    return render(request, 'main/createBlogs.html', {'form': form})
 
