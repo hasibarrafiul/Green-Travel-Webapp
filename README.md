@@ -34,17 +34,18 @@ Features: <br>
 24. Cultural Food <br>
 25. User get offers<br>
 26. Customized Admin Panel <br>
+27. Blogs<br>
+28. Search Restaurants<br>
+29. Search Hotels<br>
+30. Search Places<br>
+31. Search User<br>
+32. See searched user profile<br>
 
 Upcoming Features: <br>
-1. Search Restaurants<br>
-2. Search Hotels<br>
-3. Search Places<br>
-4. Search User<br>
-5. Carrer Opportunities<br>
-6. Blogs<br>
-7. Explore<br>
-8. User Review about the app (Home Component)<br>
-9. Map with directions<br>
+1. Carrer Opportunities<br>
+2. Explore<br>
+3. User Review about the app (Home Component)<br>
+4. Map with directions<br>
 
 This is an web application developed using python and Django. <br>
 Screenshots: 
