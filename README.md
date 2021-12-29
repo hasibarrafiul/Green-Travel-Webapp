@@ -27,14 +27,14 @@ Features: <br>
 17. Room Reservation<br>
 18. Reservation Confirmation (Generate pdf)<br>
 19. Unit Testing<br>
-20. Direct message<br>
+20. Direct message user to user<br>
 21. Forum messages<br>
 22. Wishlist<br>
 23. User Profile<br>
 24. Cultural Food <br>
-25. User get offers<br>
+25. User get offers based on booking count<br>
 26. Customized Admin Panel <br>
-27. Blogs<br>
+27. Blogs (create, delete, edit)<br>
 28. Search Restaurants<br>
 29. Search Hotels<br>
 30. Search Places<br>
