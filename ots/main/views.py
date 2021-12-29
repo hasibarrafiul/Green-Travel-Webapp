@@ -222,10 +222,26 @@ def hotel_page(request):
     return render(request, 'main/HotelPage.html')
 
 
+@login_required(login_url="/account/login/")
+def hotelsearch(request):
+    if request.method == 'POST':
+        search = request.POST['hotel-search']
+        search1 = search.split(' ')
+        search2 = ('_').join(search1)
+        context = {}
+        context['hotelsearch'] = search
+        roomModel = RoomModel.objects.filter(slug__icontains=search2)
+        context['roomModel'] = roomModel
+    return render(request, 'main/hotelsearch.html', context)
+
+
+
+@login_required(login_url="/account/login/")
 def placelist(request):
     return render(request, 'main/placelist.html')
 
 
+@login_required(login_url="/account/login/")
 def place(request):
     placeReview = PlaceReview.objects.all().order_by('date')
     place_show = Place.objects.all().order_by('name')
@@ -240,11 +256,23 @@ def place(request):
 
     return render(request, 'main/place.html', context)
 
+@login_required(login_url="/account/login/")
+def placesearch(request):
+    if request.method == 'POST':
+        search = request.POST['place-search']
+        context = {}
+        context['placesearch'] = search
+        place = Place.objects.filter(name__icontains=search)
+        context['place'] = place
+    return render(request, 'main/placesearch.html', context)
 
+
+@login_required(login_url="/account/login/")
 def resturantList(request):
     return render(request, 'main/ResturantList.html')
 
 
+@login_required(login_url="/account/login/")
 def resturantShow(request):
     resturantReview = ResturantReview.objects.all().order_by('date')
     resturant_show = ResturantInfo.objects.all().order_by('name')
@@ -257,6 +285,17 @@ def resturantShow(request):
 
     context['resturantReview'] = resturantReview
     return render(request, 'main/ResturantShow.html', context)
+
+
+@login_required(login_url="/account/login/")
+def resturantsearch(request):
+    if request.method == 'POST':
+        search = request.POST['resturant-search']
+        context = {}
+        context['resturantsearch'] = search
+        resturant = ResturantInfo.objects.filter(name__icontains=search)
+        context['resturant'] = resturant
+    return render(request, 'main/resturantsearch.html', context)
 
 
 @login_required(login_url="/account/login/")
@@ -293,7 +332,7 @@ def UserProfile(request):
     if UserProfile.address is not None and UserProfile.address != '':
         instance.user_address = UserProfile.address
 
-    if UserProfile.bio is not None and UserProfile.bio!= '':
+    if UserProfile.bio is not None and UserProfile.bio != '':
         instance.bio = UserProfile.bio
 
     if UserProfile.image is not None:
@@ -400,4 +439,3 @@ def chatForum(request):
     context['forum'] = forum
     context['form'] = form
     return render(request, 'main/chatForum.html', context)
-

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Search Page</title>
+</head>
+<body>
+<form method="POST" action="/main/room/">
+{% csrf_token %}
+    {% if hotelsearch %}
+        <h1>you searched for {{ hotelsearch }}</h1>
+        {% for roomModel in roomModel %}
+    {{ roomModel.slug }}
+    <button style="padding-left:10px;" type="submit" name="hotel-name" value="{{ roomModel.slug }}" class="accommodation-list__button--12985 hoverState"><img src="/static/advance.png" width="50" height="50"></button>
+        {% endfor %}
+    {% endif %}
+<p></p>
+</form>
+</body>
+</html>

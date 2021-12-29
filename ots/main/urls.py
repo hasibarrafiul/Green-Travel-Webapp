@@ -39,5 +39,8 @@ urlpatterns = [
     url(r'^sent_message/$', views.sentmessage, name="sent_message"),
 
     url(r'^chat_forum/$', views.chatForum, name="chat_forum"),
+    url(r'^hotelsearch/$', views.hotelsearch, name="hotelsearch"),
+    url(r'^placesearch/$', views.placesearch, name="placesearch"),
+    url(r'^resturantsearch/$', views.resturantsearch, name="resturantsearch"),
 
 ]
