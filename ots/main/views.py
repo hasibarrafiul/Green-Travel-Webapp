@@ -579,3 +579,4 @@ def searchedUserProfile(request, pk):
     context = {}
     context['profile'] = profile
     return render(request, 'main/searchedUserProfile.html', context)
+
