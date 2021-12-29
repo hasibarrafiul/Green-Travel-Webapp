@@ -568,3 +568,14 @@ def searcheduser(request):
         userprofile = userProfile.objects.filter(user_name__icontains=search)
         context['userprofile'] = userprofile
     return render(request, 'main/searcheduser.html', context)
+
+
+@login_required(login_url="/account/login/")
+def searchedUserProfile(request, pk):
+    if pk is None:
+        profile = userProfile.objects.filter(id=1)
+    else:
+        profile = userProfile.objects.filter(id=pk)
+    context = {}
+    context['profile'] = profile
+    return render(request, 'main/searchedUserProfile.html', context)

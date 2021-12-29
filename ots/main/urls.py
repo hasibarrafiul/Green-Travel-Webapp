@@ -57,5 +57,6 @@ urlpatterns = [
 
     url(r'^usersearch/$', views.usersearch, name="usersearch"),
     url(r'^searcheduser/$', views.searcheduser, name="searcheduser"),
+    path('searchedUserProfile/<str:pk>/$', views.searchedUserProfile, name="searchedUserProfile"),
 
 ]

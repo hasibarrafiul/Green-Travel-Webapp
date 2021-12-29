@@ -1,0 +1,19 @@
+<html>
+<body>
+</div>
+
+                        {% for profile in profile %}
+                                    {% if profile.user_image %}
+                                    <img src="{{ profile.user_image.url }}" alt="Error" height="100px" width="100px">
+                                    {% endif %}
+                                    {% if not profile.user_image %}
+                                    <img src="/static/user.png" alt="Error" height="100px" width="100px">
+                                    {% endif %}
+									<h1> {{ profile.user_name }} </h1>
+									<h1> {{ profile.user_phone }} </h1>
+									<h1> {{ profile.user_address }} </h1>
+									<h1> {{ profile.bio }} </h1>
+                        {% endfor %}
+                    </div>
+</body>
+</html>

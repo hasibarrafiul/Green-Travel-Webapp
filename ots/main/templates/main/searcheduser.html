@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Place Search Page</title>
+    <title>User Search Page</title>
 </head>
 <body>
 <form method="POST" action="">
@@ -13,6 +13,7 @@
             {{ userprofile.user_name }}
     {% if userprofile.user_image %}
     <img src="{{ userprofile.user_image.url }}" alt="Error" height="100px" width="100px">
+    <a href="{% url 'articles:searchedUserProfile' userprofile.id %}">See profile</a>
     {% endif %}
     <br>
         {% endfor %}
