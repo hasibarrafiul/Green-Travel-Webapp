@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Search Page</title>
+</head>
+<body>
+<form method="POST" action="/main/searcheduser/">
+	{% csrf_token %}
+	<input type="text" name="user-search"/>
+	<input type="submit"/>
+</form>
+</body>
+</html>

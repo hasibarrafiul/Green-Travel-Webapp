@@ -48,5 +48,7 @@ urlpatterns = [
     url(r'^hotelsearch/$', views.hotelsearch, name="hotelsearch"),
     url(r'^placesearch/$', views.placesearch, name="placesearch"),
     url(r'^resturantsearch/$', views.resturantsearch, name="resturantsearch"),
+    url(r'^usersearch/$', views.usersearch, name="usersearch"),
+    url(r'^searcheduser/$', views.searcheduser, name="searcheduser"),
 
 ]
