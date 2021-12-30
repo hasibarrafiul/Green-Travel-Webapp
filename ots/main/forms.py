@@ -48,3 +48,9 @@ class createBlogForm(forms.ModelForm):
     class Meta:
         model = models.userBlog
         fields = ['Title', 'text', 'place_Img1']
+
+
+class appReviewForm(forms.ModelForm):
+    class Meta:
+        model = models.appReview
+        fields = ['comment']

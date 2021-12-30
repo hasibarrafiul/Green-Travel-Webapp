@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rate Us</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+        .star{
+          color: goldenrod;
+          font-size: 2.0rem;
+          padding: 0 1rem; /* space out the stars */
+        }
+        .star::before{
+          content: '\2606';    /* star outline */
+          cursor: pointer;
+        }
+        .star.rated::before{
+          /* the style for a selected star */
+          content: '\2605';  /* filled star */
+        }
+        
+        .stars{
+            counter-reset: rateme 0;   
+            font-size: 2.0rem;
+            font-weight: 900;
+        }
+        .star.rated{
+            counter-increment: rateme 1;
+        }
+        
+    </style>
+</head>
+<body>
+
+
+<form method="post">
+
+{% csrf_token %}
+    <h1>Please rate us:</h1>
+    <div class="stars" data-rating="3">
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+		<span id="stars::after"></span>
+    </div>
+    {{form.comment}}
+	<textarea style="display:none;" id="test" name="star_rating"></textarea><br>
+    <button type="submit">Done</button>
+    </form>
+
+
+
+
+
+
+    <script>
+        
+        //initial setup
+        document.addEventListener('DOMContentLoaded', function(){
+            let stars = document.querySelectorAll('.star');
+            stars.forEach(function(star){
+                star.addEventListener('click', setRating); 
+            });
+            
+            let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+            let target = stars[rating - 1];
+            target.dispatchEvent(new MouseEvent('click'));
+        });
+
+        function setRating(ev){
+            let span = ev.currentTarget;
+			var span2 = ev.currentTarget;
+			
+            let stars = document.querySelectorAll('.star');
+            let match = false;
+            let num = 0;
+            stars.forEach(function(star, index){
+                if(match){
+                    star.classList.remove('rated');
+                }else{
+                    star.classList.add('rated');
+                }
+                //are we currently looking at the span that was clicked
+                if(star === span){
+                    match = true;
+                    num = index + 1;
+                }
+            });
+			test.innerHTML = num;
+            document.querySelector('.stars').setAttribute('data-rating', num);
+        }
+        
+    </script>
+</body>
+</html>

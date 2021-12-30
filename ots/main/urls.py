@@ -59,4 +59,6 @@ urlpatterns = [
     url(r'^searcheduser/$', views.searcheduser, name="searcheduser"),
     path('searchedUserProfile/<str:pk>/$', views.searchedUserProfile, name="searchedUserProfile"),
 
+    url(r'^appRating/$', views.appRating, name="appRating"),
+
 ]

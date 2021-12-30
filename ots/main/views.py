@@ -21,7 +21,6 @@ from django.core.mail import send_mail
 from . import forms
 
 
-# Create your views here.
 @login_required(login_url="/accounts/login/")
 def homepage(request):
     return render(request, 'main/homepage.html')
@@ -580,3 +579,20 @@ def searchedUserProfile(request, pk):
     context['profile'] = profile
     return render(request, 'main/searchedUserProfile.html', context)
 
+
+@login_required(login_url="/account/login/")
+def appRating(request):
+    starRating = request.POST.get('star_rating')
+    form = forms.appReviewForm()
+    if request.method == 'POST':
+        form = forms.appReviewForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.rate = int(starRating)
+            instance.save()
+
+            return HttpResponseRedirect(request.path_info)
+    else:
+        form = forms.appReviewForm()
+    return render(request, 'main/appRating.html', {'form': form})
