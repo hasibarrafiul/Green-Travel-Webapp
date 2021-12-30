@@ -6,7 +6,7 @@ from django.template import loader
 from django.urls import reverse
 
 from .models import HotelReview, PlaceReview, RoomModel, Place, ResturantInfo, userProfile, chat
-from .models import ResturantReview, HotelReservation, chatForumMessages, wishlist, userBlog
+from .models import ResturantReview, HotelReservation, chatForumMessages, wishlist, userBlog, appReview
 
 from django.contrib.auth.decorators import login_required
 
@@ -596,3 +596,11 @@ def appRating(request):
     else:
         form = forms.appReviewForm()
     return render(request, 'main/appRating.html', {'form': form})
+
+
+@login_required(login_url="/account/login/")
+def showAppRating(request):
+    AppReview = appReview.objects.all()
+    context = {}
+    context['appReview'] = AppReview
+    return render(request, 'main/showAppRating.html', context)

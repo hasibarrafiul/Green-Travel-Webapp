@@ -60,5 +60,6 @@ urlpatterns = [
     path('searchedUserProfile/<str:pk>/$', views.searchedUserProfile, name="searchedUserProfile"),
 
     url(r'^appRating/$', views.appRating, name="appRating"),
+    url(r'^showAppRating/$', views.showAppRating, name="showAppRating"),
 
 ]

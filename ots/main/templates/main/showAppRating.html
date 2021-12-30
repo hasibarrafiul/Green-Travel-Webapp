@@ -1,0 +1,44 @@
+<html>
+<body>
+
+
+<h1 align="center">Reviews </h1>
+  </div>
+                        {% for appReview in appReview %}
+						<table align="center" border="0" cellspacing="0" cellpadding="10" class="rcorners2" >
+							<tr >
+								<td width="200">
+									{% for profile in profile %}
+									{% ifequal profile.user hotelReview.user %}
+									{% if profile.user_image %}
+                                    <img src="{{ profile.user_image.url }}" alt="Error" height="100px" width="100px">
+                                    {% endif %}
+                                    {% if not profile.user_image %}
+                                    <img src="/static/user.png" alt="Error" height="100px" width="100px">
+                                    {% endif %}
+									{% endifequal %}
+									{% endfor %}
+								</td>
+									<td width="500" >
+										<h4> Rating Given: {{appReview.rate }}</h4>
+                                	<h4> {{ appReview.comment }}</h4>
+							</td>
+								<td VALIGN=TOP width="60" style="text-align:center">
+									{% ifequal user appReview.user %}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="">
+                                  <img src="/static/delete-circle-icon.png" height="30px" width="30px">
+										{% endifequal %}
+                                </a>
+								</td>
+                                <br>
+							</tr>
+						</table>
+
+                        {% endfor %}
+
+                    </div>
+
+					<h3 align="center"><a href="{% url 'articles:appRating' %}"><img src="/static/writeareview.png"></a></h3>
+</div>
+</body>
+</html>
