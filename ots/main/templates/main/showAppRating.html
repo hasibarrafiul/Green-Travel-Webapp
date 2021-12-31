@@ -12,16 +12,31 @@
 									{% ifequal profile.user appReview.user %}
 									{% if profile.user_image %}
                                     <img src="{{ profile.user_image.url }}" alt="Error" height="100px" width="100px">
-									{% endif %}
-                                    {% if not profile.user_image %}
-                                    <img src="/static/user.png" alt="Error" height="100px" width="100px">
+
                                     {% endif %}
+									{% ifequal profile.user_image None %}
+									<img src="/static/user.png" alt="Error" height="100px" width="100px">
+									{% endifequal %}
 									{% endifequal %}
 									{% endfor %}
 								</td>
 									<td width="500" >
 										<h4>{{ appReview.user }}</h4>
-										<h4> Rating Given: {{appReview.rate }}</h4>
+										{% ifequal appReview.rate 5 %}
+										<img src="/static/offer/5star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 4 %}
+										<img src="/static/offer/4star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 3 %}
+										<img src="/static/offer/3star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 2 %}
+										<img src="/static/offer/2star.png" width="200px" height="50px">
+										{% endifequal %}
+										{% ifequal appReview.rate 1 %}
+										<img src="/static/offer/1star.png" width="200px" height="50px">
+										{% endifequal %}
                                 	<h4> {{ appReview.comment }}</h4>
 							</td>
 								<td VALIGN=TOP width="60" style="text-align:center">

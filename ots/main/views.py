@@ -608,6 +608,7 @@ def showAppRating(request):
     return render(request, 'main/showAppRating.html', context)
 
 
+@login_required(login_url="/account/login/")
 def deleteAppRating(request, pk):
     instance = appReview.objects.get(id=pk)
     instance.delete()
