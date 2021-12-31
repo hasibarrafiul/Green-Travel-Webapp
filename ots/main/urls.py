@@ -61,5 +61,6 @@ urlpatterns = [
 
     url(r'^appRating/$', views.appRating, name="appRating"),
     url(r'^showAppRating/$', views.showAppRating, name="showAppRating"),
+    path('deleteAppRating/<str:pk>/$', views.deleteAppRating, name="deleteAppRating"),
 
 ]

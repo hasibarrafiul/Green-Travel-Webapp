@@ -601,6 +601,14 @@ def appRating(request):
 @login_required(login_url="/account/login/")
 def showAppRating(request):
     AppReview = appReview.objects.all()
+    profile = userProfile.objects.filter(user=request.user)
     context = {}
     context['appReview'] = AppReview
+    context['profile'] = profile
     return render(request, 'main/showAppRating.html', context)
+
+
+def deleteAppRating(request, pk):
+    instance = appReview.objects.get(id=pk)
+    instance.delete()
+    return redirect('articles:showAppRating')

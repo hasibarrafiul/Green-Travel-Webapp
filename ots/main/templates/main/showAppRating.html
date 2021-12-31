@@ -9,10 +9,10 @@
 							<tr >
 								<td width="200">
 									{% for profile in profile %}
-									{% ifequal profile.user hotelReview.user %}
+									{% ifequal profile.user appReview.user %}
 									{% if profile.user_image %}
                                     <img src="{{ profile.user_image.url }}" alt="Error" height="100px" width="100px">
-                                    {% endif %}
+									{% endif %}
                                     {% if not profile.user_image %}
                                     <img src="/static/user.png" alt="Error" height="100px" width="100px">
                                     {% endif %}
@@ -20,12 +20,13 @@
 									{% endfor %}
 								</td>
 									<td width="500" >
+										<h4>{{ appReview.user }}</h4>
 										<h4> Rating Given: {{appReview.rate }}</h4>
                                 	<h4> {{ appReview.comment }}</h4>
 							</td>
 								<td VALIGN=TOP width="60" style="text-align:center">
 									{% ifequal user appReview.user %}
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{% url 'articles:deleteAppRating' appReview.id %}">
                                   <img src="/static/delete-circle-icon.png" height="30px" width="30px">
 										{% endifequal %}
                                 </a>
