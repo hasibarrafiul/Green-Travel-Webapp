@@ -17,7 +17,7 @@
           <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="/main/">Home</a></li>
               <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
               <li class="breadcrumb-item active" aria-current="page">User Profile</li>
             </ol>
@@ -27,6 +27,7 @@
                             {% if user == profile.user %}
           <div class="row">
             <div class="col-md-4 mb-3">
+
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
@@ -133,11 +134,8 @@
                 </div>
               </div>
               </form>
-                    {% if booli == 'NoData' %}
-                               <a href="{% url 'articles:create_profile' %}">Create Profile </a>
-                        {% endif %}
-                    {% endif %}
-                    {% endfor %}
+
+
                   <br>
                 <div class="card">
                   <div class="card h-100">
@@ -155,7 +153,11 @@
 
 
                 </div>
-
+                {% endif %}
+                    {% endfor %}
+{% if booli == 'NoData' %}
+                               <a href="{% url 'articles:create_profile' %}">Create Profile </a>
+                        {% endif %}
 
 
 
