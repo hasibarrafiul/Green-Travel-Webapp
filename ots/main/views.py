@@ -275,7 +275,7 @@ def updateUserProfile(request, pk):
 def UserProfile(request):
     primaryKey = request.POST.get('primaryKey')
     if primaryKey is None:
-        primaryKey = 1
+        primaryKey = 11
     instance = userProfile.objects.get(id=primaryKey)
     UserProfile.user_name = request.POST.get('user_name')
     UserProfile.phone = request.POST.get('phone_number')

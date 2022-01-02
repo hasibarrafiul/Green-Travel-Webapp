@@ -25,7 +25,7 @@
           <!-- /Breadcrumb -->
                     {% for profile in profile %}
                             {% if user == profile.user %}
-          <div class="row gutters-sm">
+          <div class="row">
             <div class="col-md-4 mb-3">
               <div class="card">
                 <div class="card-body">
@@ -72,13 +72,14 @@
                 </ul>
               </div>
             </div>
-            <form method="post" autocomplete="on" enctype="multipart/form-data">
+
+				<div class="col-lg-8">
+                  <form method="post" autocomplete="on" enctype="multipart/form-data">
                                         {% csrf_token %}
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
+					<div class="card">
+						<div class="card-body">
+							<div class="row mb-3">
+								<div class="col-sm-3">
                       <h6 class="mb-0">Enter your new name:</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
@@ -86,8 +87,7 @@
                     </div>
                   </div>
                   <hr>
-                  <hr>
-                  <div class="row">
+                  <div class="row mb-3">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Enter your new phone number:</h6>
                     </div>
@@ -96,7 +96,7 @@
                     </div>
                   </div>
                   <hr>
-                  <div class="row">
+                  <div class="row mb-3">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Enter your new address:</h6>
                     </div>
@@ -105,7 +105,7 @@
                     </div>
                   </div>
                   <hr>
-                  <div class="row">
+                  <div class="row mb-3">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Enter your new bio:</h6>
                     </div>
@@ -113,7 +113,7 @@
                       <input type="text" name="bio">
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row mb-3">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Enter your new image:</h6>
                     </div>
@@ -125,78 +125,32 @@
                   </div>
                   <hr>
                   <div class="row">
-                    <div class="col-sm-12">
-                      <button type="submit">
-                                            Submit
-                                        </button>
-                    </div>
-                  </div>
+								<div class="col-sm-3"></div>
+								<div class="col-sm-9 text-secondary">
+                                  <button type="submit" class="btn btn-primary px-4">Submit</button>
+								</div>
+							</div>
                 </div>
               </div>
-
               </form>
+                  <br>
+                <div class="card">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Hotels Reserved</i></h6>
+                      {% for userBookedHotels in userBookedHotels %}<br>
+                            <small>Hotel name: {{ userBookedHotels.hotel_name }}</small> <br>
+                            <small>Checkin date: {{ userBookedHotels.checkin_date }}</small><br>
+                            <small>Checkout date: {{ userBookedHotels.checkout_date }}</small><br>
+                            <br>
+                            {% endfor %}
+                    </div>
+                  </div>
+                </div>
 
-{%                        endif %}
-                        {% endfor %}
-                        {% if booli == 'NoData' %}
-                               <a href="{% url 'articles:create_profile' %}">Create Profile </a>
-                        {% endif %}
-              <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
+
                 </div>
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Website Markup</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>One Page</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Mobile Template</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <small>Backend API</small>
-                      <div class="progress mb-3" style="height: 5px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
 
 
 
@@ -204,7 +158,6 @@
           </div>
 
         </div>
-    </div>
 
 <style type="text/css">
 body{
