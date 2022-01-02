@@ -1,0 +1,18 @@
+/*********************************************************************************
+	Template Name: Porta - Free Bootstrap4 Minimal Portfolio Template
+	Template URI: https://demo.curlyarts.com/porta/
+	Description: Porta is a Bootstrap4 minimal portfolio template by CurlyArts, absolutely free for download !
+	Author: CurlyArts
+	Author URI: https://curlyarts.com/
+	Version: 1.0
+
+	Note: All css plugins files import here
+
+**********************************************************************************/
+/*===============================================================================*/
+
+@import url(plugins/loader.css);
+@import url(plugins/icofont.min.css);
+@import url(plugins/lightgallery.min.css);
+@import url(plugins/meanmenu.min.css);
+@import url(plugins/slick.min.css);
