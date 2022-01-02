@@ -4,50 +4,237 @@
 
 {% block content %}
 {% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/static/header/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/header/css/plugins.css">
+    <link rel="stylesheet" href="/static/header/style.css">
+
+    <!-- Modernizer js -->
+    <script src="/static/header/js/vendor/modernizr-3.5.0.min.js"></script>
+</head>
+
     <body>
        <div class="entire-content">
        
        <!--------Navigation starts-------->
-       <nav class="navbar  navbar-fixed-top">
-           <div class="container">
-               <div class="navbar-header">
-                  <!---------Responsive button------------>
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navi">
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>                       
-                  </button>
-                   <a href="" id="navbar" class="navbar-brand "><img src="/static/home/img/logo1.png"></a>
-               </div>
-               <div class="collapse navbar-collapse" id="navi"> 
-                <!---------Navigation menus------------>
-               <ul class="nav navbar-nav navbar-right  ">
-                   <li><a href="#slider" class="smooth-scroll">Home</a></li>
-                   <li><a href="#services" class="smooth-scroll">Our Services</a></li>
-                   <li><a href="#works" class="smooth-scroll">Works</a></li>
-                   <li><a href="#team" class="smooth-scroll">Team</a></li>
-                   <li><a href="#testimonial" class="smooth-scroll">About us</a></li>
-                   <li><a href="#latest" class="smooth-scroll">Blog</a></li>                    
-                   <li><a href="#contact_area" class="smooth-scroll">Carrier</a></li>
-                   <li><a href="#map" class="location smooth-scroll">Our Location</a></li>
-                   <li>
-                    <div class="dropdown" style="background-color: #00000000;">
-                        <button class="dropbtn location smooth-scroll" style="background-color: #00000000;">{{ user.username }}</button>
-                        <div class="dropdown-content" style="background-color: #00000000;">
-                          <a ><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                                    {% csrf_token %}
-                          <button type="submit" class="dropbtn " style="background-color: #00000000;">Logout</button>
-                      </form></a>
-                      </div>
+            <!-- Header -->
+            <header class="header header-style transparent-header sticky-header">
+                <div class="container d-none d-lg-block">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="header-inner">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img src="/static/header/img/logo.png" alt="logo">
+                                    </a>
+                                </div>
+                                <nav class="menu">
+                                    <ul>
+                                        <li>
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Services</a>
+                                        </li>
+                                        <li class="cr-dropdown">
+                                            <a href="javascript:;">Pages</a>
+                                            <ul>
+                                                <li class="cr-sub-dropdown">
+                                                    <a href="javascript:;">Home</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="index.html">Home</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="single.html">Single</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="contact.html">Contact</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="cr-sub-dropdown">
+                                                    <a href="javascript:;">Single</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="index.html">Home</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="single.html">Single</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="contact.html">Contact</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="cr-sub-dropdown">
+                                                    <a href="javascript:;">Contact</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="index.html">Home</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="single.html">Single</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="contact.html">Contact</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">FAQ</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Team</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Videos</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="cr-megamenu">
+                                            <a href="javascript:;">Features</a>
+                                            <div class="cr-megamenu-wrap">
+    
+                                                <!-- Megamenu Single Block -->
+                                                <div class="cr-megamenu-single">
+                                                    <h6>Widget Header</h6>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#">Awesome Features</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Clean Interface</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Responsive Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Pixel Perfect Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">W3C Validate</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--// Megamenu Single Block -->
+    
+                                                <!-- Megamenu Single Block -->
+                                                <div class="cr-megamenu-single">
+                                                    <h6>Widget Header</h6>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#">Awesome Features</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Clean Interface</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Responsive Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Pixel Perfect Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">W3C Validate</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--// Megamenu Single Block -->
+    
+                                                <!-- Megamenu Single Block -->
+                                                <div class="cr-megamenu-single">
+                                                    <h6>Widget Header</h6>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#">Awesome Features</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Clean Interface</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Responsive Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Pixel Perfect Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">W3C Validate</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--// Megamenu Single Block -->
+    
+                                                <!-- Megamenu Single Block -->
+                                                <div class="cr-megamenu-single">
+                                                    <h6>Widget Header</h6>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#">Awesome Features</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Clean Interface</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Responsive Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Pixel Perfect Design</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">W3C Validate</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--// Megamenu Single Block -->
+                                                
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="contact.html">Contact</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <a href="javascript:;" class="cr-btn cr-btn-sm">
+                                    <span>{{ user.username }}</span>
+                                </a>
+                                    <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                            {% csrf_token %}
+                                <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
+                                </form>
+                            </a>
+                            </div>
+                        </div>
                     </div>
-                   </li>
-
-                   
-               </ul>
-                <!---------Navigation menus end------------>
-               </div>          
-           </div>         
-           </nav>
+                </div>
+    
+                <!-- Mobile Menu -->
+                <div class="mobile-menu-wrapper">
+                    <div class="container d-block d-lg-none">
+                        <div class="mobile-menu clearfix">
+                            <a class="mobile-logo" href="index.html">
+                                <img src="images/logo.png" alt="mobile logo">
+                            </a>
+                            <a href="" class="cr-btn cr-btn-sm">
+                                <span>Buy now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- //Mobile Menu -->           
+    
+            </header>
+            <!-- //Header -->
         <!--------Navigation Ends-------->
        
          <!---------------Slider section starts------------->
@@ -807,7 +994,7 @@
                       </div> <br>
                       <div class="copyright">
                           <p class="footerlogo">
-                              &copy; <img src="/static/home/img/logo1.png">
+                              &copy; <img alt="" src="/static/home/img/logo1.png">
                           </p>
                           <div class="bordernow"></div>
                       </div>
