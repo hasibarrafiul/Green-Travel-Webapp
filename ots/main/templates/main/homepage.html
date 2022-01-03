@@ -31,7 +31,7 @@
                             <div class="header-inner">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img src="/static/header/img/logo.png" alt="logo">
+                                        <img src="/static/header/img/logo1.png" alt="logo" height="70px" width="150px">
                                     </a>
                                 </div>
                                 <nav class="menu">
@@ -204,7 +204,7 @@
                                         </li>
                                     </ul>
                                 </nav>
-                                <a href="javascript:;" class="cr-btn cr-btn-sm">
+                                <a href="{% url 'articles:user_profile' %}" class="cr-btn cr-btn-sm">
                                     <span>{{ user.username }}</span>
                                 </a>
                                     <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
@@ -523,7 +523,7 @@
                             <div class="team-member">
                              <img src="/static/home/img/Fahim.jpg" class="img-responsive">
                              <div class="team-member-info text-center">
-                              <h4 class="team-member-name">Hasib Ar Rafiul Fahim</hh4>
+                              <h4 class="team-member-name">Hasib Ar Rafiul Fahim</h4>
                                <h4 class="team-member-designation">Developer</h4>  
                                 <ul class="social-list">
                                 <li><a href="" class="social-icon icon-gray"><i class="fa fa-facebook"></i></a></li>
