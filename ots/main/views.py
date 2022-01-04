@@ -613,3 +613,7 @@ def deleteAppRating(request, pk):
     instance = appReview.objects.get(id=pk)
     instance.delete()
     return redirect('articles:showAppRating')
+
+@login_required(login_url="/account/login/")
+def contactNew(request):
+    return render(request, 'main/contactNew.html')    

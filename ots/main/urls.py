@@ -30,6 +30,8 @@ urlpatterns = [
     url(r'^resturantList/$', views.resturantList, name="resturantList"),
 
     url(r'^cultural_food/$', views.culturalfood, name="cultural_food"),
+    url(r'^contact_new/$', views.contactNew, name="contact_new"),
+
 
 
     url(r'^user_profile/$', views.UserProfile, name="user_profile"),
