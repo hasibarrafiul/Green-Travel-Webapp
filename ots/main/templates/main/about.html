@@ -1,54 +1,457 @@
 {% extends 'base_layout.html' %}
 
 
-
 {% block content %}
-
-<div class="about-section">
-  <h1 class="txt-white">About Optimal Transportation System</h1>
-  <p class="txt-white">Optimal Transport System is a web-app through which users can get their optimal solution while using transportations in Bangladesh. By using this app, user can find information about any transportation which will help them to get to their desired destination with reasonable rate.</p>
-  <p class="txt-white">Most of the people living in Dhaka city knows a little about the transportations. Most of them gets confused while travelling across the city. People living outside Dhaka city also face the same problem. While travelling to a new place, most of the people is not aware about choosing the best transportations.</p>
-</div>
-
-<h1 style="text-align:center">Our Team</h1>
-<div class="row">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <div class="column">
-    <div class="card">
-      <img src="/static/RBR.jpg" alt="RBR" style="width:100%;">
-      <div class="container">
-        <h2>Rashik Buksh Rafsan</h2>
-        <p>To be prepared as an expert and administrator. To build up the career in an Organization. To build up the career in the development sector and eventually leading to a challenging in related responsibility especially in a growth-oriented organization and contribution of acquired knowledge skills and experience from international exposure.</p>
-        <p>rashikbuksh@gmail.com</p>
-        <p><a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=rashikbuksh@gmail.com" target="_blank"><button class="button">Contact</button></a></p>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/static/header/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/header/css/plugins.css">
+  <link rel="stylesheet" href="/static/header/style.css">
+
+  <!-- Modernizer js -->
+  <script src="/static/header/js/vendor/modernizr-3.5.0.min.js"></script>
+
+      <!-- Favicons -->
+      <link href="/static/ca/img/favicon.png" rel="icon">
+      <link href="/static/ca/img/apple-touch-icon.png" rel="apple-touch-icon">
+    
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    
+      <!-- Vendor CSS Files -->
+      <link href="/static/ca/assets/vendor/aos/aos.css" rel="stylesheet">
+      <link href="/static/ca/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/static/ca/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+      <link href="/static/ca/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+      <link href="/static/ca/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+      <link href="/static/ca/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+      <link href="/static/ca/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
+      <!-- Template Main CSS File -->
+      <link href="/static/ca/css/style.css" rel="stylesheet">
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+  <body>
+     <div class="entire-content">
+     
+     <!--------Navigation starts-------->
+          <!-- Header -->
+          <header class="header header-style transparent-header sticky-header">
+              <div class="container d-none d-lg-block">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="header-inner">
+                              <div class="logo">
+                                  <a href="index.html">
+                                      <img src="/static/header/img/logo.png" alt="logo">
+                                  </a>
+                              </div>
+                              <nav class="menu">
+                                  <ul>
+                                      <li>
+                                          <a href="index.html">Home</a>
+                                      </li>
+                                      <li>
+                                          <a href="about">About</a>
+                                      </li>
+                                      <li>
+                                          <a href="#">Services</a>
+                                      </li>
+                                      <li class="cr-dropdown">
+                                          <a href="javascript:;">Pages</a>
+                                          <ul>
+                                              <li class="cr-sub-dropdown">
+                                                  <a href="javascript:;">Home</a>
+                                                  <ul>
+                                                      <li>
+                                                          <a href="index.html">Home</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="single.html">Single</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="contact.html">Contact</a>
+                                                      </li>
+                                                  </ul>
+                                              </li>
+                                              <li class="cr-sub-dropdown">
+                                                  <a href="javascript:;">Single</a>
+                                                  <ul>
+                                                      <li>
+                                                          <a href="index.html">Home</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="single.html">Single</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="contact.html">Contact</a>
+                                                      </li>
+                                                  </ul>
+                                              </li>
+                                              <li class="cr-sub-dropdown">
+                                                  <a href="javascript:;">Contact</a>
+                                                  <ul>
+                                                      <li>
+                                                          <a href="index.html">Home</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="single.html">Single</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="contact.html">Contact</a>
+                                                      </li>
+                                                  </ul>
+                                              </li>
+                                              <li>
+                                                  <a href="#">FAQ</a>
+                                              </li>
+                                              <li>
+                                                  <a href="#">Team</a>
+                                              </li>
+                                              <li>
+                                                  <a href="#">Videos</a>
+                                              </li>
+                                          </ul>
+                                      </li>
+                                      <li class="cr-megamenu">
+                                          <a href="javascript:;">Features</a>
+                                          <div class="cr-megamenu-wrap">
+  
+                                              <!-- Megamenu Single Block -->
+                                              <div class="cr-megamenu-single">
+                                                  <h6>Widget Header</h6>
+                                                  <ul>
+                                                      <li>
+                                                          <a href="#">Awesome Features</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Clean Interface</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Responsive Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Pixel Perfect Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">W3C Validate</a>
+                                                      </li>
+                                                  </ul>
+                                              </div>
+                                              <!--// Megamenu Single Block -->
+  
+                                              <!-- Megamenu Single Block -->
+                                              <div class="cr-megamenu-single">
+                                                  <h6>Widget Header</h6>
+                                                  <ul>
+                                                      <li>
+                                                          <a href="#">Awesome Features</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Clean Interface</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Responsive Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Pixel Perfect Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">W3C Validate</a>
+                                                      </li>
+                                                  </ul>
+                                              </div>
+                                              <!--// Megamenu Single Block -->
+  
+                                              <!-- Megamenu Single Block -->
+                                              <div class="cr-megamenu-single">
+                                                  <h6>Widget Header</h6>
+                                                  <ul>
+                                                      <li>
+                                                          <a href="#">Awesome Features</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Clean Interface</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Responsive Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Pixel Perfect Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">W3C Validate</a>
+                                                      </li>
+                                                  </ul>
+                                              </div>
+                                              <!--// Megamenu Single Block -->
+  
+                                              <!-- Megamenu Single Block -->
+                                              <div class="cr-megamenu-single">
+                                                  <h6>Widget Header</h6>
+                                                  <ul>
+                                                      <li>
+                                                          <a href="#">Awesome Features</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Clean Interface</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Responsive Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">Pixel Perfect Design</a>
+                                                      </li>
+                                                      <li>
+                                                          <a href="#">W3C Validate</a>
+                                                      </li>
+                                                  </ul>
+                                              </div>
+                                              <!--// Megamenu Single Block -->
+                                              
+                                          </div>
+                                      </li>
+                                      <li>
+                                          <a href="contact_new">Contact</a>
+                                      </li>
+                                  </ul>
+                              </nav>
+                              <a href="javascript:;" class="cr-btn cr-btn-sm">
+                                  <span>{{ user.username }}</span>
+                              </a>
+                                  <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                          {% csrf_token %}
+                              <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
+                              </form>
+                          </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+              <!-- Mobile Menu -->
+              <div class="mobile-menu-wrapper">
+                  <div class="container d-block d-lg-none">
+                      <div class="mobile-menu clearfix">
+                          <a class="mobile-logo" href="index.html">
+                              <img src="images/logo.png" alt="mobile logo">
+                          </a>
+                          <a href="" class="cr-btn cr-btn-sm">
+                              <span>Buy now</span>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+  
+              <!-- //Mobile Menu -->           
+  
+          </header>
+          <!-- //Header -->
+      <!--------Navigation Ends-------->
+     
+       <!---------------Slider section starts------------->
+       <section class="slider text-center" id="slider">              
+           <div class="slider-overlay">
+               <div class="slider-content">
+                   <div class="icons">
+                       <!-- <i class="fa fa-apple"></i>
+                       <i class="fa fa-android"></i>
+                       <i class="fa fa-windows"></i> -->
+                   </div>
+                   <br>
+                   <div class="text"></div>
+                   <div class="cta-div">
+                       <a href="{% url 'articles:contact' %}" class="btn1">CONTACT US!</a>
+                       <a href="" class="btn2"> Explore !</a>
+                   </div>
+                   <br><br>
+                   <div class="social-networks">
+                       <a href="" class="fa fa-facebook"></a>
+                       <a href="" class="fa fa-twitter"></a>
+                       <a href="" class="fa fa-windows"></a>
+                       <a href="" class="fa fa-reddit"></a>
+                       <a href="" class="fa fa-linkedin"></a>
+                       <a href="" class="fa fa-cog"></a>
+                   </div>                      
+               </div>                  
+           </div>       
+       </section>
+<!---------------Slider section ends------------->
+
+<!-- ======= About Us Section ======= -->
+      <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>About Us</h2>
+          </div>
+
+          <div class="row content">
+            <div class="col-lg-6">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua.
+              </p>
+              <ul>
+                <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+                <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+              </ul>
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <p>
+                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- End About Us Section -->
+<!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+              <div class="pic"><img src="/static/ca/img/team/team-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Md.Mohsin Uddin</h4>
+                <span>Senior Lecturer</span>
+                <p>Department of Computer Science & Engineering</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pic"><img src="/static/ca/img/team/team-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Rashik Buksh Rafsan</h4>
+                <span>Developer</span>
+                <p>Department of Computer Science & Engineering</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic"><img src="/static/ca/img/team/team-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Fahadul Islam</h4>
+                <span>Developer</span>
+                <p>Department of Computer Science & Engineering</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+              <div class="pic"><img src="/static/ca/img/team/team-4.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Hasib Ar Rafiul Fahim</h4>
+                <span>Developer</span>
+                <p>Department of Computer Science & Engineering</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="/static/Glitch.jpg" alt="Glitch" style="width:100%;">
-      <div class="container">
-        <h2>Habib Ar Rafiur Fahim</h2>
-        <p>I seek to participate as a team member in a dynamic work environment by which I will try to learn new things and contribute in working field. I am determined to sharpen my skills by working hard in this field. As I am interested in coding and developing app and games, I hope to put a positive impact as a software developer.</p>
-        <p>fahad.com66.fk@gmail.com</p>
-        <p><a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=fahad.com66.fk@gmail.com" target="_blank"><button class="button">Contact</button></a></p>
+    </section>
+
+<!-- End Team Section -->
+
+
+
+
+<!-------------Footer markups--------------->
+      
+<footer class="footer">
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12 text-center">
+              <div class="social-icon">
+                <a href=""><i class="fa fa-facebook wow fadeInLeft" data-wow-duration=".3s" data-wow-delay=".3s" ></i></a>  
+                <a href=""><i class="fa fa-twitter wow fadeInLeft" data-wow-duration=".6s" data-wow-delay=".6s"></i></a>  
+                <a href=""><i class="fa fa-google-plus wow fadeInLeft" data-wow-duration=".9s" data-wow-delay=".9s"></i></a>  
+                <a href=""><i class="fa fa-pinterest wow fadeInLeft" data-wow-duration="1.2s" data-wow-delay="1.2s"></i></a>  
+                <a href=""><i class="fa fa-rss wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="1.5s" ></i></a>  
+                <a href=""><i class="fa fa-linkedin wow fadeInLeft" data-wow-duration="1.8s" data-wow-delay="1.8s" ></i></a>  
+                <a href=""><i class="fa fa-vimeo-square wow fadeInLeft" data-wow-duration="2.1s" data-wow-delay="2.1s"></i></a>  
+                <a href=""><i class="fa fa-youtube-square wow fadeInLeft" data-wow-duration="2.3s" data-wow-delay="2.3s" ></i></a>  
+                <a href=""><i class="fa fa-dribbble wow fadeInLeft" data-wow-duration="2.6s" data-wow-delay="2.6s"></i></a>                          
+              </div> <br>
+              <div class="copyright">
+                  <p class="footerlogo">
+                      &copy; <img alt="" src="/static/home/img/logo1.png">
+                  </p>
+                  <div class="bordernow"></div>
+              </div>
+                                   
+                                                                             
+           </div>
+          
+          
+          
       </div>
-    </div>
   </div>
 
-  <div class="column">
-    <div class="card">
-      <img src="/static/Sadia.png" alt="Sadia" style="width:100%;">
-      <div class="container">
-        <h2>Sadia Zamal</h2>
-        <p>I want to build, service and maintain visually appealing and user friendly websites. My goal is to obtain a position as a web application developer in a fun, fast paced, cutting edge environment that promotes teamwork and integrity and that fosters personal and professional development.
-        </p>
-        <p>sadiazamal1x@gmail.com</p>
-        <p><a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=sadiazamal1x@gmail.com" target="_blank"><button class="button">Contact</button></a></p>
-      </div>
-    </div>
-  </div>
-</div>
+</footer>
+
+
+    <script src="/static/home/js/jquery.ripples-min.js" type="text/javascript"></script>  
+    <script src="/static/home/js/typed.min.js" type="text/javascript"></script>
+    <script src="/static/home/js/jquery.waypoints.min.js" type="text/javascript"></script>
+    <script src="/static/home/js/jquery.counterup.min.js" type="text/javascript"></script>           
+    <script src="/static/home/js/main.js" type="text/javascript"></script>
+    <script src="/static/home/js/smoothscroll.js" type="text/javascript"></script>
+    <script src="/static/home/js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="/static/home/js/wow.min.js" type="text/javascript"></script>
+</body>    
+
+
 
 {% endblock %}

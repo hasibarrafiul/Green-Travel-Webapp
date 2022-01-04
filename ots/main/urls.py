@@ -8,7 +8,6 @@ app_name = 'articles'
 
 urlpatterns = [
     url(r'^$', views.homepage, name="list"),
-    url(r'^about/$', views.about, name="about"),
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^hotelReview/$', views.hotelReview, name="hotelReview"),
     path('deleteHotelReview/<str:pk>/$', views.deleteHotelReview, name="deleteHotelReview"),
@@ -30,6 +29,9 @@ urlpatterns = [
     url(r'^resturantList/$', views.resturantList, name="resturantList"),
 
     url(r'^cultural_food/$', views.culturalfood, name="cultural_food"),
+    url(r'^contact_new/$', views.contactNew, name="contact_new"),
+    url(r'^about/$', views.about, name="about"),
+
 
 
     url(r'^user_profile/$', views.UserProfile, name="user_profile"),
