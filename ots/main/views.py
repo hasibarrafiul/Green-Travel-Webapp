@@ -26,12 +26,6 @@ def homepage(request):
     return render(request, 'main/homepage.html')
 
 
-@login_required(login_url="/accounts/login/")
-def about(request):
-    # return HttpResponse("About")
-    return render(request, 'main/about.html')
-
-
 @login_required(login_url="/account/login/")
 def contact(request):
     if request.method == "POST":
@@ -41,7 +35,7 @@ def contact(request):
         message = request.POST['message-message']
 
         # send email
-        send_mail(
+        send_mail( 
             'Mail Sent By ' + message_name,  # subject
             '\n' + 'Senders Phone: ' + message_phone + '\nSenders Email: ' + message_email + ' \nMessage: ' + message,
             # message
@@ -616,4 +610,8 @@ def deleteAppRating(request, pk):
 
 @login_required(login_url="/account/login/")
 def contactNew(request):
-    return render(request, 'main/contactNew.html')    
+    return render(request, 'main/contactNew.html') 
+
+@login_required(login_url="/account/login/")
+def about(request):
+    return render(request, 'main/about.html')          
