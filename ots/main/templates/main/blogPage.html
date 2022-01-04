@@ -71,6 +71,9 @@ body {
 {% for blogs in blogs %}
 <div class="header">
   <h2>Blog Name: {{ blogs.Title }}</h2>
+    {% if user == blogs.user %}
+    <a href="{% url 'articles:deleteBlog' blogs.id %}">Delete</a> <a href="{% url 'articles:editBlogs' blogs.id %}">Edit</a>
+    {% endif %}
 </div>
 
 <div class="row">
