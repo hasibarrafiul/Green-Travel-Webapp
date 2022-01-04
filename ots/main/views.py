@@ -615,3 +615,7 @@ def contactNew(request):
 @login_required(login_url="/account/login/")
 def about(request):
     return render(request, 'main/about.html')          
+
+@login_required(login_url="/account/login/")
+def faqs(request):
+    return render(request, 'main/faqs.html') 
