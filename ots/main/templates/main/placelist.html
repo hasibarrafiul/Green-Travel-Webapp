@@ -15,11 +15,13 @@ html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}ar
 <body style="background-image: url('/static/grad1.jpg');background-repeat: no-repeat;background-attachment: fixed; background-size: 100% 100%;">
 <a href="../"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
 <br><br><br><br><br>
+<div align="center">
 <form method="POST" action="/main/placesearch/">
 	{% csrf_token %}
 	<input type="text" name="place-search"/>
 	<input type="submit"/>
 </form>
+</div>
 
 <form method="POST" action="/main/place/">
 {% csrf_token %}

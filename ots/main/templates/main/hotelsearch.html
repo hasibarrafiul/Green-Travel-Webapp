@@ -1,20 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hotel Search Page</title>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>User Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
-<form method="POST" action="/main/room/">
-{% csrf_token %}
-    {% if hotelsearch %}
+<body >
+
+<div class="container">
+
+    <div class="main-body">
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/main/">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Hotel Search</li>
+            </ol>
+          </nav>
+
+		<div class="row">
+
+            <div class="col-md-12 mb-3">
+				<div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+					<form method="POST" action="/main/room/">
+						{% csrf_token %}
+						{% if hotelsearch %}
         <h1>you searched for {{ hotelsearch }}</h1>
         {% for roomModel in roomModel %}
-    {{ roomModel.slug }}
-    <button style="padding-left:10px;" type="submit" name="hotel-name" value="{{ roomModel.slug }}" class="accommodation-list__button--12985 hoverState"><img src="/static/advance.png" width="50" height="50"></button>
+            {{ roomModel.slug }}
+    <button type="submit" name="hotel-name" value="{{ roomModel.slug }}" class="accommodation-list__button--12985 hoverState"><img src="/static/advance.png" width="20" height="20" align="center"></button>
+
+    <br>
         {% endfor %}
+
     {% endif %}
-<p></p>
-</form>
+					</form>
+                  </div>
+                </div>
+				</div>
+			</div>
+
+        </div>
+
+</div>
+</div>
 </body>
+<style>
+    button {
+    border-radius: 70%;
+    padding-bottom: 5px;
+    }
+</style>
 </html>
