@@ -107,13 +107,36 @@
     
                                                 <!-- Megamenu Single Block -->
                                                 <div class="cr-megamenu-single">
-                                                    <h6>Widget Header</h6>
+                                                    <h6>User</h6>
                                                     <ul>
                                                         <li>
-                                                            <a href="#">Awesome Features</a>
+                                                            <a href="{% url 'articles:user_profile' %}">User Profile</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Clean Interface</a>
+                                                            <a href="{% url 'articles:usersearch' %}">User Search</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{% url 'articles:appRating' %}">User Review</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{% url 'articles:showAppRating' %}">View User Review</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">W3C Validate</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!--// Megamenu Single Block -->
+    
+                                                <!-- Megamenu Single Block -->
+                                                <div class="cr-megamenu-single">
+                                                    <h6>Blog</h6>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="{% url 'articles:blogList' %}">Blog List</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{% url 'articles:createBlog' %}">Create Blog</a>
                                                         </li>
                                                         <li>
                                                             <a href="#">Responsive Design</a>
@@ -130,42 +153,19 @@
     
                                                 <!-- Megamenu Single Block -->
                                                 <div class="cr-megamenu-single">
-                                                    <h6>Widget Header</h6>
+                                                    <h6>Others</h6>
                                                     <ul>
                                                         <li>
-                                                            <a href="#">Awesome Features</a>
+                                                            <a href="{% url 'articles:chat_forum' %}">Chat Forum</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Clean Interface</a>
+                                                            <a href="{% url 'articles:wishlist' %}">Wishlist</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Responsive Design</a>
+                                                            <a href="{% url 'articles:sent_message' %}">Send Message</a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">Pixel Perfect Design</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">W3C Validate</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <!--// Megamenu Single Block -->
-    
-                                                <!-- Megamenu Single Block -->
-                                                <div class="cr-megamenu-single">
-                                                    <h6>Widget Header</h6>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">Awesome Features</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Clean Interface</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Responsive Design</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">Pixel Perfect Design</a>
+                                                            <a href="{% url 'articles:direct_message' %}">View Message</a>
                                                         </li>
                                                         <li>
                                                             <a href="#">W3C Validate</a>
