@@ -611,7 +611,23 @@ def deleteAppRating(request, pk):
 
 @login_required(login_url="/account/login/")
 def contactNew(request):
-    return render(request, 'main/contactNew.html') 
+    if request.method == "POST":
+        message_name = request.POST['message-name']
+        message_email = request.POST['message-email']
+        message_phone = request.POST['message-phone']
+        message = request.POST['message-message']
+
+        # send email
+        send_mail(
+            'Mail Sent By ' + message_name,  # subject
+            '\n' + 'Senders Phone: ' + message_phone + '\nSenders Email: ' + message_email + ' \nMessage: ' + message,
+            # message
+            message_email,  # from mail
+            ['rashikbuksh71@gmail.com'],  # tomail
+        )
+        return render(request, 'main/contactNew.html', {'message_name': message_name})
+    else:
+        return render(request, 'main/contactNew.html')
 
 
 @login_required(login_url="/account/login/")
