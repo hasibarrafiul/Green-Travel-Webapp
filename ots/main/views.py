@@ -311,6 +311,19 @@ def UserProfile(request):
     userBookedHotels = HotelReservation.objects.filter(user=request.user)
     context['userBookedHotels'] = userBookedHotels
 
+    reservation = HotelReservation.objects.filter(user=request.user)
+    count = 0
+    for i in reservation:
+        count += 1
+
+    context['offer'] = '0'
+    if 3 <= count < 5:
+        context['offer'] = '30'
+    elif 5 <= count < 10:
+        context['offer'] = '40'
+    elif count >= 10:
+        context['offer'] = '50'
+
     return render(request, 'main/user_profile.html', context)
 
 
@@ -633,6 +646,7 @@ def contactNew(request):
 @login_required(login_url="/account/login/")
 def about(request):
     return render(request, 'main/about.html')          
+
 
 @login_required(login_url="/account/login/")
 def faqs(request):

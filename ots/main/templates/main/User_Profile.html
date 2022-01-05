@@ -56,7 +56,20 @@
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                     <h6 class="mb-0"><img src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-offer-ecommerce-kiranshastry-lineal-kiranshastry.png" height="24px" width="24px"/>&nbsp;&nbsp;
-                        <a href="{% url 'articles:offers' %}">Offers</a>
+                        Offers <br>
+
+                        {% ifequal offer '50' %}
+                        <img src="/static/offer/50percent.png" height="200px" width="250px">
+                        {% endifequal %}
+                        {% ifequal offer '40' %}
+                        <img src="/static/offer/40percent.png" height="200px" width="250px">
+                        {% endifequal %}
+                        {% ifequal offer '30' %}
+                        <img src="/static/offer/30percent.png" height="200px" width="250px">
+                        {% endifequal %}
+                        {% ifequal offer '0' %}
+                        Sorry you have no offers. Please book more hotels to get offers
+                        {% endifequal %}
                     </h6>
                   </li>
                 </ul>
