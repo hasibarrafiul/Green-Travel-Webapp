@@ -1,8 +1,8 @@
 <html>
-<body>
-
-
-<h1 align="center">Reviews </h1>
+<body style="background-image: url('/static/images/bg.jpg')">
+<a href="../"><img src="/static/home/img/back.png" height="30px" width="30px"></a>
+<br><br><br><br><br><br><br>
+<h1 align="center">App Rating </h1>
   </div>
                         {% for appReview in appReview %}
 						<table align="center" border="0" cellspacing="0" cellpadding="10" class="rcorners2" >
@@ -11,11 +11,10 @@
 									{% for profile in profile %}
 									{% ifequal profile.user appReview.user %}
 									{% if profile.user_image %}
-                                    <img src="{{ profile.user_image.url }}" alt="Error" height="100px" width="100px">
-
+                                    <img src="{{ profile.user_image.url }}" alt="Error" height="200px" width="200px">
                                     {% endif %}
 									{% ifequal profile.user_image None %}
-									<img src="/static/user.png" alt="Error" height="100px" width="100px">
+									<img src="/static/user.png" alt="Error" height="200px" width="200px">
 									{% endifequal %}
 									{% endifequal %}
 									{% endfor %}
@@ -57,4 +56,13 @@
 					<h3 align="center"><a href="{% url 'articles:appRating' %}"><img src="/static/writeareview.png"></a></h3>
 </div>
 </body>
+<style>
+th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4;
+}
+</style>
 </html>
