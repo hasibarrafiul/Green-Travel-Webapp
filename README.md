@@ -16,7 +16,7 @@ Features: <br>
 6. Signup<br>
 7. Signup Email Verification<br>
 8. ContactUs sends email to admin<br>
-9. Home Component (Feaured images, Members, App reviews, General FAQs, Videos, Our locations and Social Links)<br>
+9. Home Component (Feaured images, Members, App reviews, Videos, Our locations and Social Links)<br>
 10. Hotel Rooms<br>
 11. Hotel Room Review<br>
 12. Places <br>
@@ -40,12 +40,10 @@ Features: <br>
 30. Search Places<br>
 31. Search User<br>
 32. See searched user profile<br>
+33. Travel Advisor <br>
+34. FAQ <br>
+35. User Review about the app (Star review) <br>
 
-Upcoming Features: <br>
-1. Carrer Opportunities<br>
-2. Explore<br>
-3. User Review about the app (Home Component)<br>
-4. Map with directions<br>
 
 This is an web application developed using python and Django. <br>
 Screenshots: 
