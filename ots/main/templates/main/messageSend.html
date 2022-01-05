@@ -1,25 +1,94 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Send Message</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="/static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+<!--===============================================================================================-->
+</head>
 <body>
 
-<form method="POST" id="register-form" class="register-form">
-					{% csrf_token %}
-                        <h2 class="form-title">Write Review</h2>
+	<div class="contact1">
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img src="/static/images/img-01.png" alt="IMG">
+			</div>
 
-						<div class="form-group">
-                            <label class="u-label">Send message to</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							{{form.to_user}}
-                        </div>
-                        <div class="form-group">
-                            <label class="u-label">Your message</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-							{{form.chat}}
-                        </div>
+			<form method="POST" class="contact1-form validate-form">
+			{% csrf_token %}
+				<span class="contact1-form-title">
+					Send Message
+				</span>
 
-                        <button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
+				<div class="wrap-input1 validate-input" data-validate = "Name is required">
+					<label class="u-label">Send message to</label>
+					{{form.to_user}}
+					<span class="shadow-input1"></span>
+				</div>
 
-                    </form>
+				<div class="wrap-input1 validate-input" data-validate = "Message is required">
+					<label class="u-label">Your message</label>
+					&nbsp;&nbsp;&nbsp;{{form.chat}}
+					<span class="shadow-input1"></span>
+				</div>
 
+				<div class="container-contact1-form-btn">
+					<button value="Sign up" type="submit" name="signup_submit" id="submit_button" class="contact1-form-btn">
+						<span>
+							Send
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/bootstrap/js/popper.js"></script>
+	<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+<!--===============================================================================================-->
+	<script src="/static/js/main.js"></script>
 
 </body>
 </html>
