@@ -211,7 +211,7 @@
                                             {% csrf_token %}
                                 <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
                                 </form>
-                            </a>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -221,11 +221,16 @@
                 <div class="mobile-menu-wrapper">
                     <div class="container d-block d-lg-none">
                         <div class="mobile-menu clearfix">
-                            <a class="mobile-logo" href="index.html">
-                                <img src="images/logo.png" alt="mobile logo">
+                            <a class="mobile-logo" href="home">
+                                <img src="/static/header/img/logo1.png" alt="logo" height="70px" width="150px">
                             </a>
-                            <a href="" class="cr-btn cr-btn-sm">
-                                <span>Buy now</span>
+                            <a href="{% url 'articles:user_profile' %}" class="cr-btn cr-btn-sm">
+                                <span>{{ user.username }}</span>
+                            </a>
+                                <a><form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                        {% csrf_token %}
+                            <button type="submit" class="cr-btn cr-btn-sm">Logout</button>
+                            </form>
                             </a>
                         </div>
                     </div>
