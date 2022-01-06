@@ -32,7 +32,6 @@
                   <div class="d-flex flex-column align-items-center text-center">
                       {% for profile in profile %}
 
-                            {% if user == profile.user %}
                     {% if profile.user_image %}
                             <img src="{{ profile.user_image.url }}" alt="Error" height="100px" width="100px">
                          {% endif %}
@@ -48,7 +47,6 @@
                       <button class="btn btn-primary">Call</button>
                         <a href="{% url 'articles:sent_message' %}"><button class="btn btn-outline-primary">Message</button></a>
                     </div>
-                      {% endif %}
                 {% endfor %}
                   </div>
                 </div>

@@ -417,7 +417,9 @@ def wishList(request):
             instance = form.save(commit=False)
             instance.user = request.user
             instance.save()
-            return HttpResponseRedirect(request.path_info)
+            url = reverse('articles:user_profile')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(url)
     else:
         form = forms.wishlistForm()
 

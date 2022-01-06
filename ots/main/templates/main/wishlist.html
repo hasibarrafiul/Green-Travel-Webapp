@@ -12,13 +12,12 @@
 		  <h3 align="center">Add a place to Wishlist</h3>
 			<form method="POST" id="register-form" class="register-form">
 					{% csrf_token %}
-				<div class="form-group" align="center">
                     <label class="u-label">Enter a place</label>
                     &nbsp;&nbsp;
 					{{form.PlaceName}}
 					&nbsp;&nbsp;
 					<button type="submit" name="signup_submit" id="submit_button" class="form-submit" value="Sign up">Submit</button>
-                </div>
+
             </form>
 			<h3 align="center">My Wishlist</h3>
             <form method="POST" action="/main/place/">

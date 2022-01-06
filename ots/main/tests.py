@@ -5,7 +5,7 @@ from .forms import HotelReview, ResturantReview, PlaceReview
 from .models import RoomModel, Place, ResturantInfo
 from .views import homepage, about, contact, hotelReview, deleteHotelReview, resturantReview, deleteresturantReview, \
     placeReview, \
-    deleteplaceReview, hotel_booking, hotel_bookingPdf, RoomShow, hotel_page, placelist, place, resturantList, \
+    deleteplaceReview, hotel_bookingPdf, RoomShow, hotel_page, placelist, place, resturantList, \
     resturantShow
 
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -47,10 +47,6 @@ class UrlsTest(SimpleTestCase):
     def test_deleteplaceReview(self):
         url = reverse('articles:deleteplaceReview', args=['slug'])
         self.assertEquals(resolve(url).func, deleteplaceReview)
-
-    def test_hotel_booking(self):
-        url = reverse('articles:hotel_booking')
-        self.assertEquals(resolve(url).func, hotel_booking)
 
     def test_hotel_bookingPdf(self):
         url = reverse('articles:hotel_bookingPdf')
@@ -116,10 +112,6 @@ class ViewTest(TestCase):
 
     def test_deleteplaceReview(self):
         response = self.client.post(reverse('articles:deleteplaceReview', args=['slug']))
-        self.assertEquals(response.status_code, 302)
-
-    def test_hotel_booking(self):
-        response = self.client.post(reverse('articles:hotel_booking'))
         self.assertEquals(response.status_code, 302)
 
     def test_hotel_bookingPdf(self):
