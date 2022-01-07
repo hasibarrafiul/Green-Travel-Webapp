@@ -146,6 +146,12 @@ class ViewTest(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'main/ResturantShow.html')
 
+    def test_contactNew(self):
+        response = self.client.post(reverse('articles:contact_new'))
+        self.assertEquals(response.status_code, 302)
+            
+
+
 
 class TestModels(TestCase):
 
