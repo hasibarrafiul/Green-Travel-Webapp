@@ -1,4 +1,12 @@
 # Green Travel WebApp
+pip to Install: <br>
+pip install django <br>
+pip install django-colorfield <br>
+pip install social-auth-app-django <br>
+(Latest django may show error on urls. So please downgrade) <br>
+pip install django==3.2.11  <br>
+pip install validate_email <br>
+pip install reportlab <br>
 <br>
 Introduction:
 Green Traveler’s is a web-app through which users can search for their desired destination and tourism activities based on tourist places. <br>
