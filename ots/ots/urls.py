@@ -6,6 +6,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.static import serve
 
 urlpatterns = [
 
@@ -17,6 +18,8 @@ urlpatterns = [
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(template_name="accounts/password_reset_sent.html"), name="password_reset_done"),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="accounts/password_reset_complete.html"), name="password_reset_complete"),
     path('', views.homepage),
+    path('media/(?P<path>.*)$', serve, {'document_root':       settings.MEDIA_ROOT}),
+    path('static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 
 
 ]
