@@ -1,1 +1,1 @@
-web: gunicorn ots.ots.wsgi --log-file -
+web: gunicorn --chdir ots ots.wsgi
