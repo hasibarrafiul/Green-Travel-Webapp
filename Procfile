@@ -1,1 +1,1 @@
-web: gunicorn --bind 0.0.0.0:$PORT ots:app
+web: gunicorn app:application --preload -b 0.0.0.0:5000
