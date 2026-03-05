@@ -1,2 +1,6 @@
 *.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+*.html linguist-vendored
+
 static/* linguist-vendored
